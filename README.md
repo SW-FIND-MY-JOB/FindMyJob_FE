@@ -16,3 +16,32 @@
 | 🔨       | `:hammer:`  | 개발 스크립트 추가/수정                | Add or update development scripts. |
 | 🔀       | `:twisted_rightwards_arrows:` | 브랜치 합병                   | Merge branches.                  |
 | 📝       | `:memo:` | 문서 수정                   | Update Docs.                 |
+
+
+## 🪴 Branch Convention (GitHub Flow)
+
+- `main`: 배포 가능한 브랜치, 항상 배포 가능한 상태를 유지
+- `develop`: 기능 개발 후 배포 전 최종 테스트를 위한 브랜치
+- `feature/{description}`: 새로운 기능을 개발하는 브랜치
+    - 예: `feature/social-login`
+
+### Flow
+
+1. `main` 브랜치에서 새로운 브랜치를 생성.
+2. 작업을 완료하고 커밋 메시지에 맞게 커밋.
+3. Pull Request를 생성 / 팀원들의 리뷰.
+4. 리뷰가 완료되면 `main` 브랜치로 병합.
+5. 병합 후, 필요시 배포.
+
+**예시**:
+
+```bash
+# 새로운 기능 개발
+git checkout -b feature/social-login
+
+# 작업 완료 후, main 브랜치로 병합
+git checkout main
+git pull origin main
+git merge feature/social-login
+git push origin main
+```
