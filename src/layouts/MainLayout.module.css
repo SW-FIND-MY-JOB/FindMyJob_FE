@@ -1,0 +1,11 @@
+/* 기본 레이아웃 */
+.layout {
+    position: relative;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+Footer{
+    position: relative;
+    z-index: 999;
+}

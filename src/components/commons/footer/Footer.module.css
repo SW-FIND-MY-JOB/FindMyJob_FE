@@ -1,0 +1,47 @@
+.footerContainer{
+    /* 레이아웃 */
+    width: calc(100% - 80px);
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0 40px 80px;
+
+    /* 스타일 */
+    background: #efefef;
+}
+
+.footerContents{
+    /* 레이아웃 */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+
+    /* 스타일 */
+    font-family: 'BMJUA', sans-serif;
+}
+
+.content1 {
+    /* 레이아웃 */
+    margin: 0;
+
+    font-size: 28px;
+    color: black;
+}
+  
+.content2 {
+    /* 레이아웃 */
+    margin: 0;
+
+    font-size: 32px;
+    color: #024DEF;
+}
+
+.content3 {
+    /* 레이아웃 */
+    margin: 0;
+    
+    margin-top: 30px;
+    font-size: 20px;
+    color: #4E4E4E;
+}
