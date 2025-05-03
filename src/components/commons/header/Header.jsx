@@ -1,6 +1,5 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
-import Login from '../../login/Login';
 
 import styles from "./Header.module.css";
 import logoImg from "../../../assets/images/logoImg.png";
