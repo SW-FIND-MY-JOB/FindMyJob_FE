@@ -1,0 +1,9 @@
+.notFoundContainer{
+    /* 레이아웃 */
+    width: 100%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

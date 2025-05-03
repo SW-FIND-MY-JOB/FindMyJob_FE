@@ -14,7 +14,7 @@ export default function MainLayout(){
     return(
         <div className={styles.layout}>
             <Header/>
-            <Outlet />
+            <Outlet/>
             {isMainPage && <Footer/>}
         </div>
     );
