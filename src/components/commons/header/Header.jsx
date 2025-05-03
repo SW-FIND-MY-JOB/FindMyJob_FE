@@ -5,6 +5,7 @@ import styles from "./Header.module.css";
 import logoImg from "../../../assets/images/logoImg.png";
 import searchImg from "../../../assets/images/searchImg.png";
 
+
 export default function Header(){
     const navigate = useNavigate();
     const location = useLocation();

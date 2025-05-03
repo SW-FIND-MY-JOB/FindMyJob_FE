@@ -1,13 +1,13 @@
 .headerContainer{
     /* 레이아웃 */
     width: calc(100% - 5% - 10%);
-    height: 230px;
+    height: 10%;
 
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    padding: 70px 5% 0 10%;
+    padding: 2% 5% 0 10%;
 
     margin-bottom: 1%;
 
@@ -25,13 +25,13 @@
     align-items: center;
     justify-content: start;
 
-    margin-bottom: 4%;
+    margin-bottom: 1%;
 }
 
 .searchContainer{
     /* 레이아웃 */
-    width: 856px;
-    height: 74px;
+    width: 70%;
+    height: 58px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -49,7 +49,7 @@
 
 .searchTextBox{
     /* 레이아웃 */
-    width: 620px;
+    width: 80%;
     height: 80%;
 
     /* 스타일 */
