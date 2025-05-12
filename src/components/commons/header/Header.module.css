@@ -1,18 +1,28 @@
-.headerContainer{
+.headerBox{
     /* 레이아웃 */
-    width: calc(100% - 5% - 10%);
+    width: 100%;
+    min-width: 1250px;
     height: 10%;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    padding: 2% 5% 0 10%;
-
+    justify-content: center;
     margin-bottom: 1%;
 
-     /* 그림자 추가 */
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.headerContainer{
+    /* 레이아웃 */
+    /* width: calc(100% - 5% - 10%); */
+    min-width: 1250px;
+    max-width: 2000px; 
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2% 5% 0 5%;
+    margin-bottom: 1%;
 }
 
 .headerTop{
