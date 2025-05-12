@@ -1,5 +1,6 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
+import LoginModal from '../../login/LoginModal';
 
 import styles from "./Header.module.css";
 import logoImg from "../../../assets/images/logoImg.png";
@@ -10,6 +11,7 @@ export default function Header(){
     const navigate = useNavigate();
     const location = useLocation();
 
+    const [showLogin, setShowLogin] = useState(false);
     const [value, setValue] = useState("");
 
     function handleInputChange(e){
@@ -78,14 +80,18 @@ export default function Header(){
                 </div>
 
                 <div className={styles.loginContainer}>
-                    <p>로그인</p>
-                    <p
-                        onClick={() => navigate("/signup")}
-                    >
+                    <p onClick={() => setShowLogin(true)}>
+                        로그인
+                    </p>
+                    
+                    <p onClick={() => navigate("/signup")}>
                         회원가입
                     </p>
                 </div>
             </div>
+
+            {/* 로그인 모달창 */}
+            {showLogin && <LoginModal onClose={() => setShowLogin(false)}/>}
         </div>
     );
 }
