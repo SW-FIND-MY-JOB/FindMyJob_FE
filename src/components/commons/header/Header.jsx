@@ -19,7 +19,7 @@ export default function Header(){
     }
 
     return(
-        <div className={styles.headerBox}>
+        // <div className={styles.headerBox}>
             <div className={styles.headerContainer}>
                 {/* 헤더 윗부분 */}
                 <div className={styles.headerTop}>
@@ -94,6 +94,6 @@ export default function Header(){
                 {/* 로그인 모달창 */}
                 {showLogin && <LoginModal onClose={() => setShowLogin(false)}/>}
             </div>
-        </div>
+        // </div>
     );
 }
