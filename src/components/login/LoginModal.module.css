@@ -1,0 +1,41 @@
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.loginContainer{
+    /* 레이아웃 */
+    width: 380px;
+    height: 490px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+
+    /* 스타일 */
+    border-radius: 20px;
+    background-color: white;
+}
+
+.topContainer{
+    /* 레이아웃 */
+    width: 100%;
+    height: 10%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    gap: 60%;
+
+
+
+    
+}
