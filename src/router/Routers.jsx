@@ -2,6 +2,8 @@ import { Routes, Route } from 'react-router-dom'
 import MainLayout from '../layouts/MainLayout';
 import MainPage from '../pages/main/MainPage'
 import MyPage from '../pages/my/MyPage'
+import Cafepage from '../pages/cafe/CafePage';
+
 import NotFoundPage from '../pages/notFound/notFoundPage';
 
 export default function Routers() {
@@ -10,6 +12,7 @@ export default function Routers() {
             <Route element={<MainLayout />}>
                 <Route path="/" element={<MainPage />} />
                 <Route path='/my' element={<MyPage />} /> 
+                <Route path='/cafe' element={<Cafepage/>} />
                 <Route path='*' element={<NotFoundPage />} />        
             </Route>
         </Routes>
