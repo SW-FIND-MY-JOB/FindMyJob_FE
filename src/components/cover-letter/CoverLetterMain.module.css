@@ -1,0 +1,63 @@
+.mainSection {
+  flex: 2;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+  min-height: 100%; /* ✅ 높이 제한 없음 */
+}
+
+.content {
+  line-height: 1.7;
+  margin-top: 16px;
+  white-space: pre-line; /* ✅ 줄 바꿈 반영 */
+}
+
+
+.title {
+  font-size: 26px;
+  font-weight: bold;
+  color: #333;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #777;
+}
+
+.metaActions {
+  font-size: 14px;
+  color: #666;
+}
+
+.divider {
+  margin: 0 4px;
+  color: #bbb;
+}
+
+.action {
+  cursor: pointer;
+  color: #007aff;
+}
+
+.questionBlock {
+  margin-top: 12px;
+}
+
+.label {
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.question {
+  color: #555;
+}
+
+

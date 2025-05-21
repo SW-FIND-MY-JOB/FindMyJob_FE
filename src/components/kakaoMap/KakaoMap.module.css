@@ -1,0 +1,95 @@
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden; /* ✅ 진짜 핵심 */
+  overflow-y: hidden;
+  box-sizing: border-box;
+}
+
+.sidebar {
+  width: 20%;
+  min-width: 200px;
+  overflow-y: auto;
+  border-right: 1px solid #ccc;
+  padding: 10px;
+}
+
+.map {
+  flex: 1;
+  min-width: 0; /* ✅ map이 튀어나오지 않게 반드시 필요 */
+  position: relative;
+}
+
+
+
+.title {
+  font-size: 18px;
+}
+
+.locationInfo {
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: #333;
+}
+
+.locationBtn {
+  margin-top: 5px;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.listItem {
+  margin-bottom: 12px;
+  cursor: pointer;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.cafeImage {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.cafeName {
+  font-size: 14px;
+}
+
+.cafeAddress {
+  font-size: 12px;
+  color: #555;
+}
+
+.cafeIntro {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.infoWindow {
+  padding: 5px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.infoImage {
+  width: 80px;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
