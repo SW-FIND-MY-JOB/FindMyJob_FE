@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import styles from './KaKaoMap.module.css';
 
 import jobCafes from '../../data/jobCafes.json';
 
@@ -26,7 +27,7 @@ export default function JobCafeMap() {
     };
   }, []);
 
-  //지도 초기화화
+  //지도 초기화
   const initializeMap = () => {
     if (!window.kakao || !window.kakao.maps) return;
 
@@ -58,9 +59,13 @@ export default function JobCafeMap() {
           });
 
           const content = `
-            <div style="padding:5px;font-size:13px;text-align:center;">
-              <img src="${cafe.image}" alt="${cafe.name}" style="width:80px;height:auto;border-radius:4px;margin-bottom:5px;" /><br />
-              <strong>${cafe.name}</strong>
+            <div style="width:300px; height:300px; padding:10px; display:flex; flex-direction:column; justify-content:center; align-items:start; border-radius: 30px; font-size:13px;">
+              <img src="${cafe.image}" alt="${cafe.name}" style="width:100%; height:150px; object-fit: cover; border-radius:10px; margin:10px 5px 10px 0;" />
+              <p style="margin:2px"><strong>카페명: </strong>${cafe.name}</p>
+              <p style="margin:2px"><strong>카페소개: </strong>${cafe.intro}</p>
+              <p style="margin:2px"><strong>주소: </strong>${cafe.address}</p>
+              <p style="margin:2px"><strong>영업시간: </strong>${cafe.time}</p>
+              <p style="margin:2px"><strong>휴일: </strong>${cafe.break}</p>
             </div>
           `;
           const infowindow = new window.kakao.maps.InfoWindow({ content });
@@ -103,7 +108,16 @@ export default function JobCafeMap() {
   const moveToMarker = (index) => {
     const marker = markersRef.current[index];
     if (marker && map) {
-      map.panTo(marker.getPosition());
+      const position = marker.getPosition();
+
+      // 마커 위치를 아래쪽에 보이도록 중심을 위로 올림 (위도 기준)
+      const offsetLat = 0.01; // 더 아래에 보이게 하려면 값 증가
+      const offsetPosition = new window.kakao.maps.LatLng(
+        position.getLat() + offsetLat,
+        position.getLng()
+      );
+
+      map.panTo(offsetPosition); // 애니메이션 중심 이동
       window.kakao.maps.event.trigger(marker, 'click');
     }
   };
@@ -120,49 +134,52 @@ export default function JobCafeMap() {
   );
 
   return (
-    <div style={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
-      <div style={{ width: '20%', overflowY: 'auto', borderRight: '1px solid #ccc', padding: '10px' }}>
-        <h3 style={{ fontSize: '18px' }}>일자리카페 목록</h3>
-        {currentLocation && (
-          <div style={{ marginBottom: '10px', fontSize: '13px', color: '#333' }}>
-            📍 현재위치<br />
-            위도: {currentLocation.lat.toFixed(5)}<br />
-            경도: {currentLocation.lng.toFixed(5)}<br />
-            <button onClick={moveToCurrentLocation} style={{ marginTop: '5px', padding: '5px 10px', fontSize: '12px' }}>
-              현재 위치로 이동
-            </button>
+    //전체 레이아웃
+    <div className={styles.cafeLayout}>
+      {/* 카페 목록 컨테이너 */}
+      <div className={styles.cafeListContainer}>
+        {/* 목록 상단 컨테이너 */}
+        <div className={styles.cafeListTopContainer}>
+          {/* 목록 상단 제목 */}
+          <div className={styles.cafeListTitleContainer}>
+            <h3>일자리카페 목록</h3>
+            {currentLocation && (
+                <button className={styles.myLocationButton} onClick={moveToCurrentLocation} >
+                  내 위치 찾기
+                </button>
+            )}
           </div>
-        )}
-        <input
-          type="text"
-          placeholder="카페명 검색"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          style={{ width: '100%', padding: '6px', marginBottom: '10px', fontSize: '14px' }}
-        />
-        <ul style={{ listStyle: 'none', padding: 0 }}>
+
+          <input
+            className={styles.searchCafe}
+            type="text"
+            placeholder="카페명 검색"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
+
+        {/* 일자리 카페 정보 리스트 */}
+        <ul className={styles.cafeInformListContainer}>
           {filteredCafes.map((cafe, idx) => (
             <li
+              className={styles.cafeList}
               key={idx}
               onClick={() => moveToMarker(jobCafes.indexOf(cafe))}
-              style={{
-                marginBottom: '12px',
-                cursor: 'pointer',
-                padding: '8px',
-                border: '1px solid #ddd',
-                borderRadius: '5px',
-              }}
             >
-              <img src={cafe.image} alt={cafe.name} style={{ width: '100%', height: 'auto', borderRadius: '4px' }} />
-              <strong style={{ fontSize: '14px' }}>{cafe.name}</strong><br />
-              <span style={{ fontSize: '12px', color: '#555' }}>{cafe.address}</span><br />
-              <p style={{ fontSize: '12px', marginTop: '5px' }}>{cafe.intro}</p>
+              <img src={cafe.image} alt={cafe.name}/>
+              <ul>
+                <li><strong>카페명:</strong> {cafe.name}</li>
+                <li><strong>주소:</strong> {cafe.address}</li>
+                <li><strong>소개:</strong> {cafe.intro}</li>
+              </ul>
             </li>
           ))}
         </ul>
       </div>
 
-      <div ref={mapRef} style={{ flex: 1 }} />
+      {/* 지도 */}
+      <div className={styles.mapContainer} ref={mapRef} />
     </div>
   );
 }

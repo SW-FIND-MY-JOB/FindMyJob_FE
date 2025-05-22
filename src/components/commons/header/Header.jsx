@@ -40,10 +40,10 @@ export default function Header(){
                         AI 자소서 코칭
                     </p>
                     <p
-                        onClick={() => navigate("/pass-assay")}
+                        onClick={() => navigate("/assay")}
                         className={location.pathname === "/assay" ? styles.active : ""}
                     >
-                        합격 자소서
+                        자소서 둘러보기
                     </p>
                 </div>
 
