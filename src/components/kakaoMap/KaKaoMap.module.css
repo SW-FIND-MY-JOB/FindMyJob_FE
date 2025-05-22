@@ -71,6 +71,24 @@
     list-style: none;
     padding: 5px 0 5px 5px;
     overflow-y: scroll;
+
+    /* 스크롤바 스타일 */
+    scrollbar-width: thin; /* Firefox용 */
+    scrollbar-color: #ccc transparent; /* Firefox용 */
+}
+
+/* Chrome, Edge용 스크롤바 스타일 */
+.cafeInformListContainer::-webkit-scrollbar {
+  width: 8px; /* 스크롤바 너비 */
+}
+
+.cafeInformListContainer::-webkit-scrollbar-thumb {
+  background-color: #aaa;       /* 스크롤바 색상 */
+  border-radius: 10px;          /* 둥근 모서리 */
+}
+
+.cafeInformListContainer::-webkit-scrollbar-track {
+  background-color: transparent; /* 스크롤 트랙 배경 */
 }
 
 /* 카페 리스트 */
