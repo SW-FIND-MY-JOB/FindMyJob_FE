@@ -8,14 +8,16 @@ import Footer from '../components/commons/footer/Footer';
 export default function MainLayout(){
     // 현재 url경로
     const location = useLocation();
-    const isMainPage = location.pathname === "/";
+    // const isMainPage = location.pathname === "/";
+    const isCafePage = location.pathname === "/cafe";
+
 
 
     return(
         <div className={styles.layout}>
             <Header/>
             <Outlet/>
-            {isMainPage && <Footer/>}
+            {!isCafePage && <Footer/>}
         </div>
     );
 }

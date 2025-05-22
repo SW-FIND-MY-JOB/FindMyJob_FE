@@ -10,7 +10,7 @@
 .footerLayout{
     /* 레이아웃 */
     width: 80%;
-    min-width: 1200px;
+    min-width: 1300px;
     height: 100%;
 
     display: flex;

@@ -1,7 +1,7 @@
 .headerContainer{
     /* 레이아웃 */
     width: calc(100% - 10%);
-    height: 100px;
+    height: 70px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -39,7 +39,6 @@
     align-items: center;
     justify-content: center;
 
-    margin-left: 20px;
 }
 
 .navigationContainer{

@@ -17,7 +17,7 @@ export default function Header(){
             <div className={styles.headerTop}>
                 {/* 로고 영역 */}
                 <div className={styles.logoContainer}>
-                    <img src={logoImg} alt="로고" style={{cursor: 'pointer'}} onClick={()=>{navigate('/');}}/>
+                    <img src={logoImg} alt="로고" style={{width:'160px', cursor: 'pointer'}} onClick={()=>{navigate('/');}}/>
                 </div>
                 {/* 네비게이션션 영역 */}
                 <div className={styles.navigationContainer}>
