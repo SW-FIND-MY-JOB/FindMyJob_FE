@@ -1,111 +1,55 @@
 .headerContainer{
     /* 레이아웃 */
-    width: calc(100% - 5% - 10%);
-    height: 10%;
-
+    width: calc(100% - 10%);
+    height: 70px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-
-    padding: 2% 5% 0 10%;
-
-    margin-bottom: 1%;
-
-     /* 그림자 추가 */
-    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.15);
+    padding: 2% 5% 0 5%;
+    margin: 0 0 1% 0;
 }
 
 .headerTop{
     /* 레이아웃 */
     width: 100%;
-    height: 100px;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: start;
-
-    margin-bottom: 1%;
-}
-
-.searchContainer{
-    /* 레이아웃 */
-    width: 70%;
-    height: 58px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding-left: 20px;
-    margin-left: 30px;
-
-    /* 스타일 */
-    border-width: 1px;
-    border: solid;
-    border-radius: 30px;
-    border-color: #89BAFF;
-
-}
-
-
-.searchTextBox{
-    /* 레이아웃 */
-    width: 80%;
-    height: 80%;
-
-    /* 스타일 */
-    border-width: 0;
-    border-radius: 20px;
-    outline: none;
-    font-size: 24px;
-    font-weight: 600;
-    
-}
-
-.rankContainer{
-    /* 레이아웃 */
-    width: 180px;
+    max-width: 1500px;
+    min-width: 1150px;
     height: 100%;
 
     display: flex;
-    flex: row;
-
-    align-items: center;
-}
-
-.rankNum{
-    /* 레이아웃 */
-    margin-left: 10px;
-
-    /* 스타일 */
-    font-size: 24px;
-    font-weight: 600;
-    color: #1B63FF;
-}
-
-.rankName{
-    /* 레이아웃 */
-    margin-left: 10px;
-
-    /* 스타일 */
-    font-size: 22px;
-    font-weight: 600;
-    color: black;
-}
-
-.headerBottom{
-    /* 레이아웃 */
-    width: 100%;
-    height: 50px;
-    display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    padding: 0 10px 10px 0;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 1%;
+
+    /* 스타일 */
+    background-color: white;
+    border-radius: 50px;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.15);
+
+}
+
+.logoContainer{
+    /* 레이아웃 */
+    flex: 20;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .navigationContainer{
     /* 레이아웃 */
+    flex: 60;
+
     display: flex;
     flex-direction: row;
+    justify-content: start;
+
+    margin-left: 20px;
 
     & p{
         /* 레이아웃 */
@@ -126,6 +70,8 @@
 
 .loginContainer{
     /* 레이아웃 */
+    flex: 20;
+
     display: flex;
     flex-direction: row;
 

@@ -3,6 +3,11 @@
     position: relative;
     min-height: 100vh;
     width: 100vw;
+
+    /* 스타일 */
+    /* background-color: #D9DAE3; */
+    background: linear-gradient(180deg,rgba(145, 241, 242, 1) 0%, rgba(255, 220, 145, 1) 100%);
+    /* background: linear-gradient(180deg,rgba(136, 158, 181, 1) 0%, rgba(115, 140, 65, 1) 100%); */
 }
 
 Footer{
