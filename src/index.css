@@ -19,8 +19,8 @@
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;
-} */
+  overflow-x: hidden;
+}
 /* 카카오지도 스크롤안생기게 하는 코드 */
 
 a {

@@ -1,0 +1,58 @@
+.inputLayout{
+    /* 레이아웃 */
+    width: 90%;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.inputStyle{
+    /* 레이아웃 */
+    width: calc(100%-15px);
+    height: calc(100% - 25px);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding-left: 15px;
+
+    /* 스타일 */
+    border-radius: 10px;
+    border-color: rgb(193, 193, 193);
+
+    font-size: 20px;
+    font-weight: 400;
+
+    box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.1);
+}
+
+.sucessMessageBox{
+    /* 레이아웃 */
+    width: 100%;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding-left: 5px;
+    
+    /* 스타일 */
+    color: rgb(55, 255, 65);
+    font-size: 10px;
+}
+
+.errorMessageBox{
+    /* 레이아웃 */
+    width: 100%;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding-left: 5px;
+    
+    /* 스타일 */
+    color: rgb(249, 23, 23);
+    font-size: 10px;
+}
