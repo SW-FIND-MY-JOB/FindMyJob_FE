@@ -14,7 +14,7 @@ export default function Routers() {
                 <Route path="/" element={<MainPage />} />
                 <Route path='/my' element={<MyPage />} /> 
                 <Route path='/cafe' element={<Cafepage/>} />
-                <Route path='/pass-assay' element={<CoverLetterPage/>} />
+                <Route path='/assay' element={<CoverLetterPage/>} />
                 <Route path='*' element={<NotFoundPage />} />        
             </Route>
         </Routes>
