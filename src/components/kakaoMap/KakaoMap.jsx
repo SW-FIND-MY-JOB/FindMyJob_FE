@@ -73,14 +73,14 @@ export default function KakaoMap() {
                 position: absolute;
                 top: 10px;
                 right: 10px;
-                width: 20px;              /* ✅ 최대한 줄임 */
+                width: 20px;              /* ✅ 최대한 줄임!! */
                 height: 20px;
                 border: none;
                 background: rgba(0, 0, 0, 0.05);
                 color: #444;
                 border-radius: 50%;
                 cursor: pointer;
-                font-size: 12px;          /* ✅ 아이콘도 작게 */
+                font-size: 12px;          /* ✅ 아이콘도 작게 !!*/
                 font-weight: bold;
                 line-height: 1;
                 padding: 0;
