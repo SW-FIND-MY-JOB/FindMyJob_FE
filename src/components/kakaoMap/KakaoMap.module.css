@@ -1,95 +1,153 @@
-.container {
-  display: flex;
-  height: 100vh;
-  width: 100%;
-  overflow-x: hidden; /* ✅ 진짜 핵심 */
-  overflow-y: hidden;
-  box-sizing: border-box;
+.cafeLayout{
+    height: calc(93vh - 70px);
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
 }
 
-.sidebar {
-  width: 20%;
-  min-width: 200px;
-  overflow-y: auto;
-  border-right: 1px solid #ccc;
-  padding: 10px;
+.cafeListContainer{
+    /* 레이아웃 */
+    width: 20%;
+    min-width: 350px;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    margin: 0 10px 10px 20px;
+
+    /* 스타일 */
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.15);
 }
 
-.map {
-  flex: 1;
-  min-width: 0; /* ✅ map이 튀어나오지 않게 반드시 필요 */
-  position: relative;
+.cafeListTopContainer{
+    /* 레이아웃 */
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cafeListTitleContainer{
+    /* 레이아웃 */
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.myLocationButton{
+    /* 레이아웃 */
+    padding: 5px;
+    font-size: 13px;
+    font-weight: 900;
+    color: rgb(56, 65, 82);
+    background-color: rgb(220, 238, 240);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+}
+
+.searchCafe{
+    /* 레이아웃 */
+    width: 80%;
+    height: 20px;
+    margin-top: 10px;
+    padding: 5px;
+
+    /* 스타일 */
+    border: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: rgb(67, 110, 195);
+}
+
+.cafeInformListContainer{
+    /* 레이아웃 */
+    list-style: none;
+    padding: 5px 0 5px 5px;
+    overflow-y: scroll;
+
+    /* 스크롤바 스타일 */
+    scrollbar-width: thin; /* Firefox용 */
+    scrollbar-color: #ccc transparent; /* Firefox용 */
+}
+
+/* Chrome, Edge용 스크롤바 스타일 */
+.cafeInformListContainer::-webkit-scrollbar {
+  width: 8px; /* 스크롤바 너비 */
+}
+
+.cafeInformListContainer::-webkit-scrollbar-thumb {
+  background-color: #aaa;       /* 스크롤바 색상 */
+  border-radius: 10px;          /* 둥근 모서리 */
+}
+
+.cafeInformListContainer::-webkit-scrollbar-track {
+  background-color: transparent; /* 스크롤 트랙 배경 */
+}
+
+/* 카페 리스트 */
+.cafeList{
+    width: 95%;
+    height: 350px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+
+    /* 스타일 */
+    border-bottom: solid;
+    border-width: 1px;
+    border-color: rgb(160, 160, 160);
+
+    & img{
+        /* 레이아웃 */
+        width: 100%;
+        height: 60%;
+        object-fit: cover;
+        margin-bottom: 20px;
+        
+        /* 스타일 */
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    & ul{
+        padding-left: 10px;
+        margin-left: 5px;
+    }
+
+    & li{
+        /* 레이아웃 */
+        margin: 0 0 0 5px;
+
+        /* 스타일 */
+        font-weight: 400;
+    }
 }
 
 
+.mapContainer{
+    /* 레이아웃 */
+    flex: 1;
+    max-width: 1300px;
+    margin: 0 20px 10px 10px;
 
-.title {
-  font-size: 18px;
+    /* 스타일 */
+    border: solid;
+    border-width: 1px;
+    border-radius: 30px;
+    border-color: white;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.15);
 }
 
-.locationInfo {
-  margin-bottom: 10px;
-  font-size: 13px;
-  color: #333;
-}
-
-.locationBtn {
-  margin-top: 5px;
-  padding: 5px 10px;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.searchInput {
-  width: 100%;
-  padding: 6px;
-  margin-bottom: 10px;
-  font-size: 14px;
-}
-
-.list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.listItem {
-  margin-bottom: 12px;
-  cursor: pointer;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.cafeImage {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
-}
-
-.cafeName {
-  font-size: 14px;
-}
-
-.cafeAddress {
-  font-size: 12px;
-  color: #555;
-}
-
-.cafeIntro {
-  font-size: 12px;
-  margin-top: 5px;
-}
-
-.infoWindow {
-  padding: 5px;
-  font-size: 13px;
-  text-align: center;
-}
-
-.infoImage {
-  width: 80px;
-  height: auto;
-  border-radius: 4px;
-  margin-bottom: 5px;
+.infoWindow{
+    border-radius: 12px;
+    background-color: 12px;
 }
