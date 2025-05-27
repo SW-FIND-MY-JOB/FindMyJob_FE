@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import styles from './CoverLetterQuestion.module.css';
-import CompanySelector from './CompanySelector';
-import JobSelector from './JobSelector';
+import CompanySelector from '../company/CompanySelector';
+import JobSelector from '../job/JobSelector';
+
 
 export default function CoverLetterQuestionForm() {
   const [question, setQuestion] = useState('');

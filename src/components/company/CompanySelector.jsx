@@ -1,20 +1,21 @@
 import { useState, useEffect, useRef } from 'react';
-import { Briefcase } from 'lucide-react';
-import styles from './CoverLetterQuestion.module.css';
-import dutyList from '../../data/duty.json';
+import { Building2 } from 'lucide-react';
+import styles from './CompanySelector.module.css';
+import companyList from '../../data/company.json';
 
-export default function JobSelector() {
+export default function CompanySelector({ onSelect }) {
   const [showDropdown, setShowDropdown] = useState(false);
   const [query, setQuery] = useState('');
   const [selected, setSelected] = useState('');
   const wrapperRef = useRef(null);
 
-  const filtered = dutyList.filter((job) => job.includes(query));
+  const filtered = companyList.filter((name) => name.includes(query));
 
-  const handleSelect = (job) => {
-    setSelected(job);
-    setQuery(job);
+  const handleSelect = (name) => {
+    setSelected(name);
+    setQuery(name);
     setShowDropdown(false);
+    if (onSelect) onSelect(name);
   };
 
   useEffect(() => {
@@ -30,8 +31,8 @@ export default function JobSelector() {
   return (
     <div className={styles.selectorWrapper} ref={wrapperRef}>
       <button className={styles.tagButton} onClick={() => setShowDropdown(!showDropdown)}>
-        <Briefcase size={18} />
-        <span>{selected || '직무 선택'}</span>
+        <Building2 size={18} />
+        <span>{selected || '기업명 선택'}</span>
       </button>
 
       {showDropdown && (
@@ -52,13 +53,13 @@ export default function JobSelector() {
           </div>
 
           <ul className={styles.dropdownList}>
-            {filtered.map((job, i) => (
+            {filtered.map((name, i) => (
               <li
                 key={i}
                 className={styles.dropdownItem}
-                onClick={() => handleSelect(job)}
+                onClick={() => handleSelect(name)}
               >
-                {job}
+                {name}
               </li>
             ))}
           </ul>
