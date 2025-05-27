@@ -5,6 +5,8 @@ import MyPage from '../pages/my/MyPage'
 import Cafepage from '../pages/cafe/CafePage';
 import CoverLetterPage from '../pages/coverLetter/CoverLetterPage';
 
+import CoverLetterQuestionPage from '../pages/CoverLetterQuestionPage/CoverLetterQuestionPage';
+
 import NotFoundPage from '../pages/notFound/notFoundPage';
 
 export default function Routers() {
@@ -15,6 +17,7 @@ export default function Routers() {
                 <Route path='/my' element={<MyPage />} /> 
                 <Route path='/cafe' element={<Cafepage/>} />
                 <Route path='/assay' element={<CoverLetterPage/>} />
+                <Route path="/cover-letter-question" element={<CoverLetterQuestionPage />} />
                 <Route path='*' element={<NotFoundPage />} />        
             </Route>
         </Routes>
