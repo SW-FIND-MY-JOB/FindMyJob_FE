@@ -1,6 +1,6 @@
 .headerContainer{
     /* 레이아웃 */
-    width: calc(100% - 10%);
+    width: 90%;
     height: 70px;
     display: flex;
     flex-direction: row;
@@ -27,7 +27,7 @@
     /* 스타일 */
     background-color: white;
     border-radius: 50px;
-    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
 
 }
 
