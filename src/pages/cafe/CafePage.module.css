@@ -1,8 +1,8 @@
 .cafePageLayout{
     width: 100%;
-    height: calc(85vh - 5px);
+    height: calc(100vh - 130px);
     display: flex;
     justify-content: center;
 
-    overflow-y: hidden;
+    overflow: hidden;
 }

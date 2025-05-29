@@ -10,8 +10,9 @@
 
 .footerLayout{
     /* 레이아웃 */
-    width: 80%;
-    min-width: 1300px;
+    width: 90%;
+    max-width: 1500px;
+    min-width: 1150px;
     height: 100%;
 
     display: flex;
@@ -21,7 +22,7 @@
     /* 스타일 */
     background-color: white;
     border-radius: 50px;
-    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
 }
 
 
