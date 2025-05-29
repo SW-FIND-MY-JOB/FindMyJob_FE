@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout';
 import MainPage from '../pages/main/MainPage';
+import SignUpPage from '../pages/signup/SignUpPage';
 import MyPage from '../pages/my/MyPage';
 import Cafepage from '../pages/cafe/CafePage';
 import CoverLetterPage from '../pages/coverLetter/CoverLetterPage';
@@ -21,6 +22,7 @@ export default function Routers() {
         <Routes>
             <Route element={<MainLayout />}>
                 <Route path="/" element={<MainPage />} />
+                <Route path="/signup" element={<SignUpPage />} />
                 <Route path="/my" element={<MyPage />} />
                 <Route path="/cafe" element={<Cafepage />} />
                 <Route path="/assay" element={<CoverLetterPage />} />

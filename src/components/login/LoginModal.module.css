@@ -64,6 +64,7 @@
     font-weight: 600;
     color: white;
     background-color: #2A6AFF;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
 
     cursor: pointer;
 
