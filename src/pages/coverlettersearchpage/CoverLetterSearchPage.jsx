@@ -43,25 +43,31 @@ export default function CoverLetterSearchPage() {
           </div>
         </div>
 
-        <div className={styles.tableHeader}>
-          <div className={styles.sortTabs}>
-            <span className={styles.active}>최신순</span>
-          </div>
+        <div className={styles.writeButtonContainer}>
           <button className={styles.writeButton}>글쓰기</button>
         </div>
 
         <table className={styles.resultTable}>
+          <colgroup>
+            <col style={{ width: '6%' }} />   {/* 글번호 */}
+            <col style={{ width: '14%' }} />  {/* 기업명 */}
+            <col style={{ width: '14%' }} />  {/* 직무명 */}
+            <col style={{ width: '46%' }} />  {/* 자소서 질문/내용 */}
+            <col style={{ width: '10%' }} />  {/* 조회수 */}
+            <col style={{ width: '10%' }} />  {/* 스크랩 */}
+          </colgroup>
+
           <thead>
             <tr>
               <th>글번호</th>
               <th>기업명</th>
               <th>직무명</th>
-              <th>제목</th>
               <th>자소서 질문/내용</th>
               <th>조회수</th>
               <th>스크랩</th>
             </tr>
           </thead>
+
           <tbody>
             {paginatedData.map((item, idx) => (
               <CoverLetterRow key={item.id} item={item} index={startIdx + idx} />

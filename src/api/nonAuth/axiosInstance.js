@@ -1,8 +1,9 @@
+// src/api/nonAuth/axiosInstance.js
 import axios from "axios";
 
 const axiosInstance = axios.create({
-    baseURL: "http://localhost:8080/api",
-    withCredentials: true,
+  baseURL: "https://api.findmyjob.net", // ✅ 배포 서버 주소
+  withCredentials: true,
 });
 
 export default axiosInstance;

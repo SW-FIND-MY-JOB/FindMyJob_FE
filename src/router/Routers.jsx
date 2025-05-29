@@ -10,6 +10,12 @@ import CoverLetterSearchPage from '../pages/coverlettersearchpage/CoverLetterSea
 
 import NotFoundPage from '../pages/notFound/notFoundPage';
 
+
+// Api연동테스트용
+import AgencyTestPage from "../pages/AgencyTestPage";
+
+
+
 export default function Routers() {
     return (
         <Routes>
@@ -21,6 +27,9 @@ export default function Routers() {
                 <Route path="/cover-letter-question" element={<CoverLetterQuestionPage />} />
                 <Route path="/cover-letter-search" element={<CoverLetterSearchPage />} /> {/* ✅ 새 경로 추가 */}
                 <Route path="*" element={<NotFoundPage />} />
+                
+                <Route path="/test-agency" element={<AgencyTestPage />} />
+                {/* Api연동테스트용 */}
             </Route>
         </Routes>
     );
