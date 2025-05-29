@@ -1,5 +1,10 @@
 .cafeLayout{
-    height: calc(93vh - 70px);
+    height: 100%;
+    width: 100%;
+    max-width: 1540px;
+    min-width: 1190px;
+    padding: 0 20px;
+
     display: flex;
     justify-content: center;
     overflow: hidden;
@@ -136,7 +141,7 @@
 .mapContainer{
     /* 레이아웃 */
     flex: 1;
-    max-width: 1300px;
+    max-width: 920px;
     margin: 0 20px 10px 10px;
 
     /* 스타일 */

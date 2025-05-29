@@ -3,7 +3,7 @@ import { Building2 } from 'lucide-react';
 import styles from './CompanySelector.module.css';
 import companyList from '../../data/company.json';
 
-export default function CompanySelector({ onSelect }) {
+export default function CompanySelector({ onSelect, direction = 'up' }) {
   const [showDropdown, setShowDropdown] = useState(false);
   const [query, setQuery] = useState('');
   const [selected, setSelected] = useState('');
@@ -36,7 +36,7 @@ export default function CompanySelector({ onSelect }) {
       </button>
 
       {showDropdown && (
-        <div className={styles.dropdownBox}>
+        <div className={`${styles.dropdownBox} ${direction === 'down' ? styles.down : styles.up}`}>
           <div className={styles.searchInputWrapper}>
             <input
               type="text"

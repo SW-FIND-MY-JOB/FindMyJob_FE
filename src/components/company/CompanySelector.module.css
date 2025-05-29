@@ -4,8 +4,6 @@
 
 .dropdownBox {
   position: absolute;
-  bottom: 48px;
-  left: 0;
   width: 280px;
   background: white;
   border: 1px solid #ccc;
@@ -14,6 +12,16 @@
   padding: 12px;
   z-index: 100;
 }
+
+/* ✅ 방향에 따른 위치 설정 */
+.up {
+  bottom: 48px;
+}
+
+.down {
+  top: 48px;
+}
+
 
 .searchInputWrapper {
   position: relative;
@@ -60,6 +68,7 @@
   cursor: pointer;
   border-radius: 6px;
   font-size: 14px;
+  color: #000; /* ✅ 명시적으로 검정색 글씨 설정 */
 }
 
 .dropdownItem:hover {
