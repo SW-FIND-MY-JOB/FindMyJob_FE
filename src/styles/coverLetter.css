@@ -1,0 +1,118 @@
+/* src/styles/coverLetter.css */
+
+.question-block {
+  margin-bottom: 20px;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.question {
+  font-size: 15px;
+  color: #333;
+  margin-top: 0;
+}
+
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: #444;
+}
+
+.meta-actions {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #666;
+}
+
+.meta-actions .views {
+  margin-right: 10px;
+}
+
+.meta-actions .divider {
+  margin: 0 5px;
+  color: #ccc;
+}
+
+.meta-actions .action {
+  cursor: pointer;
+  color: #007bff;
+  margin-left: 5px;
+}
+
+.meta-actions .action:hover {
+  text-decoration: underline;
+}
+
+
+.cover-letter-container {
+  display: flex;
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+  gap: 30px;
+}
+
+.main-section {
+  flex: 2;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.label {
+  font-size: 16px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.question {
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+.content {
+  line-height: 1.6;
+}
+
+.list-section {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px;
+  height: 500px;
+  overflow-y: auto;
+}
+
+.list-title {
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.list-item {
+  border-bottom: 1px solid #eee;
+  padding: 12px 0;
+  font-size: 14px;
+  color: #333;
+}

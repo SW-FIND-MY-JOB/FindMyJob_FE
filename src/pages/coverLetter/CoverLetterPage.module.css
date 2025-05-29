@@ -1,0 +1,17 @@
+/* src/pages/coverLetter/CoverLetterPage.module.css */
+.pageContainer {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  height:auto;
+  margin-bottom: 65px;
+}
+
+.mainContent {
+  display: flex;
+  width: 90%;
+  max-width: 1200px;
+  gap: 24px;
+  align-items: flex-start;
+}
+
