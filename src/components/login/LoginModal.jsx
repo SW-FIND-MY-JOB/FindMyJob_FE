@@ -5,6 +5,7 @@ import { loginRequest } from '../../api/authService/authAPI';
 import { isMinMaxLength, isEmail } from '../../utils/validation';
 
 
+
 export default function LoginModal({onClose}){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -26,6 +27,13 @@ export default function LoginModal({onClose}){
         setPasswordHasError(false);
 
         setPassword(e.target.value);
+    }
+
+    //엔터키 누르는 이벤트
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            submitLogin(); // 로그인 함수 실행
+        }
     }
 
     //로그인 
@@ -68,6 +76,7 @@ export default function LoginModal({onClose}){
                         onChange={(e) => {
                             emailInputHandler(e);
                         }}
+                        onKeyDown={handleKeyDown}
                         error={emailHasError ? '※정확한 이메일 아이디를 입력하세요.' : 
                             loginError ? '※이메일을 다시 확인해주세요.':
                             null}
@@ -79,6 +88,7 @@ export default function LoginModal({onClose}){
                         onChange={(e) => {
                             passwordInputHandler(e);
                         }}
+                        onKeyDown={handleKeyDown}
                         error={passwordHasError ? '※비밀번호는 8~15자리여야 합니다.' : 
                             loginError ? '※비밀번호를 다시 확인해주세요.':
                             null}

@@ -4,24 +4,11 @@ export function isEmail(value){
     return emailPattern.test(value);
 }
 
-//아이디 검증
-export function isUserId(value){
-    //영어, 숫자로 이루어진 4~12글자
-    const userIdPattern = /^[a-zA-Z0-9]{4,12}$/;
-    return userIdPattern.test(value);
-}
-
 //비밀번호 검증
 export function isPw(value){
     //특수문자 1자 이상 / 대소문자, 숫자, 특수문자 최소 8자 이상
     const pwPattern = /^(?=.*[!@#$%^&*()_+~])[A-Za-z\d!@#$%^&*()_+~]{8,15}$/;
     return pwPattern.test(value);
-}
-
-//채팅방 제목 검증
-export function isTitle(value){
-    //1~15자리
-    return value.length > 0 && value.length <= 15;
 }
 
 //문자열이 비어있는지 검증
