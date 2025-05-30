@@ -2,7 +2,7 @@ import axios from "axios";
 import { getToken } from "../../utils/auth";
 
 const axiosInstanceForAuth = axios.create({
-    baseURL: "https://api.findmyjob.net",
+    baseURL: `${import.meta.env.VITE_BASE_URL}`,
     withCredentials: true,
 });
 
