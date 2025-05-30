@@ -7,6 +7,7 @@ export default function Input( { success, error, ...props } ){
             {/* 인풋 */}
             <input 
                 className={styles.inputStyle}
+                style={error ? {borderColor: 'red'} : null}
                 {...props}
             />
 
