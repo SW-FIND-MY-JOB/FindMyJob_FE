@@ -1,54 +1,58 @@
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import LoginModal from '../../login/LoginModal';
+import { useAuth } from '../../../utils/AuthContext';
+import { getUserInfo } from '../../../api/authService/authAPI';
 
 import styles from "./Header.module.css";
 import logoImg from "../../../assets/images/logoImg.png";
-import searchImg from "../../../assets/images/searchImg.png";
+import { User, CircleDollarSign } from 'lucide-react';
+
 
 export default function Header(){
+    const { name, point, isLogin, login, logout } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
+    const [showLogin, setShowLogin] = useState(false);
+    const [showMenu, setShowMenu] = useState(false)
+    const menuRef = useRef(null)
 
-    const [value, setValue] = useState("");
+    //사용자 로그인 유무 확인
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const user = await getUserInfo();
+                login(user.name, user.point);
+            } catch {
+                logout();
+            }
+        }
+        fetchUser();
+    }, [login, logout]);
 
-    function handleInputChange(e){
-        setValue(e.target.value);
-    }
+    //메뉴 바깥 영역 클릭시 함수
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (menuRef.current && !menuRef.current.contains(event.target)) {
+                setShowMenu(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
 
     return(
         <div className={styles.headerContainer}>
             {/* 헤더 윗부분 */}
             <div className={styles.headerTop}>
                 {/* 로고 영역 */}
-                <img src={logoImg} alt="로고" style={{cursor: 'pointer'}} onClick={()=>{navigate('/');}}/>
-                
-                {/* 검색영역 */}
-                <div className={styles.searchContainer}>
-                    <input
-                        className={styles.searchTextBox}
-                        value={value}
-                        placeholder='FIND MY JOB'
-                        onChange={handleInputChange}
-                    />
-                    <img src={searchImg} alt="검색" style={{cursor: 'pointer'}}/>
-
-                    {/* 구분선 */}
-                    <div style={{
-                        width: '2px',
-                        height: '60%',
-                        backgroundColor: '#ccc',
-                        margin: '0 15px'
-                    }} />
-
-                    <div className={styles.rankContainer}>
-                        <div className={styles.rankNum}>1</div>
-                        <div className={styles.rankName}>한국전력</div>
-                    </div>
+                <div className={styles.logoContainer}>
+                    <img src={logoImg} alt="로고" style={{width:'160px', cursor: 'pointer'}} onClick={()=>{navigate('/');}}/>
                 </div>
-            </div>
-
-            {/* 헤더 아랫부분 */}
-            <div className={styles.headerBottom}>
+                {/* 네비게이션션 영역 */}
                 <div className={styles.navigationContainer}>
                     <p
                         onClick={() => navigate("/inform")}
@@ -69,22 +73,60 @@ export default function Header(){
                         AI 자소서 코칭
                     </p>
                     <p
-                        onClick={() => navigate("/pass-assay")}
+                        onClick={() => navigate("/assay")}
                         className={location.pathname === "/assay" ? styles.active : ""}
                     >
-                        합격 자소서
+                        자소서 둘러보기
                     </p>
                 </div>
+                {/* 로그인 영역 */}
+                {!isLogin && 
+                    <div className={styles.loginContainer}>
+                        <p onClick={() => setShowLogin(true)}>
+                           로그인
+                        </p>
+                        
+                        {/* 구분선 */}
+                        <div style={{
+                            width: '2px',
+                            height: '20px',
+                            borderRadius: '20px',
+                            backgroundColor: '#9b9b9b',
+                            margin: '0 10px'
+                        }} />
+                        
+                        <p onClick={() => navigate("/signup")}>
+                            회원가입
+                        </p>
+                    </div>
+                }
+                {/* 사용자 정보 영역 */}
+                {isLogin &&
+                    <div className={styles.userWrapper} ref={menuRef}>
+                        <div className={styles.userContainer}>
+                            {/* 클릭시 메뉴 함수 실행 */}
+                            <p onClick={() => setShowMenu((prev) => !prev)}>
+                                <User size={15} strokeWidth={2.5}/>{name}님
+                            </p>
 
-                <div className={styles.loginContainer}>
-                    <p>로그인</p>
-                    <p
-                        onClick={() => navigate("/signup")}
-                    >
-                        회원가입
-                    </p>
-                </div>
+                            <p><CircleDollarSign size={13} strokeWidth={2.5}/>{point}P</p>
+                        </div>
+
+                        {showMenu && (
+                            <div className={styles.dropdownMenu}>
+                                <p onClick={() => {
+                                    navigate("/mypage");
+                                    setShowMenu(false);
+                                }}>마이페이지</p>
+                                <p onClick={logout}>로그아웃</p>
+                            </div>
+                        )}
+                    </div>
+                }
             </div>
+
+            {/* 로그인 모달창 */}
+            {showLogin && <LoginModal onClose={() => setShowLogin(false)}/>}
         </div>
     );
 }

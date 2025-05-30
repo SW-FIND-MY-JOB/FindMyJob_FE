@@ -1,0 +1,32 @@
+.card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.company {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.job {
+  font-size: 16px;
+  font-weight: 500;
+  color: #4a90e2;
+  margin-bottom: 12px;
+}
+
+.snippet {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6;
+}

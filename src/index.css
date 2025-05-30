@@ -13,6 +13,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+/* index.css 또는 App.css에 추가 */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+/* 카카오지도 스크롤안생기게 하는 코드 */
+
 a {
   font-weight: 500;
   color: #646cff;
