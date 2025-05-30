@@ -9,7 +9,8 @@ import CoverLetterPage from '../pages/coverLetter/CoverLetterPage';
 import CoverLetterQuestionPage from '../pages/CoverLetterQuestionPage/CoverLetterQuestionPage';
 import CoverLetterSearchPage from '../pages/coverlettersearchpage/CoverLetterSearchPage'; // ✅ 추가
 
-import NotFoundPage from '../pages/notFound/notFoundPage';
+import NotFoundPage from '../pages/notFound/NotFoundPage';
+
 
 export default function Routers() {
     return (
