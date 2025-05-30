@@ -1,0 +1,101 @@
+.signUpFormContainer{
+    /* 레이아웃 */
+    width: 50%;
+    max-width: 1500px;
+    min-width: 700px;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    /* 스타일 */
+    background-color: white;
+    border-radius: 30px;
+
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.formContainer{
+    /* 레이아웃 */
+    width: 500px;
+    height: auto;
+    margin-bottom: 70px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    & p{
+        /* 레이아웃 */
+        margin: 5px;
+        margin-top: 20px;
+
+        /* 스타일 */
+        font-size: 20px;
+        font-weight: 700;
+    }
+}
+
+.titleContainer{
+    /* 레이아웃 */
+    margin: 20px 0 10px 0;
+}
+
+.emailContainer{
+    /* 레이아웃 */
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.emailButton{
+    /* 레이아웃 */
+    width: 25%;
+    height: 70%;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    margin-right: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* 스타일 */
+    border-radius: 10px;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    background-color: #2A6AFF;
+    cursor: pointer;
+    box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+        background-color: #5f9be9;
+    }
+}
+
+.signUpButtonContainer{
+    /* 레이아웃 */
+    width: 95%;
+    height: 50px;
+    margin-top: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* 스타일 */
+    border-radius: 20px;
+    background-color: #2A6AFF;
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.1);
+
+     &:hover {
+        background-color: #5f9be9;
+    }
+}
