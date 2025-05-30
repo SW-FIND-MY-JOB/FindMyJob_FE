@@ -1,4 +1,4 @@
-// src/api/coverletterService/create.js
+// src/api/coverletterSave/create.js
 import axios from '../auth/axiosInstanceForAuth';
 
 export const postCoverLetter = async ({ companyName, duty, question, content }) => {

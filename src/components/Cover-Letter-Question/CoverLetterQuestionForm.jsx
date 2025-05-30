@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'; // ✅ 페이지 이동용 훅
 import styles from './CoverLetterQuestion.module.css';
 import CompanySelector from '../company/CompanySelector';
 import JobSelector from '../job/JobSelector';
-import { postCoverLetter } from '../../api/coverletterService/create'; // ✅ API 함수
+import { postCoverLetter } from '../../api/coverletterSave/create'; // ✅ API 함수
 
 export default function CoverLetterQuestionForm() {
   const [question, setQuestion] = useState('');
@@ -59,6 +59,16 @@ export default function CoverLetterQuestionForm() {
     }
   };
 
+  const handleSearch = () => {
+    // 검색 시에는 기업명과 직무가 선택되지 않아도 됨
+    navigate('/assay', { 
+      state: { 
+        company: selectedCompany, 
+        job: selectedJob 
+      } 
+    });
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.formSection}>
@@ -85,6 +95,9 @@ export default function CoverLetterQuestionForm() {
           <div className={styles.leftButtons}>
             <CompanySelector onSelect={setSelectedCompany} />
             <JobSelector onSelect={setSelectedJob} />
+            <button className={styles.searchButton} onClick={handleSearch}>
+              검색
+            </button>
           </div>
           <div className={styles.submitAlignRight}>
             <button className={styles.submitButton} onClick={handleSubmit}>

@@ -1,27 +1,48 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search } from 'lucide-react';
 import CompanySelector from '../../components/company/CompanySelector';
 import JobSelector from '../../components/job/JobSelector';
 import CoverLetterRow from '../../components/cover-letter-row/CoverLetterRow';
 import styles from './CoverLetterSearchPage.module.css';
-import coverLetterData from '../../data/cover_letter_mock.json';
+import { fetchCoverLetterList } from '../../api/coverletterGetList/getList';
 
 export default function CoverLetterSearchPage() {
   const [company, setCompany] = useState('');
   const [job, setJob] = useState('');
   const [keyword, setKeyword] = useState('');
+  const [coverLetters, setCoverLetters] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const navigate = useNavigate();
+
   const itemsPerPage = 8;
-  const navigate = useNavigate(); // ✅ 페이지 이동 훅
 
-  const filteredData = coverLetterData.filter((item) =>
-    item.title.toLowerCase().includes(keyword.toLowerCase())
-  );
+  // ✅ 최초 마운트 시 전체 자소서 불러오기
+  useEffect(() => {
+    handleSearch(1);
+  }, []);
 
-  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-  const startIdx = (currentPage - 1) * itemsPerPage;
-  const paginatedData = filteredData.slice(startIdx, startIdx + itemsPerPage);
+  const handleSearch = async (page = 1) => {
+    try {
+      const data = await fetchCoverLetterList({
+        instNm: company || 'all',
+        category: job || 'all',
+        keyword,
+        page,
+        size: itemsPerPage,
+      });
+      setCoverLetters(data.content || []);
+      setTotalPages(data.totalPages);
+      setCurrentPage(page);
+    } catch (error) {
+      console.error('자소서 목록 불러오기 실패:', error);
+    }
+  };
+
+  const handlePageChange = (page) => {
+    handleSearch(page);
+  };
 
   return (
     <div className={styles.backgroundWrapper}>
@@ -41,24 +62,29 @@ export default function CoverLetterSearchPage() {
                 className={styles.keywordInput}
               />
             </div>
-            <button className={styles.searchButton}>검색</button>
+            <button className={styles.searchButton} onClick={() => handleSearch(1)}>
+              검색
+            </button>
           </div>
         </div>
 
         <div className={styles.writeButtonContainer}>
-          <button className={styles.writeButton}
-          onClick={() => navigate('/cover-letter-question')}
-          >글쓰기</button>
+          <button
+            className={styles.writeButton}
+            onClick={() => navigate('/cover-letter-question')}
+          >
+            글쓰기
+          </button>
         </div>
 
         <table className={styles.resultTable}>
           <colgroup>
-            <col style={{ width: '6%' }} />   {/* 글번호 */}
-            <col style={{ width: '14%' }} />  {/* 기업명 */}
-            <col style={{ width: '14%' }} />  {/* 직무명 */}
-            <col style={{ width: '46%' }} />  {/* 자소서 질문/내용 */}
-            <col style={{ width: '10%' }} />  {/* 조회수 */}
-            <col style={{ width: '10%' }} />  {/* 스크랩 */}
+            <col style={{ width: '6%' }} />
+            <col style={{ width: '14%' }} />
+            <col style={{ width: '14%' }} />
+            <col style={{ width: '46%' }} />
+            <col style={{ width: '10%' }} />
+            <col style={{ width: '10%' }} />
           </colgroup>
 
           <thead>
@@ -73,8 +99,8 @@ export default function CoverLetterSearchPage() {
           </thead>
 
           <tbody>
-            {paginatedData.map((item, idx) => (
-              <CoverLetterRow key={item.id} item={item} index={startIdx + idx} />
+            {coverLetters.map((item, idx) => (
+              <CoverLetterRow key={idx} item={item} index={(currentPage - 1) * itemsPerPage + idx} />
             ))}
           </tbody>
         </table>
@@ -83,7 +109,7 @@ export default function CoverLetterSearchPage() {
           {Array.from({ length: totalPages }, (_, i) => (
             <span
               key={i + 1}
-              onClick={() => setCurrentPage(i + 1)}
+              onClick={() => handlePageChange(i + 1)}
               className={currentPage === i + 1 ? styles.active : ''}
             >
               {i + 1}
