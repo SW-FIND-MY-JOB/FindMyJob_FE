@@ -6,6 +6,8 @@ import JobSelector from '../../components/job/JobSelector';
 import CoverLetterRow from '../../components/cover-letter-row/CoverLetterRow';
 import styles from './CoverLetterSearchPage.module.css';
 import { fetchCoverLetterList } from '../../api/coverletterGetList/getList';
+import { useAuth } from '../../utils/AuthContext';
+import LoginModal from '../../components/login/LoginModal';
 
 export default function CoverLetterSearchPage() {
   const [company, setCompany] = useState('');
@@ -14,7 +16,9 @@ export default function CoverLetterSearchPage() {
   const [coverLetters, setCoverLetters] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+  const [showLoginModal, setShowLoginModal] = useState(false);
   const navigate = useNavigate();
+  const { isLogin } = useAuth();
 
   const itemsPerPage = 8;
 
@@ -69,12 +73,21 @@ export default function CoverLetterSearchPage() {
         </div>
 
         <div className={styles.writeButtonContainer}>
-          <button
-            className={styles.writeButton}
-            onClick={() => navigate('/cover-letter-question')}
-          >
-            글쓰기
-          </button>
+          {isLogin ? (
+            <button
+              className={styles.writeButton}
+              onClick={() => navigate('/cover-letter-question')}
+            >
+              글쓰기
+            </button>
+          ) : (
+            <button
+              className={styles.writeButton}
+              onClick={() => setShowLoginModal(true)}
+            >
+              글쓰기
+            </button>
+          )}
         </div>
 
         <table className={styles.resultTable}>
@@ -117,6 +130,7 @@ export default function CoverLetterSearchPage() {
           ))}
         </div>
       </div>
+      {showLoginModal && <LoginModal onClose={() => setShowLoginModal(false)} />}
     </div>
   );
 }
