@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Search } from 'lucide-react';
 import CompanySelector from '../../components/company/CompanySelector';
 import JobSelector from '../../components/job/JobSelector';
@@ -12,6 +13,7 @@ export default function CoverLetterSearchPage() {
   const [keyword, setKeyword] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
+  const navigate = useNavigate(); // ✅ 페이지 이동 훅
 
   const filteredData = coverLetterData.filter((item) =>
     item.title.toLowerCase().includes(keyword.toLowerCase())
@@ -44,7 +46,9 @@ export default function CoverLetterSearchPage() {
         </div>
 
         <div className={styles.writeButtonContainer}>
-          <button className={styles.writeButton}>글쓰기</button>
+          <button className={styles.writeButton}
+          onClick={() => navigate('/cover-letter-question')}
+          >글쓰기</button>
         </div>
 
         <table className={styles.resultTable}>

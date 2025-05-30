@@ -73,7 +73,7 @@ export default function Header(){
                         AI 자소서 코칭
                     </p>
                     <p
-                        onClick={() => navigate("/assay")}
+                        onClick={() => navigate("/cover-letter-search")}
                         className={location.pathname === "/assay" ? styles.active : ""}
                     >
                         자소서 둘러보기

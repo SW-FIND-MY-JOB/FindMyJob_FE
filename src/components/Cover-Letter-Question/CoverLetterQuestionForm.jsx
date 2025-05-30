@@ -1,14 +1,16 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // ✅ 페이지 이동용 훅
 import styles from './CoverLetterQuestion.module.css';
 import CompanySelector from '../company/CompanySelector';
 import JobSelector from '../job/JobSelector';
-
+import { postCoverLetter } from '../../api/coverletterService/create'; // ✅ API 함수
 
 export default function CoverLetterQuestionForm() {
   const [question, setQuestion] = useState('');
   const [content, setContent] = useState('');
   const [selectedCompany, setSelectedCompany] = useState('');
   const [selectedJob, setSelectedJob] = useState('');
+  const navigate = useNavigate(); // ✅ 페이지 이동 훅 사용
 
   const handleQuestionChange = (e) => {
     const value = e.target.value;
@@ -24,7 +26,7 @@ export default function CoverLetterQuestionForm() {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (question.length < 5 || question.length > 100) {
       alert('질문은 5자 이상 100자 이하로 입력해주세요.');
       return;
@@ -42,8 +44,19 @@ export default function CoverLetterQuestionForm() {
       return;
     }
 
-    alert('제출되었습니다!');
-    // TODO: 제출 처리
+    try {
+      await postCoverLetter({
+        companyName: selectedCompany,  // 백엔드에서는 instNm
+        duty: selectedJob,             // 백엔드에서는 ncsCdNmLst
+        question: question,            // 백엔드에서는 title
+        content: content,              // 그대로
+      });
+      alert('자소서가 성공적으로 작성되었습니다!');
+      navigate('/assay'); // ✅ 작성 완료 후 이동
+    } catch (error) {
+      console.error('작성 실패:', error);
+      alert('자소서 작성에 실패했습니다. 다시 시도해주세요.');
+    }
   };
 
   return (
@@ -61,7 +74,7 @@ export default function CoverLetterQuestionForm() {
 
         <label className={styles.label}>내용</label>
         <textarea
-          className={styles.mainTextarea} // ✅ 여기만 변경됨
+          className={styles.mainTextarea}
           placeholder="내용을 입력하세요."
           value={content}
           onChange={handleContentChange}
