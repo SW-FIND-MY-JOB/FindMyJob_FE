@@ -27,6 +27,7 @@ export const logoutRequest = async() =>{
          await axiosInstanceForAuth.post('/auth-service/api/users/logout');
          alert('로그아웃 성공');
     } catch (error){
+        console.log(`로그아웃 에러: ${error}`);
         alert('로그아웃 실패');
     }
 }
