@@ -206,7 +206,8 @@ export default function SignUpForm(){
                         onChange={(e) => {
                             emailInputHandler(e);
                         }}
-                        success={!isDuplicatedEmail ? '※사용할 수 있는 이메일입니다.' : null }
+                        success={emailHasError ? null : 
+                            !isDuplicatedEmail ? '※사용할 수 있는 이메일입니다.' : null }
                         error={isEmpty(email) ? null : 
                             emailHasError ? '※정확한 이메일 아이디를 입력하세요.' : 
                             isDuplicatedEmail ? '※이미 존재하는 이메일 아이디입니다.' : null }
