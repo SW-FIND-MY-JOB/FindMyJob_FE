@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import styles from './KaKaoMap.module.css';
+import styles from './KakaoMap.module.css';
 import jobCafes from '../../data/jobCafes.json';
 
 export default function KakaoMap() {
