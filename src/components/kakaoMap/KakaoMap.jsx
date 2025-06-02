@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import styles from './KaKaoMap.module.css';
+import styles from './KakaoMap.module.css';
 import jobCafes from '../../data/jobCafes.json';
 
 export default function KakaoMap() {
@@ -67,7 +67,9 @@ export default function KakaoMap() {
               box-shadow: 0 4px 12px rgba(0,0,0,0.25);
               font-size: 13px;
               line-height: 1.5;
-              position: relative;
+              position: absolute;
+              top: -360px;
+              right: -150px;
             ">
               <button class="close-overlay-btn" style="
                 position: absolute;

@@ -9,7 +9,7 @@ export default function MainLayout(){
     // 현재 url경로
     const location = useLocation();
     // const isMainPage = location.pathname === "/";
-    const isCafePage = location.pathname === "/cafe";
+    const isUseFooter = location.pathname === "/cafe" || location.pathname === "/signup";
 
 
 
@@ -17,7 +17,7 @@ export default function MainLayout(){
         <div className={styles.layout}>
             <Header/>
             <Outlet/>
-            {!isCafePage && <Footer/>}
+            {!isUseFooter && <Footer/>}
         </div>
     );
 }

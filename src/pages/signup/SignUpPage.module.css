@@ -1,0 +1,7 @@
+.signUpContainer{
+    /* 레이아웃 */
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}

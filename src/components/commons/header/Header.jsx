@@ -2,7 +2,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
 import LoginModal from '../../login/LoginModal';
 import { useAuth } from '../../../utils/AuthContext';
-import { getUserInfo } from '../../../api/authService/authAPI';
+import { getUserInfo, logoutRequest } from '../../../api/authService/authAPI';
 
 import styles from "./Header.module.css";
 import logoImg from "../../../assets/images/logoImg.png";
@@ -43,6 +43,15 @@ export default function Header(){
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, []);
+
+    const submitLogout = async() => {
+        try{
+            await logoutRequest();
+            logout();
+        } catch (error) {
+            console.log(`로그아웃 실패: ${error}`);
+        }
+    }
 
     return(
         <div className={styles.headerContainer}>
@@ -118,7 +127,9 @@ export default function Header(){
                                     navigate("/mypage");
                                     setShowMenu(false);
                                 }}>마이페이지</p>
-                                <p onClick={logout}>로그아웃</p>
+                                <p onClick={
+                                    ()=>submitLogout()
+                                }>로그아웃</p>
                             </div>
                         )}
                     </div>
