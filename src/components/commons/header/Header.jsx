@@ -23,8 +23,9 @@ export default function Header(){
             try {
                 const user = await getUserInfo();
                 login(user.name, user.point);
-            } catch {
-                logout();
+            } catch (error) {
+                console.log("사용자 로그인 유무 확인");
+                console.log(error.response);
             }
         }
         fetchUser();

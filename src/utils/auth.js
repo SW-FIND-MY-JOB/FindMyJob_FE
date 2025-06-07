@@ -3,3 +3,7 @@ export function getToken() {
   
     return token;
 }
+
+export function setToken(accessToken) {
+    sessionStorage.setItem('accessToken', `${accessToken}`);
+}

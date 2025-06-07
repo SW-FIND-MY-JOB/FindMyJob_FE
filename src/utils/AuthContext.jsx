@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
     const [point, setPoint] = useState(null);
     const [isLogin, setIsLogin] = useState(false);
 
-    console.log(`로그인 유무: ${isLogin}`);
+    console.log(`[AuthProvider] 로그인 유무: ${isLogin}`);
 
     const login = (name, point) => {
         //이름이나 point가 null이면
