@@ -1,0 +1,132 @@
+.overlay{
+    /* 레이아웃 */
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: calc(100% - 80px);
+    height: calc(100% - 80px);
+    padding: 40px;
+    z-index: 991;
+
+    /* 스타일 */
+    border-radius: 32px;
+    background-color: rgb(255, 255, 255);
+}
+
+.topLayout{
+  /* 레이아웃 */
+  width: 100%;
+  height: auto;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.closeBtn{
+  /* 레이아웃 */
+  width: 60px;
+  height: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* 스타일 */
+  border-radius: 10px;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  font-family: sans-serif;
+  background-color: #007bff;
+
+  cursor: pointer;
+
+  &:hover{
+    background-color: #72b2f3;
+  }
+}
+
+.correctionListContainer{
+    /* 레이아웃 */
+    width: 95%;
+    padding: 0;
+    height: 90%;
+    margin: 0;
+
+    /* 스타일 */
+    overflow-y: auto;
+    
+
+    /* 스크롤바 스타일 */
+    scrollbar-width: thin; /* Firefox용 */
+    scrollbar-color: #ccc transparent; /* Firefox용 */
+}
+
+.correctionListUlStyle{
+    /* 레이아웃 */
+    padding-left: 20px;
+    
+    /* 스타일 */
+    list-style: none;
+}
+
+.correctionListStyle {
+  background-color: #f9f9fb;
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin: 16px 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+
+  cursor: pointer;
+}
+
+.correctionListStyle:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.indexTitle {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.correctionContent {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 8px 0 20px 3px;
+  color: #111;
+}
+
+.correctionGoodPoint {
+  background-color: #e8fbe8;
+  color: #14731d;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 8px;
+  margin: 6px 0;
+}
+
+.correctionEditPoint {
+  background-color: #ffe9e6;
+  color: #d1350a;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 8px;
+  margin: 6px 0;
+}
+
+.correctionEditContent {
+  background-color: #eaeefb;
+  color: #10213f;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 8px;
+  margin: 6px 0;
+}
+
+.selectedCard {
+  border: 2px solid #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}

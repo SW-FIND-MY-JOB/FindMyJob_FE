@@ -4,6 +4,7 @@ import MainPage from '../pages/main/MainPage';
 import SignUpPage from '../pages/signup/SignUpPage';
 import MyPage from '../pages/my/MyPage';
 import Cafepage from '../pages/cafe/CafePage';
+import CorrectionPage from '../pages/correctionPage/CorrectionPage';
 import CoverLetterPage from '../pages/coverLetter/CoverLetterPage';
 
 import CoverLetterQuestionPage from '../pages/CoverLetterQuestionPage/CoverLetterQuestionPage';
@@ -20,6 +21,7 @@ export default function Routers() {
                 <Route path="/signup" element={<SignUpPage />} />
                 <Route path="/my" element={<MyPage />} />
                 <Route path="/cafe" element={<Cafepage />} />
+                <Route path="/correction" element={<CorrectionPage />} />
                 <Route path="/assay" element={<CoverLetterPage />} />
                 <Route path="/cover-letter-question" element={<CoverLetterQuestionPage />} />
                 <Route path="/cover-letter-search" element={<CoverLetterSearchPage />} /> {/* ✅ 새 경로 추가 */}
