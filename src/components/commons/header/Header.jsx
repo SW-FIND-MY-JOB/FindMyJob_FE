@@ -28,7 +28,7 @@ export default function Header(){
             }
         }
         fetchUser();
-    }, [login, logout]);
+    }, [login, logout, point]);
 
     //메뉴 바깥 영역 클릭시 함수
     useEffect(() => {
@@ -76,8 +76,8 @@ export default function Header(){
                         일자리카페
                     </p>
                     <p
-                        onClick={() => navigate("/ai-assay")}
-                        className={location.pathname === "/assay" ? styles.active : ""}
+                        onClick={() => navigate("/correction")}
+                        className={location.pathname === "/correction" ? styles.active : ""}
                     >
                         AI 자소서 코칭
                     </p>

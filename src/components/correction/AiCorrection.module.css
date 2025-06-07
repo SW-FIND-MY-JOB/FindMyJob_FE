@@ -1,0 +1,195 @@
+.aiCorrectionContainer{
+    /* 레이아웃 */
+    flex: 4;
+    width: 100%;
+    min-width: 500px;
+    height: 90%;
+    min-height: 700px;
+    padding: 40px;
+    position: relative;
+
+    /* 스타일 */
+    border-radius: 32px;
+    background-color: #ffffffee;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+.topLayout{
+  /* 레이아웃 */
+  width: 100%;
+  height: auto;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.openBtn{
+  /* 레이아웃 */
+  width: 90px;
+  height: 35px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* 스타일 */
+  border-radius: 10px;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  font-family: sans-serif;
+  background-color: #007bff;
+
+  cursor: pointer;
+
+  &:hover{
+    background-color: #72b2f3;
+  }
+}
+
+.coverLetterListContainer{
+    /* 레이아웃 */
+    width: 100%;
+    max-width: 600px;
+    height: 85%;
+    max-height: 590px;
+    margin-top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    list-style: none;
+    overflow-y: auto;
+
+    /* 스크롤바 스타일 */
+    scrollbar-width: thin; /* Firefox용 */
+    scrollbar-color: #ccc transparent; /* Firefox용 */
+}
+
+.coverLetterListUlStyle{
+    /* 레이아웃 */
+    width: 95%;
+    padding: 0;
+    height: 100%;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* 스타일 */
+    list-style: none;
+}
+
+.coverLetterListLiStyle {
+  width: 90%;
+  padding: 16px 10px;
+  margin: 12px 0;
+  border-radius: 16px;
+
+  background-color: #eff4fa;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  font-family: sans-serif;
+
+  transition: transform 0.2s ease;
+
+  cursor: pointer;
+}
+
+.coverLetterListLiStyle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.coverLetterListLiStyle p:first-child {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 6px;
+  margin-left: 0;
+}
+
+.coverLetterListLiStyle p:nth-child(2) {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.coverLetterListLiStyle span {
+  font-size: 14px;
+  line-height: 1.5;
+
+  color: #444;
+}
+
+.selected {
+  border: 2px solid #ffc875;
+  background-color: #fff5ec;
+}
+
+.aiCorrectionBtnLayout{
+  /* 레이아웃 */
+  width: 100%;
+  height: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+
+.aiCorrectionBtn{
+  /* 레이아웃 */
+  width: 100px;
+  height: 44px;
+  margin-top: 15px;
+  margin-right: 20px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+
+  /* 스타일 */
+  border-radius: 15px;
+  color: white;
+  font-family: sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  background-color: #3E8EFF;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+  cursor: pointer;
+}
+
+.aiCorrectionBtn:hover{
+  background-color: #68a6fc;
+}
+
+.overlay{
+  /* 레이아웃 */
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  z-index: 990;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* 스타일 */
+  border-radius: 32px;
+  background-color: rgba(33, 33, 33, 0.8);
+
+  & p{
+    /* 스타일 */
+    font-family: sans-serif;
+    font-size: 23px;
+    font-weight: 600;
+    color: white;
+  }
+}

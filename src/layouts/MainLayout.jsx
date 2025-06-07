@@ -9,7 +9,9 @@ export default function MainLayout(){
     // 현재 url경로
     const location = useLocation();
     // const isMainPage = location.pathname === "/";
-    const isUseFooter = location.pathname === "/cafe" || location.pathname === "/signup";
+    const isUseFooter = location.pathname === "/cafe" || 
+                        location.pathname === "/signup" || 
+                        location.pathname === "/correction";
 
 
 

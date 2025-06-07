@@ -71,6 +71,7 @@ export default function LoginModal({onClose}){
                 {/* 로그인 부분 */}
                 <div className={styles.mainContainer}>
                     <Input
+                        id="email"
                         placeholder='이메일 주소'
                         value={email}
                         onChange={(e) => {
