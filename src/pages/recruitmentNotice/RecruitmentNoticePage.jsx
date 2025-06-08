@@ -14,6 +14,16 @@ const RecruitmentNoticePage = () => {
     eduCD: 'all',
     typeCD: 'all',
   });
+
+  // 필터 옵션 상태 관리
+  const [filterOptions, setFilterOptions] = useState({
+    regions: new Set(),
+    categories: new Set(),
+    histories: new Set(),
+    educations: new Set(),
+    types: new Set(),
+  });
+
   const [keyword, setKeyword] = useState('');
   const [page, setPage] = useState(1);
   const [size, setSize] = useState(8);
@@ -57,7 +67,7 @@ const RecruitmentNoticePage = () => {
       const params = {
         ...cleanedFilters,
         ...(keyword && { keyword }),
-        page: Math.max(1, page), // ✅ 1부터 시작하는 페이지네이션
+        page: Math.max(1, page),
         size,
       };
 
@@ -68,6 +78,46 @@ const RecruitmentNoticePage = () => {
         setJobPosts(content || []);
         setTotalPages(total || 0);
         setTotalElements(elements || 0);
+
+        // 필터 옵션 업데이트
+        if (content) {
+          const newOptions = {
+            regions: new Set(),
+            categories: new Set(),
+            histories: new Set(),
+            educations: new Set(),
+            types: new Set(),
+          };
+
+          content.forEach(job => {
+            // 근무지역
+            if (job.workRgnNmLst) {
+              job.workRgnNmLst.split(',').forEach(region => {
+                newOptions.regions.add(region.trim());
+              });
+            }
+            // 분야
+            if (job.ncsCdNmLst) {
+              job.ncsCdNmLst.split(',').forEach(category => {
+                newOptions.categories.add(category.trim());
+              });
+            }
+            // 경력
+            if (job.recruitSeNm) {
+              newOptions.histories.add(job.recruitSeNm);
+            }
+            // 학력
+            if (job.academicBgNm) {
+              newOptions.educations.add(job.academicBgNm);
+            }
+            // 고용형태
+            if (job.empTypeNm) {
+              newOptions.types.add(job.empTypeNm);
+            }
+          });
+
+          setFilterOptions(newOptions);
+        }
       } else {
         setError(response.message || '데이터를 불러오는데 실패했습니다.');
         setJobPosts([]);
@@ -91,7 +141,7 @@ const RecruitmentNoticePage = () => {
       ...prev,
       [type]: value
     }));
-    setPage(1); // 필터 변경시 첫 페이지로 이동
+    setPage(1);
   };
 
   // 검색 핸들러
@@ -126,31 +176,31 @@ const RecruitmentNoticePage = () => {
           <div className={styles.filterGrid}>
             <FilterColumn 
               title="근무지역" 
-              options={["전체", "서울특별시", "인천광역시", "대전광역시", "대구", "부산", "광주"]} 
+              options={['전체', ...Array.from(filterOptions.regions)]} 
               selected={filters.regionCD}
               onChange={(value) => handleFilterChange('regionCD', value)}
             />
             <FilterColumn 
               title="분야" 
-              options={["전체", "경영,회계,사무", "금융,보험", "교육,자연,사회과학", "보건·의료", "건설", "기계"]} 
+              options={['전체', ...Array.from(filterOptions.categories)]} 
               selected={filters.categoryCD}
               onChange={(value) => handleFilterChange('categoryCD', value)}
             />
             <FilterColumn 
               title="경력" 
-              options={["전체", "신입", "경력", "신입 + 경력", "외국인 전형"]} 
+              options={['전체', ...Array.from(filterOptions.histories)]} 
               selected={filters.historyCD}
               onChange={(value) => handleFilterChange('historyCD', value)}
             />
             <FilterColumn 
               title="학력" 
-              options={["전체", "학력무관", "중졸이하", "고졸", "대졸(2~3년)", "대졸(4년)", "석사"]}
+              options={['전체', ...Array.from(filterOptions.educations)]} 
               selected={filters.eduCD}
               onChange={(value) => handleFilterChange('eduCD', value)}
             />
             <FilterColumn 
               title="고용형태" 
-              options={["전체", "정규직", "계약직", "무기계약직", "비정규직", "청년인턴", "청년인턴(체험형)"]}
+              options={['전체', ...Array.from(filterOptions.types)]} 
               selected={filters.typeCD}
               onChange={(value) => handleFilterChange('typeCD', value)}
             />
@@ -198,10 +248,9 @@ const RecruitmentNoticePage = () => {
                       field: job.ncsCdNmLst,
                       company: job.instNm,
                       deadline: job.pbancEndYmd,
-                      logoUrl: job.logoUrl || '/default-company-logo.png', // 기본 이미지 fallback 추가
                       viewCount: job.viewCnt,
                       isScrap: job.isScarp,
-                      id: job.id // ID도 전달
+                      id: job.id
                     }} 
                   />
                 ))}
@@ -209,7 +258,6 @@ const RecruitmentNoticePage = () => {
 
               {totalPages > 0 && (
                 <div className={styles.pagination}>
-                  {/* 첫 페이지로 이동 */}
                   {page > 1 && (
                     <button 
                       className={styles.pageButton}
@@ -219,7 +267,6 @@ const RecruitmentNoticePage = () => {
                     </button>
                   )}
                   
-                  {/* 이전 페이지로 이동 */}
                   {page > 1 && (
                     <button 
                       className={styles.pageButton}
@@ -229,7 +276,6 @@ const RecruitmentNoticePage = () => {
                     </button>
                   )}
 
-                  {/* 페이지 번호 버튼 */}
                   {(() => {
                     const { start, end } = calculatePageRange();
                     return Array.from({ length: end - start + 1 }).map((_, i) => {
@@ -250,7 +296,6 @@ const RecruitmentNoticePage = () => {
                     });
                   })()}
 
-                  {/* 다음 페이지로 이동 */}
                   {page < totalPages && (
                     <button 
                       className={styles.pageButton}
@@ -260,7 +305,6 @@ const RecruitmentNoticePage = () => {
                     </button>
                   )}
 
-                  {/* 마지막 페이지로 이동 */}
                   {page < totalPages && (
                     <button 
                       className={styles.pageButton}
