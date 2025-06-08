@@ -14,7 +14,7 @@ export default function CoverLetterQuestionForm() {
 
   const handleQuestionChange = (e) => {
     const value = e.target.value;
-    if (value.length <= 100) {
+    if (value.length <= 500) {
       setQuestion(value);
     }
   };
@@ -27,8 +27,8 @@ export default function CoverLetterQuestionForm() {
   };
 
   const handleSubmit = async () => {
-    if (question.length < 5 || question.length > 100) {
-      alert('질문은 5자 이상 100자 이하로 입력해주세요.');
+    if (question.length < 5 || question.length > 500) {
+      alert('질문은 5자 이상 500자 이하로 입력해주세요.');
       return;
     }
     if (content.length < 100 || content.length > 2000) {
@@ -59,16 +59,6 @@ export default function CoverLetterQuestionForm() {
     }
   };
 
-  const handleSearch = () => {
-    // 검색 시에는 기업명과 직무가 선택되지 않아도 됨
-    navigate('/assay', { 
-      state: { 
-        company: selectedCompany, 
-        job: selectedJob 
-      } 
-    });
-  };
-
   return (
     <div className={styles.container}>
       <div className={styles.formSection}>
@@ -95,9 +85,6 @@ export default function CoverLetterQuestionForm() {
           <div className={styles.leftButtons}>
             <CompanySelector onSelect={setSelectedCompany} />
             <JobSelector onSelect={setSelectedJob} />
-            <button className={styles.searchButton} onClick={handleSearch}>
-              검색
-            </button>
           </div>
           <div className={styles.submitAlignRight}>
             <button className={styles.submitButton} onClick={handleSubmit}>

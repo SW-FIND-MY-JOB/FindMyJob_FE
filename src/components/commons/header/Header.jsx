@@ -64,8 +64,8 @@ export default function Header(){
                 {/* 네비게이션션 영역 */}
                 <div className={styles.navigationContainer}>
                     <p
-                        onClick={() => navigate("/inform")}
-                        className={location.pathname === "/inform" ? styles.active : ""}
+                        onClick={() => navigate("/recruitment-notice")}
+                        className={location.pathname === "/recruitment-notice" ? styles.active : ""}
                     >
                         채용정보
                     </p>

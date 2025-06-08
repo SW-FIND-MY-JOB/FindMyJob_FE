@@ -7,9 +7,11 @@ import Cafepage from '../pages/cafe/CafePage';
 import CoverLetterPage from '../pages/coverLetter/CoverLetterPage';
 
 import CoverLetterQuestionPage from '../pages/CoverLetterQuestionPage/CoverLetterQuestionPage';
-import CoverLetterSearchPage from '../pages/coverlettersearchpage/CoverLetterSearchPage'; // ✅ 추가
+import CoverLetterSearchPage from '../pages/coverlettersearchpage/CoverLetterSearchPage'; 
 
 import NotFoundPage from '../pages/notFound/NotFoundPage';
+
+import RecruitmentNoticePage from '../pages/recruitmentNotice/RecruitmentNoticePage';
 
 
 
@@ -28,8 +30,9 @@ export default function Routers() {
                 <Route path="/cafe" element={<Cafepage />} />
                 <Route path="/assay" element={<CoverLetterPage />} />
                 <Route path="/cover-letter-question" element={<CoverLetterQuestionPage />} />
-                <Route path="/cover-letter-search" element={<CoverLetterSearchPage />} /> {/* ✅ 새 경로 추가 */}
+                <Route path="/cover-letter-search" element={<CoverLetterSearchPage />} /> 
                 <Route path="*" element={<NotFoundPage />} />
+                <Route path="/recruitment-notice" element={<RecruitmentNoticePage />} /> {/* ✅ 채용공고 상세검색 경로 */}
                 
                 <Route path="/test-agency" element={<AgencyTestPage />} />
                 {/* Api연동테스트용 */}
