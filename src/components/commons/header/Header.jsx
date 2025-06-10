@@ -66,8 +66,8 @@ export default function Header(){
                 {/* 네비게이션션 영역 */}
                 <div className={styles.navigationContainer}>
                     <p
-                        onClick={() => navigate("/inform")}
-                        className={location.pathname === "/inform" ? styles.active : ""}
+                        onClick={() => navigate("/recruitment-notice")}
+                        className={location.pathname === "/recruitment-notice" ? styles.active : ""}
                     >
                         채용정보
                     </p>
@@ -84,7 +84,7 @@ export default function Header(){
                         AI 자소서 코칭
                     </p>
                     <p
-                        onClick={() => navigate("/assay")}
+                        onClick={() => navigate("/cover-letter-search")}
                         className={location.pathname === "/assay" ? styles.active : ""}
                     >
                         자소서 둘러보기

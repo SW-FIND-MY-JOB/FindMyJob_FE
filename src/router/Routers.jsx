@@ -8,9 +8,18 @@ import CorrectionPage from '../pages/correctionPage/CorrectionPage';
 import CoverLetterPage from '../pages/coverLetter/CoverLetterPage';
 
 import CoverLetterQuestionPage from '../pages/CoverLetterQuestionPage/CoverLetterQuestionPage';
-import CoverLetterSearchPage from '../pages/coverlettersearchpage/CoverLetterSearchPage'; // ✅ 추가
+import CoverLetterSearchPage from '../pages/coverlettersearchpage/CoverLetterSearchPage'; 
 
 import NotFoundPage from '../pages/notFound/NotFoundPage';
+
+import RecruitmentNoticePage from '../pages/recruitmentNotice/RecruitmentNoticePage';
+import RecruitmentNoticeDetail from '../pages/recruitmentNotice/RecruitmentNoticeDetail';
+
+
+
+// Api연동테스트용
+import AgencyTestPage from "../pages/AgencyTestPage";
+
 
 
 export default function Routers() {
@@ -24,8 +33,15 @@ export default function Routers() {
                 <Route path="/correction" element={<CorrectionPage />} />
                 <Route path="/assay" element={<CoverLetterPage />} />
                 <Route path="/cover-letter-question" element={<CoverLetterQuestionPage />} />
-                <Route path="/cover-letter-search" element={<CoverLetterSearchPage />} /> {/* ✅ 새 경로 추가 */}
+                <Route path="/cover-letter-search" element={<CoverLetterSearchPage />} /> 
                 <Route path="*" element={<NotFoundPage />} />
+                <Route path="/recruitment-notice" element={<RecruitmentNoticePage />} />
+                <Route path="/recruitment-notice/:id" element={<RecruitmentNoticeDetail />} />
+                
+
+                
+                <Route path="/test-agency" element={<AgencyTestPage />} />
+                {/* Api연동테스트용 */}
             </Route>
         </Routes>
     );

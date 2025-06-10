@@ -22,7 +22,6 @@
   top: 48px;
 }
 
-
 .searchInputWrapper {
   position: relative;
 }
@@ -61,6 +60,7 @@
   margin: 0;
   max-height: 200px;
   overflow-y: auto;
+  text-align: left; /* ✅ 왼쪽 정렬 */
 }
 
 .dropdownItem {
@@ -68,18 +68,17 @@
   cursor: pointer;
   border-radius: 6px;
   font-size: 14px;
-  color: #000; /* ✅ 명시적으로 검정색 글씨 설정 */
+  color: #000;         /* ✅ 명시적 검정 글자 */
+  text-align: left;    /* ✅ 왼쪽 정렬 */
 }
 
 .dropdownItem:hover {
-  background-color: #f3f4f6;
+  background-color: #e6f3ef;
 }
 
 .tagButton {
-  width: 140px;
-  min-width: 140px;
-  max-width: 140px;
-  padding: 10px 0;
+  width: auto;
+  padding: 10px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
