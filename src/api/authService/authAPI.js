@@ -1,5 +1,6 @@
 import axiosInstance from "../nonAuth/axiosInstance";
 import axiosInstanceForAuth from "../auth/axiosInstanceForAuth";
+import { setToken } from "../../utils/auth";
 
 //로그인
 export const loginRequest = async (email, password, setLoginError) => {
@@ -11,7 +12,7 @@ export const loginRequest = async (email, password, setLoginError) => {
             }
         );
         const accessToken = response.headers['authorization'];
-        sessionStorage.setItem('accessToken', `${accessToken}`);
+        setToken(accessToken);
         console.log(response);
         window.location.reload();
     } catch (error) {
@@ -29,6 +30,18 @@ export const logoutRequest = async() =>{
     } catch (error){
         console.log(`로그아웃 에러: ${error}`);
         alert('로그아웃 실패');
+    }
+}
+
+//리프레시 토큰을 이용해 토큰 재발급
+export const getNewAccessToken = async() => {
+    try{
+        const response = await axiosInstance.post('/auth-service/api/token/reissue');
+        const accessToken = response.headers['authorization'];
+        setToken(accessToken);
+        console.log(response);
+    } catch (error){
+        console.log(`엑세스 토큰 재발급 에러`);
     }
 }
 

@@ -15,20 +15,22 @@ export default function Header(){
     const location = useLocation();
     const [showLogin, setShowLogin] = useState(false);
     const [showMenu, setShowMenu] = useState(false)
-    const menuRef = useRef(null)
+    const menuRef = useRef(null);
 
     //사용자 로그인 유무 확인
     useEffect(() => {
         const fetchUser = async () => {
             try {
+                console.log("사용자 로그인 유무 확인");
                 const user = await getUserInfo();
                 login(user.name, user.point);
-            } catch {
-                logout();
+            } catch (error) {
+                console.log("사용자 로그인 유무 확인");
+                console.log(error.response);
             }
         }
         fetchUser();
-    }, [login, logout]);
+    }, [point]);
 
     //메뉴 바깥 영역 클릭시 함수
     useEffect(() => {
@@ -76,8 +78,8 @@ export default function Header(){
                         일자리카페
                     </p>
                     <p
-                        onClick={() => navigate("/ai-assay")}
-                        className={location.pathname === "/assay" ? styles.active : ""}
+                        onClick={() => navigate("/correction")}
+                        className={location.pathname === "/correction" ? styles.active : ""}
                     >
                         AI 자소서 코칭
                     </p>
