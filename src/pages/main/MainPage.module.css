@@ -1,0 +1,26 @@
+.mainPageLayout{
+    /* 레이아웃 */
+    width: 100%;
+    height: auto;
+    min-height: 800px;
+    display: flex;
+    justify-content: center;
+}
+
+.mainPageContainer{
+    /* 레이아웃 */
+    width: 90%;
+    max-width: 1500px;
+    min-width: 1150px;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* 스타일 */
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
+}

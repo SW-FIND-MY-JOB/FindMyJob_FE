@@ -1,0 +1,26 @@
+/* 사용자 정의 테마: my-tooltip */
+.tippy-box[data-theme~='my-tooltip'] {
+  background-color: #1483f2;   /* 말풍선 배경 색상 */
+  color: #ffffff;              /* 말풍선 텍스트 색상 */
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 6px 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tippy-box[data-theme~='my-tooltip'][data-placement^='top'] > .tippy-arrow::before {
+  border-top-color: #2c3e50;
+}
+
+.tippy-box[data-theme~='my-tooltip'][data-placement^='bottom'] > .tippy-arrow::before {
+  border-bottom-color: #2c3e50;
+}
+
+.tippy-box[data-theme~='my-tooltip'][data-placement^='left'] > .tippy-arrow::before {
+  border-left-color: #2c3e50;
+}
+
+.tippy-box[data-theme~='my-tooltip'][data-placement^='right'] > .tippy-arrow::before {
+  border-right-color: #2c3e50;
+}
