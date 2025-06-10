@@ -45,14 +45,23 @@ export default function CoverLetterQuestionForm() {
     }
 
     try {
-      await postCoverLetter({
+      const response = await postCoverLetter({
         companyName: selectedCompany,  // 백엔드에서는 instNm
         duty: selectedJob,             // 백엔드에서는 ncsCdNmLst
         question: question,            // 백엔드에서는 title
         content: content,              // 그대로
       });
+      
+      // API 응답에서 새로 생성된 자소서 ID 추출
+      const newCoverLetterId = response.result?.id || response.result;
+      
       alert('자소서가 성공적으로 작성되었습니다!');
-      navigate('/assay'); // ✅ 작성 완료 후 이동
+      
+      if (newCoverLetterId) {
+        navigate(`/assay?id=${newCoverLetterId}`); // 새로 생성된 자소서 페이지로 이동
+      } else {
+        navigate('/assay'); // ID가 없으면 기본 페이지로 이동
+      }
     } catch (error) {
       console.error('작성 실패:', error);
       alert('자소서 작성에 실패했습니다. 다시 시도해주세요.');

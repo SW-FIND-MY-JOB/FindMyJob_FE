@@ -6,6 +6,45 @@
   background-color: #f9f9f9;
 }
 
+.clickableRow {
+  cursor: pointer;
+}
+
+.clickableRow:hover {
+  background-color: #e8f4fd;
+}
+
+.bookmarkCell {
+  text-align: center;
+  padding: 8px !important;
+}
+
+.bookmarkButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.bookmarkButton:hover {
+  background-color: #f0f0f0;
+}
+
+.bookmarkButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.bookmarkButton.bookmarked:hover {
+  background-color: #e8f4fd;
+}
+
 .row td {
   padding: 16px 16px;         /* ✅ 세로 여백 증가 */
   font-size: 14px;            /* ✅ 전체 글씨 크기 소폭 축소 */
