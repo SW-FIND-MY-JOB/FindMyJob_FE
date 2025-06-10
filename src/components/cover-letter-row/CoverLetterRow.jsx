@@ -1,20 +1,20 @@
+// src/components/cover-letter-row/CoverLetterRow.jsx
 import styles from './CoverLetterRow.module.css';
 
 export default function CoverLetterRow({ item, index }) {
-  const { title, company, job, question, content, views } = item;
-
   return (
     <tr className={styles.row}>
       <td>{index + 1}</td>
-      <td>{company}</td>
-      <td>{job}</td>
-      <td>{title}</td>
+      <td>{item.instNm}</td>
+      <td>{item.ncsCdNmLst}</td>
       <td>
-        <strong>{question}</strong><br />
-        <span className={styles.snippet}>{content}</span>
+        <div>
+          <strong>{item.title}</strong>
+          <div className={styles.snippet}>{item.content}</div>
+        </div>
       </td>
-      <td>{views}</td>
-      <td>🔖</td>
+      <td>{item.viewCnt ?? 0}</td>
+      <td>{item.isScrap ? '✔' : '-'}</td>
     </tr>
   );
 }

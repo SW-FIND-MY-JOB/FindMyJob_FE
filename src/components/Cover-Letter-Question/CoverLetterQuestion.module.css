@@ -99,3 +99,27 @@
 .submitButton:hover {
   background-color: #3b7dc4;
 }
+
+.searchButton {
+  width: auto;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 10px;
+  border: 1px solid #ccd5e0;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  background: #007aff;
+  color: white;
+  margin-left: 8px;
+}
+
+.searchButton:hover {
+  background-color: #0056b3;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
