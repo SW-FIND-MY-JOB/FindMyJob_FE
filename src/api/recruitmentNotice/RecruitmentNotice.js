@@ -1,29 +1,26 @@
 import axios from '../nonAuth/axiosInstance';
+import axiosInstanceForAuth from '../auth/axiosInstanceForAuth';
 
-// 채용공고 목록 조회 API
 export const fetchRecruitmentNotices = async (params) => {
   try {
-    const response = await axios.get('/job-service/api/notices/informs', { params });
-    
-    // // 응답이 없거나 실패한 경우 기본값 반환
-    // if (!response || !response.data) {
-    //   return {
-    //     isSuccess: false,
-    //     message: '데이터를 불러오는데 실패했습니다.',
-    //     result: {
-    //       content: [],
-    //       totalPages: 0,
-    //       totalElements: 0
-    //     }
-    //   };
-    // }
-
-    console.log(response.data);
-    
+    const response = await axiosInstanceForAuth.get('/job-service/api/notices/informs', {
+      params,
+      paramsSerializer: {
+        serialize: (params) => {
+          const searchParams = new URLSearchParams();
+          Object.entries(params).forEach(([key, value]) => {
+            if (Array.isArray(value)) {
+              value.forEach(v => searchParams.append(key, v));
+            } else if (value != null && value !== '') {
+              searchParams.append(key, value);
+            }
+          });
+          return searchParams.toString();
+        }
+      }
+    });
     return response.data;
   } catch (error) {
-    console.error('API Error:', error.response || error);
-    // 에러 응답 형식 통일
     return {
       isSuccess: false,
       message: '채용공고 조회 중 오류가 발생했습니다.',
@@ -33,5 +30,16 @@ export const fetchRecruitmentNotices = async (params) => {
         totalElements: 0
       }
     };
+  }
+};
+
+export const toggleScrapNotice = async (noticeId, isScraped) => {
+  try {
+    const res = isScraped
+      ? await axiosInstanceForAuth.delete(`/job-service/api/notice-scraps?noticeId=${noticeId}`)
+      : await axiosInstanceForAuth.post(`/job-service/api/notice-scraps?noticeId=${noticeId}`);
+    return { isSuccess: true, result: res.data };
+  } catch (e) {
+    return { isSuccess: false, message: '스크랩 처리 중 오류가 발생했습니다.' };
   }
 };

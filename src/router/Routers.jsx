@@ -12,6 +12,7 @@ import CoverLetterSearchPage from '../pages/coverlettersearchpage/CoverLetterSea
 import NotFoundPage from '../pages/notFound/NotFoundPage';
 
 import RecruitmentNoticePage from '../pages/recruitmentNotice/RecruitmentNoticePage';
+import RecruitmentNoticeDetail from '../pages/recruitmentNotice/RecruitmentNoticeDetail';
 
 
 
@@ -32,7 +33,10 @@ export default function Routers() {
                 <Route path="/cover-letter-question" element={<CoverLetterQuestionPage />} />
                 <Route path="/cover-letter-search" element={<CoverLetterSearchPage />} /> 
                 <Route path="*" element={<NotFoundPage />} />
-                <Route path="/recruitment-notice" element={<RecruitmentNoticePage />} /> {/* ✅ 채용공고 상세검색 경로 */}
+                <Route path="/recruitment-notice" element={<RecruitmentNoticePage />} />
+                <Route path="/recruitment-notice/:id" element={<RecruitmentNoticeDetail />} />
+                
+
                 
                 <Route path="/test-agency" element={<AgencyTestPage />} />
                 {/* Api연동테스트용 */}
