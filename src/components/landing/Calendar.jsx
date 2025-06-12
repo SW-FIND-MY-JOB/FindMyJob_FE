@@ -14,7 +14,7 @@ import { useAuth } from '../../utils/AuthContext.jsx';
 
 export default function Calendar() {
     const navigate = useNavigate();
-       const { isLogin } = useAuth();
+    const { isLogin } = useAuth();
     const [events, setEvents] = useState([]);
 
     const fetchCalendar = async (year, month) => {
@@ -63,11 +63,11 @@ export default function Calendar() {
 
     return (
         <div className={styles.calendarLayout}>
-            <h2 style={{marginLeft:'10px'}}>스크랩한 채용공고 달력</h2>
+            <h2 style={{marginLeft:'10px'}}>스크랩 채용공고 달력</h2>
             {/* 로그인이 안되어있다면 */}
             {!isLogin &&
                 <div className={styles.overlay}>
-                    <p>로그인을 해주세요</p>
+                    <p>⚠ 비회원은 이용할 수 없는 기능입니다.</p>
                 </div>
             }
             <FullCalendar

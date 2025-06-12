@@ -184,6 +184,7 @@
   /* 스타일 */
   border-radius: 32px;
   background-color: rgba(33, 33, 33, 0.8);
+  cursor: default;
 
   & p{
     /* 스타일 */

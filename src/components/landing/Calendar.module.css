@@ -1,6 +1,6 @@
 .calendarLayout{
   /* 레이아웃 */
-  width: 80%;
+  width: 90%;
   height: auto;
   padding: 20px;
   margin-bottom: 30px;
@@ -28,7 +28,7 @@
 
   /* 스타일 */
   border-radius: 32px;
-  background-color: rgba(90, 90, 90, 0.4);
+  background-color: rgba(90, 90, 90, 0.6);
 
   & p{
     /* 스타일 */

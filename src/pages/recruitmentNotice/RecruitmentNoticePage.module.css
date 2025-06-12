@@ -1,16 +1,19 @@
 .outerWrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 24px;
-    padding-top: 0;
-  }
+  /* 레이아웃 */
+  width: 90%;
+  max-width: 1500px;
+  min-width: 1150px;
+  margin: 0 auto;
+  padding: 24px;
+  padding-top: 0;
+}
   
   .container {
     background-color: white;
     border-radius: 20px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
     border: 1px solid #e5e7eb;
-    padding: 24px;
+    padding: 40px 80px;
   }
   
   .searchHeader {

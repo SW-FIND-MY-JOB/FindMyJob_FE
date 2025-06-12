@@ -89,6 +89,9 @@ export default function AiCorrection({question, content, isModalOpen, setIsModal
             console.log(correctionList);
         } catch (error){
             console.log("AI자소서 첨삭에러" + error);
+            alert("AI자소서가 현재 작동하지 않습니다. 잠시후에 다시 시도해주세요.");
+            //로딩 풀기
+            setIsLoading(false);
             return;
         };
         //로딩 풀기
@@ -139,7 +142,7 @@ export default function AiCorrection({question, content, isModalOpen, setIsModal
             {/* 로그인이 안되어있다면! */}
             {!isLogin ? 
                 <div className={styles.overlay}>
-                    <p style={{fontSize:'40px'}}>로그인을 해주세요.</p>
+                    <p style={{fontSize:'30px'}}>⚠ 비회원은 이용할 수 없는 기능입니다.</p>
                 </div>
             // 스크랩이 안되어있다면
             :
