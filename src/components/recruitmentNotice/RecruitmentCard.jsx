@@ -1,22 +1,29 @@
 import React, { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './RecruitmentCard.module.css';
+import {Star} from 'lucide-react';
 import LoginModal from '../login/LoginModal';
 import { toggleScrapNotice } from '../../api/recruitmentNotice/RecruitmentNotice';
+import { useAuth } from '../../utils/AuthContext';
 
 const JobCard = ({ job, onScrapToggle }) => {
   const navigate = useNavigate();
+  const { isLogin } = useAuth();
   const [imgError, setImgError] = useState(false);
   const [triedExtIdx, setTriedExtIdx] = useState(0);
   const [showLoginModal, setShowLoginModal] = useState(false);
-  const isLoggedIn = !!sessionStorage.getItem('accessToken');
+    const [scrapState, setScrapState] = useState(job.isScrap);
   const extensions = ['.svg', '.jfif', '.webp'];
 
-  const handleScrapClick = async (e) => {
-    e.stopPropagation();
-    if (!isLoggedIn) return setShowLoginModal(true);
-    const response = await toggleScrapNotice(job.id, job.isScrap);
-    if (response.isSuccess) onScrapToggle(job.id);
+  const handleScrapClick = async (id, scrapState) => {
+    if (!isLogin) 
+      return setShowLoginModal(true);
+
+    const response = await toggleScrapNotice(id, scrapState);
+    if (response.isSuccess) {
+      onScrapToggle(id);
+      setScrapState(!scrapState);
+    }
     else alert(response.message || '스크랩 처리 실패');
   };
 
@@ -32,41 +39,31 @@ const JobCard = ({ job, onScrapToggle }) => {
     }
   };
 
-  const formatList = (val) => Array.isArray(val) ? val.join(', ') : val || '';
-
   return (
     <>
-      <div className={styles.cardContainer} onClick={() => navigate(`/recruitment-notice/${job.id}`)} style={{ cursor: 'pointer' }}>
+      <div className={styles.cardContainer} >
         <div className={styles.cardHeader}>
           {!imgError && getLogoPath() ? (
             <img src={getLogoPath()} alt={job.company} className={styles.companyLogo} onError={handleImageError} />
           ) : (
             <div className={styles.defaultLogo}>{job.company?.charAt(0).replace(/[^가-힣A-Za-z0-9]/g, '') || '?'}</div>
           )}
-          <div className={styles.jobTitle}>{job.title}</div>
-        </div>
-        <div className={styles.cardContent}>
-          <div className={styles.jobMeta}>
-            <div>
-              <span>{formatList(job.location)}</span>
-              <span className={styles.separator}>•</span>
-              <span>{formatList(job.field)}</span>
-            </div>
-            {job.recrutSeNm && <div><span>{job.recrutSeNm}</span></div>}
-          </div>
-          {job.acbgCondNmLst && <p>학력: {formatList(job.acbgCondNmLst)}</p>}
-          {job.hireTypeNmLst && <p>고용형태: {formatList(job.hireTypeNmLst)}</p>}
-          <div className={styles.jobDate}>마감일 {job.deadline}</div>
           <div className={styles.companyName}>{job.company}</div>
+        </div>
+        <div className={styles.cardContent} onClick={() => navigate(`/recruitment-notice/${job.id}`)} style={{ cursor: 'pointer' }}>
+          <div className={styles.jobMeta}>
+            <div className={styles.jobTitle}>{job.title}</div>
+            <span>{job.location} / {job.recrutSeNm} / {job.acbgCondNmLst} / {job.hireTypeNmLst}</span>
+          </div>
+          <div className={styles.jobDate}>마감일 {job.deadline}</div>
         </div>
         <div className={styles.cardFooter}>
           <div className={styles.viewCount}><span>조회 {job.viewCount}</span></div>
-          <button
-            className={`${styles.scrapButton} ${job.isScrap ? styles.scrapped : ''}`}
-            onClick={handleScrapClick}
-            aria-label={job.isScrap ? "스크랩 취소" : "스크랩하기"}>
-            {isLoggedIn ? (job.isScrap ? "★" : "☆") : "☆"}
-          </button>
+          <Star 
+            className={`${styles.starIcon} ${scrapState ? styles.active : ''}`}
+            onClick={() => handleScrapClick(job.id, scrapState)}
+            fill={scrapState ? '#FFD700' : 'none'}
+          />
         </div>
       </div>
       {showLoginModal && <LoginModal onClose={() => setShowLoginModal(false)} />}

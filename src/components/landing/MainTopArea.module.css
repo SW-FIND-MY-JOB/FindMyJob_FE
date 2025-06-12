@@ -1,0 +1,51 @@
+.mainTopAreaLayout{
+    /* 레이아웃 */
+    margin: 3% 0 0 0;
+    padding: 10px;
+
+    /* 스타일 */
+    /* background-color: rgb(243, 249, 255); */
+}
+
+.tabArea {
+    display: flex;
+    gap: 20px;
+    font-size: 25px;
+    margin-left: 80px;
+    font-weight: bold;
+}
+
+.tabArea p {
+    cursor: pointer;
+    color: gray;
+}
+
+.tabArea .active {
+    color: black;
+}
+
+.cardSlider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 15px;
+}
+
+.navBtn {
+    height: 40px;
+    padding: 10px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    background-color: rgb(224, 224, 224);
+    border-radius: 50%;
+}
+
+.emptyBtn {
+    width: 24px;
+    padding: 10px;
+}

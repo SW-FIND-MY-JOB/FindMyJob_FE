@@ -13,7 +13,6 @@ export const loginRequest = async (email, password, setLoginError) => {
         );
         const accessToken = response.headers['authorization'];
         setToken(accessToken);
-        console.log(response);
         window.location.reload();
     } catch (error) {
         setLoginError(true);
