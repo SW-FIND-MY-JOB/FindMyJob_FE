@@ -77,7 +77,7 @@ const RecruitmentNoticeDetail = () => {
           </div>
           <div className={styles.infoItem}>
             <h3>스크랩 여부</h3>
-            <p>{noticeDetail.isScarp ? '스크랩됨' : '스크랩되지 않음'}</p>
+            <p>{noticeDetail.isScrap ? '스크랩됨' : '스크랩되지 않음'}</p>
           </div>
         </div>
 
