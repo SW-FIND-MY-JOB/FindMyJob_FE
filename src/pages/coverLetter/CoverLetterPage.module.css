@@ -9,9 +9,9 @@
 
 .mainContent {
   display: flex;
-  width: 90%;
-  max-width: 1200px;
-  gap: 24px;
+  width: 95%;
+  max-width: 1300px;
+  gap: 32px;
   align-items: flex-start;
 }
 

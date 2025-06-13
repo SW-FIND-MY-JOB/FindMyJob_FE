@@ -18,14 +18,16 @@ export default function CoverLetterSearchPage() {
   const [totalPages, setTotalPages] = useState(0);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const navigate = useNavigate();
-  const { isLogin } = useAuth();
+  const { isLogin, isAuthChecked } = useAuth();
 
   const itemsPerPage = 8;
 
-  // ✅ 최초 마운트 시 전체 자소서 불러오기
+  // 인증 확인이 완료된 후에 자소서 목록 불러오기
   useEffect(() => {
-    handleSearch(1);
-  }, []);
+    if (isAuthChecked) {
+      handleSearch(1);
+    }
+  }, [isAuthChecked]); // isAuthChecked가 true가 되면 실행
 
   const handleSearch = async (page = 1) => {
     try {
@@ -37,16 +39,29 @@ export default function CoverLetterSearchPage() {
         size: itemsPerPage,
         isLogin, // 로그인 상태 전달
       });
+      
+      // 서버에서 받아온 데이터를 그대로 설정 (isScrap 포함)
       setCoverLetters(data.content || []);
       setTotalPages(data.totalPages);
       setCurrentPage(page);
     } catch (error) {
-      console.error('자소서 목록 불러오기 실패:', error);
+      console.error('❌ 자소서 목록 불러오기 실패:', error);
     }
   };
 
   const handlePageChange = (page) => {
     handleSearch(page);
+  };
+
+  // 스크랩 상태가 변경될 때 해당 자소서의 상태 업데이트
+  const handleScrapToggle = (coverLetterId) => {
+    setCoverLetters(prevLetters =>
+      prevLetters.map(letter =>
+        letter.id === coverLetterId
+          ? { ...letter, isScrap: !letter.isScrap }
+          : letter
+      )
+    );
   };
 
   return (
@@ -100,7 +115,6 @@ export default function CoverLetterSearchPage() {
             <col style={{ width: '10%' }} />
             <col style={{ width: '10%' }} />
           </colgroup>
-
           <thead>
             <tr>
               <th>글번호</th>
@@ -111,16 +125,20 @@ export default function CoverLetterSearchPage() {
               <th>스크랩</th>
             </tr>
           </thead>
-
           <tbody>
             {coverLetters.map((item, idx) => (
-              <CoverLetterRow key={idx} item={item} index={(currentPage - 1) * itemsPerPage + idx} />
+              <CoverLetterRow
+                key={item.id}
+                item={item}
+                index={(currentPage - 1) * itemsPerPage + idx}
+                onScrapToggle={handleScrapToggle}
+              />
             ))}
           </tbody>
         </table>
 
         <div className={styles.pagination}>
-          {Array.from({ length: totalPages }, (_, i) => (
+          {totalPages > 1 && Array.from({ length: totalPages }, (_, i) => (
             <span
               key={i + 1}
               onClick={() => handlePageChange(i + 1)}

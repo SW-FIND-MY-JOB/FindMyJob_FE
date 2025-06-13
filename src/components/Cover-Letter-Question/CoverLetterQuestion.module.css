@@ -17,6 +17,35 @@
   align-items: center;
 }
 
+.pageTitle {
+  width: 90%;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 20px 0 20px 0;
+  background: linear-gradient(135deg, #4a90e2, #007aff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+}
+
+.guideMessage {
+  width: 88%;
+  padding: 10px 24px;
+  margin-bottom: 32px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #555;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  position: relative;
+  backdrop-filter: blur(8px);
+}
+
 .label {
   width: 90%;
   text-align: left;

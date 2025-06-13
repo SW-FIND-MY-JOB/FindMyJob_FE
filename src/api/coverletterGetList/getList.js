@@ -12,6 +12,7 @@
  */
 import axiosInstanceForAuth from '../auth/axiosInstanceForAuth';
 import axiosInstance from '../nonAuth/axiosInstance';
+import { getToken } from '../../utils/auth';
 
 export const fetchCoverLetterList = async ({ instNm, category, keyword, page, size, isLogin }) => {
   // 로그인 상태에 따라 적절한 axios 인스턴스 선택
@@ -26,6 +27,7 @@ export const fetchCoverLetterList = async ({ instNm, category, keyword, page, si
       size: size || 8,
     },
   });
+
   return response.data.result;
 };
 

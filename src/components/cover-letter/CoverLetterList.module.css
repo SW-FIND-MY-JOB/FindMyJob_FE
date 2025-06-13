@@ -8,7 +8,7 @@
 
   background-color: #f8f8f8;
   padding: 0 16px 16px 16px; /* 상단 패딩 제거 */
-  border-radius: 12px;
+  border-radius: 30px;
   width: 300px;
   height: fit-content;
   display: flex;
