@@ -1,0 +1,122 @@
+.deleteAccount {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.deleteAccount h3 {
+  color: #d32f2f;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.deleteAccount p {
+  color: #666;
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+}
+
+.warningMessage {
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  color: #856404;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.warningMessage h3 {
+  margin: 0 0 0.5rem 0;
+  color: #856404;
+}
+
+.warningMessage p {
+  margin: 0 0 1rem 0;
+}
+
+.warningMessage ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.warningMessage li {
+  margin-bottom: 0.5rem;
+}
+
+.formGroup {
+  margin: 2rem 0;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.formGroup input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  background-color: #f8f9fa;
+}
+
+.formGroup input:focus {
+  outline: none;
+  border-color: #d32f2f;
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
+}
+
+.errorMessage {
+  color: #d32f2f;
+  margin: 1rem 0;
+  padding: 0.8rem 1rem;
+  background-color: #ffebee;
+  border: 1px solid #ffcdd2;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.deleteBtn {
+  width: 100%;
+  padding: 1rem;
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(211, 47, 47, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.deleteBtn:hover {
+  background-color: #c62828;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(211, 47, 47, 0.3);
+}
+
+.deleteBtn:disabled {
+  background-color: #e0e0e0;
+  color: #9e9e9e;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+} 
