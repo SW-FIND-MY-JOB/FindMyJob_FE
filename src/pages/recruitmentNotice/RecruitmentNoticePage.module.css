@@ -144,19 +144,27 @@
     display: flex;
     justify-content: center;
     margin-top: 80px;
-    gap: 6px;
+    gap: 12px;
   }
   
   .pageButton {
-    border: 1px solid #d1d5db;
-    padding: 4px 10px;
-    border-radius: 4px;
-    background-color: white;
+    color: #6b7280;
+    font-size: 16px;
     cursor: pointer;
     transition: all 0.2s ease;
+    background: none;
+    border: none;
+    padding: 0;
   }
 
   .pageButton:hover {
-    border-color: #3b82f6;
+    color: #3b82f6;
+  }
+
+  .pageButton.active {
+    color: #1f2937;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 4px;
   }
   

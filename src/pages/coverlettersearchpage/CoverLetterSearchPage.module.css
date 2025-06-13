@@ -135,9 +135,19 @@
   margin: 0 6px;
   cursor: pointer;
   color: #444;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  outline: none;
+}
+
+.pagination span:focus {
+  outline: none;
 }
 
 .pagination .active {
   font-weight: bold;
   text-decoration: underline;
+  text-underline-offset: 4px;
 }

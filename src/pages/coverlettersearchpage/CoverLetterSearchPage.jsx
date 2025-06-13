@@ -35,6 +35,7 @@ export default function CoverLetterSearchPage() {
         keyword,
         page,
         size: itemsPerPage,
+        isLogin, // 로그인 상태 전달
       });
       setCoverLetters(data.content || []);
       setTotalPages(data.totalPages);
