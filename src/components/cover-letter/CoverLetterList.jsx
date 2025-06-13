@@ -32,7 +32,6 @@ export default function CoverLetterList({ recentInformList }) {
           >
             <div className={styles.company}>{item.instNm} / {item.ncsCdNmLst}</div>
             <div className={styles.question}>
-              <span className={styles.questionLabel}>Q.</span>
               {item.title}
             </div>
             <div className={styles.preview}>{item.content}</div>

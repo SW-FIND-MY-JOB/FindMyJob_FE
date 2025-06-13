@@ -72,14 +72,32 @@ const JobCard = ({ job, onScrapToggle }) => {
 };
 
 const RecruitmentCardList = ({ jobs, totalElements, loading, error, page, totalPages, onPageChange, onScrapToggle }) => {
-  const MAX_VISIBLE_PAGES = 8;
-  const calculatePageRange = useCallback(() => {
-    const half = Math.floor(MAX_VISIBLE_PAGES / 2);
-    let start = Math.max(page - half, 1);
-    let end = Math.min(start + MAX_VISIBLE_PAGES - 1, totalPages);
-    if (end - start + 1 < MAX_VISIBLE_PAGES) start = Math.max(end - MAX_VISIBLE_PAGES + 1, 1);
-    return { start, end };
-  }, [page, totalPages]);
+  const MAX_VISIBLE_PAGES = 10;
+
+  const getPageNumbers = () => {
+    const pageNumbers = [];
+    const startPage = Math.floor((page - 1) / MAX_VISIBLE_PAGES) * MAX_VISIBLE_PAGES + 1;
+    const endPage = Math.min(startPage + MAX_VISIBLE_PAGES - 1, totalPages);
+
+    for (let i = startPage; i <= endPage; i++) {
+      pageNumbers.push(i);
+    }
+    return pageNumbers;
+  };
+
+  const handleNextGroup = () => {
+    const currentGroup = Math.floor((page - 1) / MAX_VISIBLE_PAGES);
+    const nextGroupStart = (currentGroup + 1) * MAX_VISIBLE_PAGES + 1;
+    if (nextGroupStart <= totalPages) {
+      onPageChange(nextGroupStart);
+    }
+  };
+
+  const handlePrevGroup = () => {
+    const currentGroup = Math.floor((page - 1) / MAX_VISIBLE_PAGES);
+    const prevGroupStart = Math.max((currentGroup - 1) * MAX_VISIBLE_PAGES + 1, 1);
+    onPageChange(prevGroupStart);
+  };
 
   return (
     <div className={styles.resultSection}>
@@ -113,23 +131,16 @@ const RecruitmentCardList = ({ jobs, totalElements, loading, error, page, totalP
           {totalPages > 0 && (
             <div className={styles.pagination}>
               {page > 1 && <button onClick={() => onPageChange(1)}>{'<<'}</button>}
-              {page > 1 && <button onClick={() => onPageChange(page - 1)}>{'<'}</button>}
-              {(() => {
-                const { start, end } = calculatePageRange();
-                return Array.from({ length: end - start + 1 }).map((_, i) => {
-                  const pageNum = start + i;
-                  return (
-                    <button
-                      key={pageNum}
-                      onClick={() => onPageChange(pageNum)}
-                      className={styles.pageButton}
-                      style={{ backgroundColor: page === pageNum ? '#3b82f6' : 'white', color: page === pageNum ? 'white' : 'black' }}>
-                      {pageNum}
-                    </button>
-                  );
-                });
-              })()}
-              {page < totalPages && <button onClick={() => onPageChange(page + 1)}>{'>'}</button>}
+              {page > 1 && <button onClick={handlePrevGroup}>{'<'}</button>}
+              {getPageNumbers().map(pageNum => (
+                <button
+                  key={pageNum}
+                  onClick={() => onPageChange(pageNum)}
+                  className={`${styles.pageButton} ${page === pageNum ? styles.active : ''}`}>
+                  {pageNum}
+                </button>
+              ))}
+              {page < totalPages && <button onClick={handleNextGroup}>{'>'}</button>}
               {page < totalPages && <button onClick={() => onPageChange(totalPages)}>{'>>'}</button>}
             </div>
           )}

@@ -30,15 +30,21 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+  outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-.bookmarkButton:hover {
-  background-color: #f0f0f0;
+.bookmarkButton:focus {
+  outline: none;
 }
 
 .bookmarkButton:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  pointer-events: none;
 }
 
 .bookmarkButton.bookmarked:hover {
