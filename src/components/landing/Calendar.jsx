@@ -95,7 +95,7 @@ export default function Calendar() {
                 eventClick={(info) => {
                     const noticeId = info.event.extendedProps.id;
                     if (noticeId) {
-                        navigate(`/recruitment/${noticeId}`);
+                        navigate(`/recruitment-notice/${noticeId}`);
                     }
                 }}
             />
