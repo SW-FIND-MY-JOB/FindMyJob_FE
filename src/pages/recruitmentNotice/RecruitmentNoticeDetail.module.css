@@ -65,7 +65,8 @@
 
 .viewCount {
   color: #888;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
+  margin-right: 2rem;
 }
 
 /* 본문 & 사이드바 래퍼 */
@@ -125,15 +126,15 @@
 
   & p{
     margin-top: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 3rem;
   }
 }
 
 .sectionTitle {
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 2rem;
+  font-weight: 500;
   margin-bottom: 0.75rem;
-  color: #1f2937;
+  color: #4391fd;
 }
 
 .infoList {
@@ -258,4 +259,38 @@
 
 .scrapIcon.active {
   stroke: #FFD700;
+}
+
+/* ===== 채용공고 정보 테이블 ===== */
+.infoTable {
+  width: 60%;
+  border-collapse: collapse;
+  margin: 0;
+  border: 1px solid #e5e7eb;
+}
+
+.infoTable th,
+.infoTable td {
+  padding: 0.4rem 0.6rem;
+  font-size: 0.85rem;
+  border: 1px solid #e5e7eb;
+  text-align: left;
+  color: #374151;
+}
+
+.infoTable th {
+  background: #f3f4f6;
+  width: 30%;
+  font-weight: 600;
+  color: #374151;
+  border-right: 1px solid #e5e7eb;
+}
+
+.infoTable td {
+  background: #ffffff;
+}
+
+/* 불필요해진 배경 색 제거 */
+.infoTable tr:nth-child(even) td {
+  background: none;
 }

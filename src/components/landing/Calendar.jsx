@@ -7,15 +7,21 @@ import '../../styles/tippy-custom.css';
 import 'tippy.js/dist/tippy.css';
 import tippy from 'tippy.js';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getScrapNoticeToDate } from '../../api/notice/noticeAPI';
 import { useAuth } from '../../utils/AuthContext.jsx';
 
-export default function Calendar() {
+export default function Calendar({isUpdateScrap}) {
     const navigate = useNavigate();
     const { isLogin } = useAuth();
     const [events, setEvents] = useState([]);
+    const [year, setYear] = useState(null);
+    const [month, setMonth] = useState(null);
+
+    useEffect(() => {
+        fetchCalendar(year, month);
+    }, [isUpdateScrap]);
 
     const fetchCalendar = async (year, month) => {
             try{
@@ -78,9 +84,11 @@ export default function Calendar() {
                 width={"60vw"}
                 events={events}
                 datesSet={(arg) => {
-                    const year = arg.view.currentStart.getFullYear();
-                    const month = arg.view.currentStart.getMonth() + 1; // getMonth()는 0부터 시작
-                    fetchCalendar(year, month); // 이 기준으로 백엔드에서 3개월치 응답
+                    const year_ = arg.view.currentStart.getFullYear();
+                    const month_ = arg.view.currentStart.getMonth() + 1; // getMonth()는 0부터 시작
+                    setYear(year_);
+                    setMonth(month_);
+                    fetchCalendar(year_, month_); // 이 기준으로 백엔드에서 3개월치 응답
                 }}
                 eventDidMount={(info) => {
                     const tooltipText = info.event.extendedProps.title;

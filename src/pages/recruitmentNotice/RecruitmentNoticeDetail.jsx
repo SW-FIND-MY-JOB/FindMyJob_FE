@@ -20,6 +20,7 @@ const RecruitmentNoticeDetail = () => {
   // 섹션 refs – 각 버튼이 가리킬 위치
   const noticeRef = useRef(null);
   const applyRef = useRef(null);
+  const dueRef = useRef(null);
   const etcRef = useRef(null);
 
   const scrollTo = (ref) => {
@@ -128,40 +129,68 @@ const RecruitmentNoticeDetail = () => {
           <div className={styles.mainContent}>
             <div className={styles.contentHeader}>
               {/* 상단 탭 버튼 */}
-              <button className={styles.tabBtn} onClick={() => scrollTo(noticeRef)}>채용공고</button>
+              <button className={styles.tabBtn} onClick={() => scrollTo(noticeRef)}>채용정보</button>
               <button className={styles.tabBtn} onClick={() => scrollTo(applyRef)}>지원정보</button>
+              <button className={styles.tabBtn} onClick={() => scrollTo(dueRef)}>접수기간</button>
               <button className={styles.tabBtn} onClick={() => scrollTo(etcRef)}>기타정보</button>
             </div>
 
-            {/* 채용공고 */}
+            {/* 채용정보 */}
             <section ref={noticeRef} className={styles.section}>
-              <h3 className={styles.sectionTitle}>채용공고</h3>
-              <ul className={styles.infoList}>
-                <li>채용공고: {noticeDetail.recrutPbancTtl || '정보 없음'}</li>
-                <li>근무지역: {noticeDetail.workRgnNmLst || '정보 없음'}</li>
-                <li>직무(직종): {noticeDetail.ncsCdNmLst || '정보 없음'}</li>
-                <li>고용형태: {noticeDetail.hireTypeNmLst || '정보 없음'}</li>
-                <li>마감일: {noticeDetail.pbancEndYmd || '정보 없음'}</li>
-              </ul>
+              <h3 className={styles.sectionTitle}>채용정보</h3>
+              <table className={styles.infoTable}>
+                <tbody>
+                  <tr>
+                    <th>근무지역</th>
+                    <td>{noticeDetail.workRgnNmLst || '정보 없음'}</td>
+                  </tr>
+                  <tr>
+                    <th>직무(직종)</th>
+                    <td>{noticeDetail.ncsCdNmLst || '정보 없음'}</td>
+                  </tr>
+                  <tr>
+                    <th>근무형태</th>
+                    <td>{noticeDetail.hireTypeNmLst || '정보 없음'}</td>
+                  </tr>
+                  <tr>
+                    <th>경력</th>
+                    <td>{noticeDetail.recruitSeNm || '정보 없음'}</td>
+                  </tr>
+                  <tr>
+                    <th>학력</th>
+                    <td>{noticeDetail.acbgCondNmLst || '정보 없음'}</td>
+                  </tr>
+                </tbody>
+              </table>
             </section>
 
             {/* 지원정보 */}
             <section ref={applyRef} className={styles.section}>
-              <h3 className={styles.sectionTitle}>지원정보</h3>
+              <h3 className={styles.sectionTitle}>지원방법</h3>
               <ul className={styles.infoList}>
-                <li>경력: {noticeDetail.recruitSeNm || '정보 없음'}</li>
-                <li>학력: {noticeDetail.acbgCondNmLst || '정보 없음'}</li>
-                <h4>지원방법</h4>
                 <li>{noticeDetail.scrnprcdrMthdExpln || '정보 없음'}</li>
-                
-                <h4>자세한 공고 정보</h4>
-                <li><a href={noticeDetail.srcUrl} target="_blank" rel="noreferrer">{noticeDetail.srcUrl || '정보 없음'}</a></li>
+                <h4>자세한 정보</h4>
+                <li>
+                  {noticeDetail.srcUrl && (noticeDetail.srcUrl.startsWith('www') || noticeDetail.srcUrl.startsWith('http')) ? (
+                    <a href={noticeDetail.srcUrl} target="_blank" rel="noreferrer">{noticeDetail.srcUrl}</a>
+                  ) : (
+                    '정보 없음'
+                  )}
+                </li>
+              </ul>
+            </section>
+
+            {/* 접수기간 */}
+            <section ref={dueRef} className={styles.section}>
+              <h3 className={styles.sectionTitle}>접수기간</h3>
+              <ul className={styles.infoList}>
+                <li style={{color: 'rgb(251, 93, 31)', fontSize: '1.2rem', fontWeight: '500'}}>- {noticeDetail.pbancBgngYmd || '정보 없음'} ~ {noticeDetail.pbancEndYmd + " (23:59)" || '정보 없음'} </li>
               </ul>
             </section>
 
             {/* 기타정보 */}
             <section ref={etcRef} className={styles.section}>
-              <h3 className={styles.sectionTitle}>기타정보</h3>
+              <h3 className={styles.sectionTitle}>기타 안내사항</h3>
               <h4>지원 조건</h4>
               <p>{noticeDetail.aplyQlfcCn || '지원 조건 없음'}</p>
               <h4>우대 조건</h4>

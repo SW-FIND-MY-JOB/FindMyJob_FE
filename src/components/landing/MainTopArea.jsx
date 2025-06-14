@@ -9,7 +9,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import RecruitmentCard from './RecruitmentCard';
 import LoginModal from '../login/LoginModal';
 
-export default function MainTopArea(){
+export default function MainTopArea({isUpdateScrap, setIsUpdateScrap}){
     const [isRecentNotice, setIsRecentNotice] = useState(true);
     const { isLogin } = useAuth();
 
@@ -96,6 +96,7 @@ export default function MainTopArea(){
             console.log(isScrap);
             await toggleScrapNotice(id, isScrap);
             setScrapState(!isScrap);
+            setIsUpdateScrap(!isUpdateScrap);
         } catch (error){
             console.log(error.response);
         }
