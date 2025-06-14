@@ -66,10 +66,20 @@
 }
 
 .title {
-    height: 80px;
+    /* 높이 고정 대신 라인 수 기반 크기로 제어 */
+    line-height: 1.3em;              /* 한 줄 높이 */
+    max-height: calc(1.3em * 2);     /* 최대 2줄 */
+    height: auto;
     font-size: 14px;
     font-weight: bold;
     margin: 3px 0;
+    margin-bottom: 20px;
+    /* 2줄 이상일 때 ... 처리 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 .subInfo {
     color: #999;
