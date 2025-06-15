@@ -114,8 +114,19 @@ export const removeScrapResume = async (resumeId) => {
 // 비밀번호 변경
 export const changePassword = async (passwordData) => {
     try {
-        const response = await axiosInstanceForAuth.put('/api/users/password', passwordData);
-        return response.data;
+        // currentPassword를 password로 변환
+        const requestData = {
+            password: passwordData.currentPassword,
+            newPassword: passwordData.newPassword
+        };
+
+        const response = await axiosInstanceForAuth.patch('/auth-service/api/users/pw', requestData);
+        
+        if (response.data.isSuccess) {
+            return response.data;
+        } else {
+            throw new Error(response.data.message || '비밀번호 변경에 실패했습니다.');
+        }
     } catch (error) {
         throw error;
     }
