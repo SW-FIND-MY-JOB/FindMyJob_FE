@@ -1,34 +1,37 @@
 .mypageContainer {
   width: 100%;
-  min-height: calc(100vh - 200px);
-  padding: 2rem 0;
+  min-height: calc(100vh - 64px);
+  padding: 0;
 }
 
 .mypageLayout {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
+  margin-left: 205px;
   display: flex;
-  gap: 2rem;
-  padding: 0 2rem;
+  gap: 3rem;
+  padding: 1rem 2rem;
 }
 
 .sidebar {
-  width: 280px;
+  width: 220px;
+  flex-shrink: 0;
   background: white;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   height: fit-content;
+  margin-left: -1rem;
+  margin-top: 1rem;
 }
 
 .userInfo {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1rem;
-  margin-bottom: 2rem;
-  background-color: #f8f9fa;
-  border-radius: 8px;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .userIcon {
@@ -49,7 +52,7 @@
 }
 
 .menuSection {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .menuSection:last-child {
@@ -57,19 +60,17 @@
 }
 
 .menuTitle {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid #f0f0f0;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 0.8rem;
+  font-weight: 500;
 }
 
 .menuIcon {
-  color: #1976d2;
+  font-size: 1.2rem;
 }
 
 .menuItems {
@@ -79,23 +80,24 @@
 }
 
 .menuItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   padding: 0.8rem 1rem;
   border: none;
   background: none;
+  width: 100%;
   text-align: left;
-  font-size: 1rem;
   color: #666;
+  font-size: 0.95rem;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
 }
 
 .menuItem:hover {
-  background-color: #f8f9fa;
-  color: #333;
+  background-color: #f5f5f5;
+  color: #1976d2;
 }
 
 .menuItem.active {
@@ -110,23 +112,29 @@
 
 .content {
   flex: 1;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
+  min-width: 0;
+  max-width: 1000px;
+  padding-top: 0;
+  margin-top: 1rem;
 }
 
 @media (max-width: 768px) {
+  .mypageContainer {
+    padding: 1rem;
+  }
+
   .mypageLayout {
     flex-direction: column;
-    padding: 0 1rem;
+    padding: 0;
   }
 
   .sidebar {
     width: 100%;
+    margin-left: 0;
+    margin-top: 0;
   }
 
   .content {
-    padding: 1.5rem;
+    margin-top: 0;
   }
 } 

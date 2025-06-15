@@ -45,58 +45,61 @@ const ChangePassword = () => {
 
   return (
     <div className={styles.changePassword}>
-      <h2>비밀번호 변경</h2>
-      <form onSubmit={handleSubmit}>
-        <div className={styles.formGroup}>
-          <label htmlFor="currentPassword">현재 비밀번호</label>
-          <input
-            type="password"
-            id="currentPassword"
-            name="currentPassword"
-            value={formData.currentPassword}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <label htmlFor="newPassword">새 비밀번호</label>
-          <input
-            type="password"
-            id="newPassword"
-            name="newPassword"
-            value={formData.newPassword}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <label htmlFor="confirmPassword">새 비밀번호 확인</label>
-          <input
-            type="password"
-            id="confirmPassword"
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        {error && (
-          <div className={styles.errorMessage}>
-            <RiErrorWarningLine size={18} />
-            {error}
+      <div className={styles.passwordContainer}>
+        <h2>비밀번호 변경</h2>
+        <form onSubmit={handleSubmit}>
+          <div className={styles.formGroup}>
+            <label htmlFor="currentPassword">현재 비밀번호</label>
+            <input
+              type="password"
+              id="currentPassword"
+              name="currentPassword"
+              value={formData.currentPassword}
+              onChange={handleChange}
+              placeholder="비밀번호 입력"
+              required
+            />
           </div>
-        )}
-        {success && (
-          <div className={styles.successMessage}>
-            <RiCheckLine size={18} />
-            {success}
+          <div className={styles.formGroup}>
+            <label htmlFor="newPassword">새 비밀번호</label>
+            <input
+              type="password"
+              id="newPassword"
+              name="newPassword"
+              value={formData.newPassword}
+              onChange={handleChange}
+              placeholder="새 비밀번호 입력"
+              required
+            />
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              placeholder="새 비밀번호 확인"
+              required
+              className={styles.confirmPasswordInput}
+            />
           </div>
-        )}
-        <button type="submit" className={styles.submitBtn}>
-          <RiLockPasswordLine size={18} />
-          비밀번호 변경
-        </button>
-      </form>
+          {error && (
+            <div className={styles.errorMessage}>
+              <RiErrorWarningLine size={18} />
+              {error}
+            </div>
+          )}
+          {success && (
+            <div className={styles.successMessage}>
+              <RiCheckLine size={18} />
+              {success}
+            </div>
+          )}
+          <button type="submit" className={styles.submitBtn}>
+            <RiLockPasswordLine size={18} />
+            비밀번호 변경
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

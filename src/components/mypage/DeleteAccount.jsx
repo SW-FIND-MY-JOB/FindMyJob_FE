@@ -15,19 +15,19 @@ const DeleteAccount = () => {
 
     try {
       await deleteAccount(password);
-      setSuccess('계정이 성공적으로 삭제되었습니다.');
+      setSuccess('회원정보가 성공적으로 삭제되었습니다.');
       setPassword('');
     } catch (error) {
-      setError(error.response?.data?.message || '계정 삭제에 실패했습니다.');
+      setError(error.response?.data?.message || '회원정보 삭제에 실패했습니다.');
     }
   };
 
   return (
     <div className={styles.deleteAccount}>
-      <h2>계정 삭제</h2>
+      <h2>회원 탈퇴</h2>
       <p className={styles.warning}>
         <RiErrorWarningLine size={20} />
-        계정을 삭제하면 모든 데이터가 영구적으로 삭제되며 복구할 수 없습니다.
+        회원을 탈퇴하면 모든 데이터가 영구적으로 삭제되며 복구할 수 없습니다.
       </p>
       <form onSubmit={handleSubmit}>
         <div className={styles.formGroup}>
@@ -54,7 +54,7 @@ const DeleteAccount = () => {
         )}
         <button type="submit" className={styles.deleteBtn}>
           <RiUserUnfollowLine size={18} />
-          계정 삭제
+          회원 탈퇴
         </button>
       </form>
     </div>

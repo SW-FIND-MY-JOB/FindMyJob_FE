@@ -1,8 +1,211 @@
+.container {
+  padding: 20px;
+  max-width: 1600px;
+  width: 111%;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resumeContainer {
+  width: 100%;
+  padding: 0;
+  margin-top: -1rem;
+}
+
 .scrapResume {
   width: 100%;
 }
 
-.noScrap {
+.header {
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.resumeTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-left: none;
+  border-right: none;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.resumeTable thead {
+  background-color: white;
+}
+
+.resumeTable th {
+  padding: 12px 8px;
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+  border-bottom: 2px solid #ddd;  
+  border-left: none;
+  border-right: none;
+}
+
+.resumeTable td {
+  padding: 12px 8px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  border-left: none;
+  border-right: none;
+  vertical-align: middle;
+}
+
+.resumeRow {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.resumeRow:hover {
+  background-color: #f8f9fa;
+}
+
+.titleCell {
+  text-align: left !important;
+  max-width: 400px;
+}
+
+.resumeTitle {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.resumeContent {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.footer {
+  position: relative;
+  margin-top: 20px;
+}
+
+.pagination {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.pageButton {
+  padding: 8px 12px;
+  border: none;
+  background-color: transparent;
+  color: #333;
+  cursor: pointer;
+  transition: none;
+}
+
+.pageButton:hover {
+  background-color: transparent;
+  color: #333;
+}
+
+.pageButton.active {
+  color: #007bff;
+  background-color: transparent;
+}
+
+.writeButton {
+  position: absolute;
+  right: 20px;
+  bottom: 0;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.writeButton:hover {
+  background-color: #0056b3;
+}
+
+/* 관리 칸 너비 고정 */
+.resumeTable th:last-child,
+.resumeTable td:last-child {
+  width: 80px;
+  min-width: 80px;
+  max-width: 80px;
+}
+
+/* 북마크 버튼 스타일 (CoverLetterRow와 동일) */
+.bookmarkCell {
+  text-align: center;
+  padding: 8px !important;
+  width: 80px;
+  min-width: 80px;
+  max-width: 80px;
+}
+
+.bookmarkButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.bookmarkButton:focus {
+  outline: none;
+}
+
+.bookmarkButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.bookmarkButton.bookmarked:hover {
+  background-color: #e8f4fd;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 16px;
+  color: #666;
+}
+
+.error {
+  text-align: center;
+  padding: 40px;
+  font-size: 16px;
+  color: #dc3545;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
+.noResume {
   text-align: center;
   padding: 3rem 2rem;
   background-color: #f8f9fa;
@@ -10,13 +213,13 @@
   margin: 1rem 0;
 }
 
-.noScrap p {
+.noResume p {
   color: #666;
   margin-bottom: 1.5rem;
   font-size: 1.1rem;
 }
 
-.browseResumeBtn {
+.writeResumeBtn {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -28,96 +231,41 @@
   transition: all 0.2s ease;
   font-weight: 500;
   box-shadow: 0 2px 4px rgba(25, 118, 210, 0.2);
+  border: none;
+  cursor: pointer;
 }
 
-.browseResumeBtn:hover {
+.writeResumeBtn:hover {
   background-color: #1565c0;
   transform: translateY(-1px);
   box-shadow: 0 4px 8px rgba(25, 118, 210, 0.3);
 }
 
-.scrapList {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1rem;
-}
-
-.scrapItem {
-  background: white;
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
-  padding: 1.5rem;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.scrapItem:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.scrapItem h3 {
-  margin: 0 0 0.8rem 0;
-  color: #333;
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-.scrapItem p {
-  color: #666;
-  font-size: 0.9rem;
-  margin-bottom: 1.2rem;
-}
-
-.scrapActions {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.viewBtn {
-  flex: 1;
-  padding: 0.7rem;
-  background-color: #4caf50;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  text-align: center;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.removeScrapBtn {
-  flex: 1;
-  padding: 0.7rem;
-  background-color: #f44336;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.viewBtn:hover {
-  background-color: #43a047;
-}
-
-.removeScrapBtn:hover {
-  background-color: #e53935;
-}
-
+/* 반응형 디자인 */
 @media (max-width: 768px) {
-  .scrapList {
-    grid-template-columns: 1fr;
+  .container {
+    padding: 10px;
+  }
+  
+  .resumeTable {
+    font-size: 14px;
+  }
+  
+  .resumeTable th,
+  .resumeTable td {
+    padding: 8px 4px;
+  }
+  
+  .titleCell {
+    max-width: 200px;
+  }
+  
+  .footer {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .pagination {
+    justify-content: center;
   }
 } 
