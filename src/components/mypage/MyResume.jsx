@@ -18,14 +18,16 @@ const MyResume = () => {
   });
   const [loading, setLoading] = useState(true);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [updateResumes, setUpdateResumes] = useState(false);
   const navigate = useNavigate();
   const { isLogin } = useAuth();
 
-  const fetchResumes = async (page = 1) => {
+  const fetchResumes = async (page) => {
     try {
       const data = await getMyResumes(page, 5);
       setResumes(data.resumes);
       setPagination(data.pagination);
+      console.log('패치 리쥬메 호출 당함 성공!');
     } catch (error) {
       console.error('자소서를 불러오는데 실패했습니다:', error);
     } finally {
@@ -34,7 +36,7 @@ const MyResume = () => {
   };
 
   useEffect(() => {
-    fetchResumes();
+    fetchResumes(1);
   }, []);
 
   const handlePageChange = (page) => {
@@ -53,13 +55,14 @@ const MyResume = () => {
         const response = await deleteCoverLetter(id);
         if (response.isSuccess) {
           alert('자소서가 삭제되었습니다.');
-          setTimeout(() => {
-            if (resumes.length === 1 && pagination.currentPage > 1) {
-              fetchResumes(pagination.currentPage - 1);
-            } else {
-              fetchResumes(pagination.currentPage);
-            }
-          }, 100);
+          console.log(`현재페이지 넘버: ${pagination.currentPage}`);
+          if (resumes.length === 1 && pagination.currentPage > 0) {
+            console.log('패치 리쥬메 호출-1');
+            fetchResumes(pagination.currentPage);
+          } else {
+            console.log('패치 리쥬메 호출-2');
+            fetchResumes(pagination.currentPage + 1);
+          }
         }
       } catch (error) {
         console.error('자소서 삭제에 실패했습니다:', error);
@@ -146,7 +149,7 @@ const MyResume = () => {
                 <button
                   key={index + 1}
                   className={`${styles.pageButton} ${
-                    pagination.currentPage === index + 1 ? styles.active : ''
+                    pagination.currentPage === index ? styles.active : ''
                   }`}
                   onClick={() => handlePageChange(index + 1)}
                 >

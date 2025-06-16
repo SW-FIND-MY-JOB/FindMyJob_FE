@@ -28,7 +28,7 @@ const ScrapResume = () => {
     const fetchResumes = async (page) => {
         try {
             setLoading(true);
-            const response = await getScrapResumes(page, pagination.size);
+            const response = await getScrapResumes(page, 5);
             setResumes(response.resumes);
             setPagination(response.pagination);
             
@@ -178,16 +178,16 @@ const ScrapResume = () => {
 
                     <div className={styles.footer}>
                         <div className={styles.pagination}>
-                            {[...Array(pagination.totalPages)].map((_, index) => (
-                                <button
-                                    key={index + 1}
-                                    className={`${styles.pageButton} ${
-                                        pagination.currentPage === index + 1 ? styles.active : ''
-                                    }`}
-                                    onClick={() => handlePageChange(index + 1)}
-                                >
-                                    {index + 1}
-                                </button>
+                        {[...Array(pagination.totalPages)].map((_, index) => (
+                            <button
+                            key={index + 1}
+                            className={`${styles.pageButton} ${
+                                pagination.currentPage === index + 1 ? styles.active : ''
+                            }`}
+                            onClick={() => handlePageChange(index + 1)}
+                            >
+                            {index + 1}
+                            </button>
                             ))}
                         </div>
                         <button className={styles.writeButton} onClick={handleWrite}>
