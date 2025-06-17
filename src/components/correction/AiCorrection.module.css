@@ -107,12 +107,18 @@
   font-size: 15px;
   margin-bottom: 6px;
   margin-left: 0;
+  /* 긴 제목이 영역을 넘어갈 경우 자동 줄바꿈 */
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 .coverLetterListLiStyle p:nth-child(2) {
   font-size: 13px;
   color: #666;
   margin-bottom: 10px;
+  /* 긴 기관명이 영역을 넘어갈 경우 자동 줄바꿈 */
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 .coverLetterListLiStyle span {
@@ -120,6 +126,9 @@
   line-height: 1.5;
 
   color: #444;
+  /* 본문은 길이에 따라 영역이 늘어나며 자동 줄바꿈 */
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 .selected {
