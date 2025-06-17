@@ -10,25 +10,29 @@ import { User, CircleDollarSign } from 'lucide-react';
 
 
 export default function Header(){
-    const { name, point, isLogin, login, logout } = useAuth();
+    const { name, point, isLogin, login, logout, setAuthCheckComplete } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const [showLogin, setShowLogin] = useState(false);
     const [showMenu, setShowMenu] = useState(false)
-    const menuRef = useRef(null)
+    const menuRef = useRef(null);
 
     //사용자 로그인 유무 확인
     useEffect(() => {
         const fetchUser = async () => {
             try {
+                console.log("사용자 로그인 유무 확인");
                 const user = await getUserInfo();
                 login(user.name, user.point);
-            } catch {
+            } catch (error) {
+                console.log("사용자 로그인 유무 확인 실패");
+                console.log(error.response);
+                // 토큰이 유효하지 않으면 로그아웃 처리
                 logout();
             }
         }
         fetchUser();
-    }, [login, logout]);
+    }, [point]);
 
     //메뉴 바깥 영역 클릭시 함수
     useEffect(() => {
@@ -64,8 +68,8 @@ export default function Header(){
                 {/* 네비게이션션 영역 */}
                 <div className={styles.navigationContainer}>
                     <p
-                        onClick={() => navigate("/inform")}
-                        className={location.pathname === "/inform" ? styles.active : ""}
+                        onClick={() => navigate("/recruitment-notice")}
+                        className={location.pathname === "/recruitment-notice" ? styles.active : ""}
                     >
                         채용정보
                     </p>
@@ -76,13 +80,13 @@ export default function Header(){
                         일자리카페
                     </p>
                     <p
-                        onClick={() => navigate("/ai-assay")}
-                        className={location.pathname === "/assay" ? styles.active : ""}
+                        onClick={() => navigate("/correction")}
+                        className={location.pathname === "/correction" ? styles.active : ""}
                     >
                         AI 자소서 코칭
                     </p>
                     <p
-                        onClick={() => navigate("/assay")}
+                        onClick={() => navigate("/cover-letter-search")}
                         className={location.pathname === "/assay" ? styles.active : ""}
                     >
                         자소서 둘러보기

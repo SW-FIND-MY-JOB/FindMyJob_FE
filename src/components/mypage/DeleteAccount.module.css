@@ -1,0 +1,241 @@
+.deleteAccount {
+  width: calc(100% - 40px);
+  height: 400px;
+  margin: 0;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 내부 요소 전체 정렬용 래퍼 */
+.deleteAccountInner {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.pageHeader {
+  text-align: center;
+  margin-bottom: 12px;
+  margin-top: -6px;
+}
+
+.pageTitle {
+  font-size: 32px;
+  font-weight: 700;
+  color: #dc2626;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 40px;
+  margin-top: 5px;
+}
+
+.titleIcon {
+  font-size: 28px;
+}
+
+.warning {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin: 0 auto 32px;
+  color: #dc2626;
+  font-weight: 500;
+  max-width: 450px;
+  width: 100%;
+  text-align: left;
+  line-height: 1.4;
+  font-size: 14px;
+  height: 20px;
+}
+
+.warning svg {
+  flex-shrink: 0;
+}
+
+.deleteAccountInner form {
+  background: white;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15); 
+  backdrop-filter: blur(10px);
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.formGroup {
+  margin-bottom: 28px;
+  text-align: left;
+}
+
+.formGroup label {
+  display: block;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.formGroup input {
+  width: 100%;
+  padding: 16px 20px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: #f9fafb;
+  box-sizing: border-box;
+}
+
+.formGroup input:focus {
+  outline: none;
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+  background: white;
+}
+
+.formGroup input:hover {
+  border-color: #9ca3af;
+  background-color: white;
+}
+
+.formGroup input::placeholder {
+  color: #9ca3af;
+}
+
+.errorMessage,
+.successMessage {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.errorMessage {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+}
+
+.successMessage {
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #16a34a;
+}
+
+.errorMessage svg,
+.successMessage svg {
+  flex-shrink: 0;
+}
+
+.deleteBtn {
+  width: 100%;
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  color: white;
+  border: none;
+  padding: 16px 24px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.deleteBtn:hover {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+.deleteBtn:active {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+}
+
+.deleteBtn:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.deleteBtn svg {
+  flex-shrink: 0;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .deleteAccount {
+    padding: 15px;
+  }
+
+  .deleteAccount h2 {
+    font-size: 28px;
+  }
+
+  .deleteAccountInner {
+    padding: 30px 15px;
+  }
+
+  .deleteAccount form {
+    padding: 30px 20px;
+  }
+
+  .warning {
+    padding: 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .deleteAccount {
+    padding: 10px;
+  }
+
+  .deleteAccount h2 {
+    font-size: 24px;
+  }
+
+  .deleteAccountInner {
+    padding: 25px 10px;
+  }
+
+  .deleteAccount form {
+    padding: 25px 15px;
+  }
+
+  .formGroup input {
+    padding: 14px 16px;
+  }
+
+  .deleteBtn {
+    padding: 14px 20px;
+    font-size: 14px;
+  }
+}

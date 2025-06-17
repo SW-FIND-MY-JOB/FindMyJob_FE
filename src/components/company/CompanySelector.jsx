@@ -9,13 +9,13 @@ export default function CompanySelector({ onSelect, direction = 'up' }) {
   const [selected, setSelected] = useState('');
   const wrapperRef = useRef(null);
 
-  const filtered = companyList.filter((name) => name.includes(query));
+  const filtered = ['모두보기', ...companyList.filter((name) => name.includes(query))];
 
   const handleSelect = (name) => {
     setSelected(name);
-    setQuery(name);
+    setQuery(name === '모두보기' ? '' : name);
     setShowDropdown(false);
-    if (onSelect) onSelect(name);
+    if (onSelect) onSelect(name === '모두보기' ? '' : name);
   };
 
   useEffect(() => {
@@ -53,9 +53,9 @@ export default function CompanySelector({ onSelect, direction = 'up' }) {
           </div>
 
           <ul className={styles.dropdownList}>
-            {filtered.map((name, i) => (
+            {filtered.map((name) => (
               <li
-                key={i}
+                key={name}
                 className={styles.dropdownItem}
                 onClick={() => handleSelect(name)}
               >

@@ -1,14 +1,14 @@
 .cafeLayout{
     height: 100%;
-    width: 100%;
-    max-width: 1540px;
-    min-width: 1190px;
-    padding: 0 20px;
-
+    width: 90%;
+    max-width: 1500px;
+    min-width: 1150px;
+    /* padding: 0 20px; */
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    gap: 20px;
 }
 
 .cafeListContainer{
@@ -20,7 +20,7 @@
     display: flex;
     flex-direction: column;
 
-    margin: 0 10px 10px 20px;
+    /* margin: 0 10px 10px 20px; */
 
     /* 스타일! */
     background-color: white;
@@ -145,7 +145,7 @@
     /* 레이아웃 */
     flex: 1;
     height: 98%;
-    margin: 0 20px 10px 10px;
+    /* margin: 0 20px 10px 10px; */
 
     /* 스타일 */
     border: solid;

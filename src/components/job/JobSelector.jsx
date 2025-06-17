@@ -9,13 +9,13 @@ export default function JobSelector({ onSelect, direction = 'up' }) {
   const [selected, setSelected] = useState('');
   const wrapperRef = useRef(null);
 
-  const filtered = dutyList.filter((job) => job.includes(query));
+  const filtered = ['모두보기', ...dutyList.filter((job) => job.includes(query))];
 
   const handleSelect = (job) => {
     setSelected(job);
-    setQuery(job);
+    setQuery(job === '모두보기' ? '' : job);
     setShowDropdown(false);
-    if (onSelect) onSelect(job);
+    if (onSelect) onSelect(job === '모두보기' ? '' : job);
   };
 
   useEffect(() => {
@@ -53,9 +53,9 @@ export default function JobSelector({ onSelect, direction = 'up' }) {
           </div>
 
           <ul className={styles.dropdownList}>
-            {filtered.map((job, i) => (
+            {filtered.map((job) => (
               <li
-                key={i}
+                key={job}
                 className={styles.dropdownItem}
                 onClick={() => handleSelect(job)}
               >

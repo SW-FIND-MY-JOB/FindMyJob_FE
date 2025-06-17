@@ -7,31 +7,29 @@
   margin-bottom: -63px;   
 
   background-color: #f8f8f8;
-  padding: 16px;
-  border-radius: 12px;
+  padding: 0 16px 16px 16px; /* 상단 패딩 제거 */
+  border-radius: 30px;
   width: 300px;
-  height: fit-content;   /* ← 내용에 맞게 자동 조절 */
+  height: fit-content;
   display: flex;
   flex-direction: column;
   box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.15); /* 그림자 */
 }
 
-
 .listTitle {
-  margin-bottom: 12px;
+  margin: 0; /* 마진 제거 */
+  padding: 16px 0 12px 0; /* 패딩으로 간격 조정 */
   font-size: 18px;
   font-weight: bold;
   color: #333;
 }
 
 .scrollArea {
-  max-height: 540px; /* 5개 항목 기준 높이 (약 5 x 100~110px) */
+  max-height: 600px; /* 스크롤 영역 높이 증가 */
   overflow-y: auto;
   overflow-anchor: none;
   padding-right: 4px;
 }
-
-
 
 .listItem {
   padding: 12px;
@@ -41,21 +39,82 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   cursor: pointer;
   transition: background-color 0.2s ease;
+  overflow: hidden;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .listItem:hover {
   background-color: #f0f0f0;
 }
 
-.listItem strong {
-  display: block;
-  font-size: 15px;
-  color: #222;
+.company {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
 }
 
-.listItem p {
+.question {
   font-size: 13px;
   color: #555;
-  margin-top: 4px;
+  margin-bottom: 8px;
   line-height: 1.4;
+  font-weight: 700;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+
+.questionLabel {
+  display: inline-block;
+  background-color: #007aff;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.preview {
+  font-size: 12px;
+  color: #888;
+  background-color: #f8f9fa;
+  padding: 8px;
+  border-radius: 4px;
+  border-left: 3px solid #e9ecef;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  height: 3.36em; /* 정확히 3줄 높이로 고정 (line-height 1.4 * 3줄) */
+  position: relative;
+}
+
+.emptyMessage {
+  padding: 20px;
+  text-align: center;
+  color: #999;
+  font-size: 14px;
+  background-color: #fff;
+  border-radius: 8px;
 }

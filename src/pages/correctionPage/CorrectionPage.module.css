@@ -1,0 +1,25 @@
+.correctionLayout{
+    /* 레이아웃 */
+    width: 100%;
+    height: calc(100vh - 130px);
+    min-height: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.correctionContainer{
+    /* 레이아웃 */
+    width: 90%;
+    max-width: 1500px;
+    min-width: 1150px;
+    height: 100%;
+
+    /* margin-left: 60px; */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}

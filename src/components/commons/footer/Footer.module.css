@@ -21,7 +21,7 @@
     
     /* 스타일 */
     background-color: white;
-    border-radius: 50px;
+    border-radius: 30px;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
 }
 
@@ -44,7 +44,7 @@
     margin: 0;
 
     /* 스타일 */
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 500;
     color: black;
 }
@@ -54,7 +54,7 @@
     margin: 0;
 
     /* 스타일 */
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 500;
     color: #024DEF;
 }

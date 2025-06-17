@@ -1,42 +1,71 @@
 .mainSection {
   flex: 2;
   background-color: #fff;
-  border-radius: 12px;
+  border-radius: 30px;
   padding: 32px;
 
   box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.12); /* 그림자 */
 
   min-height: 100%; /* ✅ 높이 제한 없음 */
   min-width: 400px;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .content {
   line-height: 1.7;
   margin-top: 16px;
   white-space: pre-line; /* ✅ 줄 바꿈 반영 */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
 }
 
+.paragraph {
+  margin-bottom: 8px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
+}
 
 .title {
   font-size: 26px;
   font-weight: bold;
   color: #333;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  flex: 1;
+  min-width: 0;
 }
 
 .headerRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .subtitle {
-  font-size: 16px;
-  color: #777;
+  font-size: 18px;
+  color: #222;
+  font-weight: 600;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  flex: 1;
+  min-width: 0;
 }
 
 .metaActions {
   font-size: 14px;
   color: #666;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .divider {
@@ -47,6 +76,12 @@
 .action {
   cursor: pointer;
   color: #007aff;
+}
+
+.action.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  color: #999;
 }
 
 .questionBlock {
@@ -61,6 +96,11 @@
 
 .question {
   color: #555;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
+  line-height: 1.5;
 }
 
 .topRow {
@@ -68,6 +108,8 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .scrapButton {
@@ -89,5 +131,32 @@
   color: #ffd700; /* 골드 색상 */
   border-color: #ffd700;
   font-weight: bold;
+}
+
+.scrapButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.scrapButton:disabled:hover {
+  background-color: transparent;
+}
+
+.createDate {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
+  font-size: 14px;
+  color: #999;
+  text-align: right;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  color: #666;
+  font-size: 16px;
 }
 
