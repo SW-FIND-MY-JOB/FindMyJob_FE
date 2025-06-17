@@ -65,10 +65,10 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.95rem;
-  color: #666;
+  font-size: 1.2rem;
+  color: #333;
   margin-bottom: 0.8rem;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .menuIcon {

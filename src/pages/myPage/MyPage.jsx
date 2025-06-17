@@ -73,7 +73,6 @@ const MyPage = () => {
 
           <div className={styles.menuSection}>
             <h3 className={styles.menuTitle}>
-              <RiFileList3Line className={styles.menuIcon} />
               자소서
             </h3>
             <div className={styles.menuItems}>
@@ -96,7 +95,6 @@ const MyPage = () => {
 
           <div className={styles.menuSection}>
             <h3 className={styles.menuTitle}>
-              <RiUserLine className={styles.menuIcon} />
               계정
             </h3>
             <div className={styles.menuItems}>
