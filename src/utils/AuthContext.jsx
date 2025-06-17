@@ -1,16 +1,15 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useState, useEffect } from 'react'
+import { getToken } from './auth';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [name, setName] = useState(null);
     const [point, setPoint] = useState(null);
-    const [isLogin, setIsLogin] = useState(false);
-
-    console.log(`[AuthProvider] 로그인 유무: ${isLogin}`);
+    const [isLogin, setIsLogin] = useState(!!getToken());
+    const [isAuthChecked, setIsAuthChecked] = useState(false); // 인증 확인 완료 여부
 
     const login = (name, point) => {
-        //이름이나 point가 null이면
         if ( name == null || point == null ){
             setIsLogin(false);
             setName(null);
@@ -21,17 +20,32 @@ export const AuthProvider = ({ children }) => {
             setName(name);
             setPoint(point);
         }
+        setIsAuthChecked(true); // 인증 확인 완료
     }
 
     const logout = () => {
         setIsLogin(false);
         setName(null);
         setPoint(null);
+        setIsAuthChecked(true); // 로그아웃도 인증 확인 완료 상태
         sessionStorage.removeItem('accessToken');
     }
 
+    const setAuthCheckComplete = () => {
+        setIsAuthChecked(true);
+    }
+
     return(
-        <AuthContext.Provider value={{name, point, isLogin, setPoint, login, logout}}>
+        <AuthContext.Provider value={{
+            name, 
+            point, 
+            isLogin, 
+            isAuthChecked, 
+            setPoint, 
+            login, 
+            logout, 
+            setAuthCheckComplete
+        }}>
             {children}
         </AuthContext.Provider>
     )

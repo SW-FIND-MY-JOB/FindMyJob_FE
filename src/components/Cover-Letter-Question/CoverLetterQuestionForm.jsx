@@ -71,6 +71,11 @@ export default function CoverLetterQuestionForm() {
   return (
     <div className={styles.container}>
       <div className={styles.formSection}>
+        <h1 className={styles.pageTitle}>자기소개서 작성</h1>
+        <div className={styles.guideMessage}>
+          <strong>나의 자소서가 누군가의 길잡이가 될 수 있어요.</strong><br />
+          여러분의 경험을 공유해 주세요. 누군가에게 큰 힘이 됩니다.🫶
+        </div>
         <label className={styles.label}>질문</label>
         <input
           type="text"

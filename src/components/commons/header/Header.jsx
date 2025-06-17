@@ -10,7 +10,7 @@ import { User, CircleDollarSign } from 'lucide-react';
 
 
 export default function Header(){
-    const { name, point, isLogin, login, logout } = useAuth();
+    const { name, point, isLogin, login, logout, setAuthCheckComplete } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const [showLogin, setShowLogin] = useState(false);
@@ -25,8 +25,10 @@ export default function Header(){
                 const user = await getUserInfo();
                 login(user.name, user.point);
             } catch (error) {
-                console.log("사용자 로그인 유무 확인");
+                console.log("사용자 로그인 유무 확인 실패");
                 console.log(error.response);
+                // 토큰이 유효하지 않으면 로그아웃 처리
+                logout();
             }
         }
         fetchUser();
