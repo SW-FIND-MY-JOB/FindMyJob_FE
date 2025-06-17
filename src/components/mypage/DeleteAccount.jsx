@@ -43,7 +43,12 @@ const DeleteAccount = () => {
   return (
     <div className={styles.deleteAccount}>
       <div className={styles.deleteAccountInner}>
-        <h2>회원 탈퇴</h2>
+        <div className={styles.pageHeader}>
+          <div className={styles.pageTitle}>
+            <RiUserUnfollowLine className={styles.titleIcon} />
+            회원 탈퇴
+          </div>
+        </div>
         <p className={styles.warning}>
           <RiErrorWarningLine size={20} />
           회원을 탈퇴하면 모든 데이터가 영구적으로 삭제되며 복구할 수 없습니다.

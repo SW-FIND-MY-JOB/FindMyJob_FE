@@ -4,11 +4,14 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  width: 90%;
+  max-width: 1500px;
+  min-width: 1150px;
+  margin: 0 auto;
 }
 
 .contentContainer {
-  max-width: 1210px;
-  width: 95%;
+  width: 100%;
   background-color: white;
   padding: 40px;
   border-radius: 24px;
