@@ -1,4 +1,7 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   padding: 20px;
   width: calc(100% - 40px);
   margin: 0;
@@ -8,6 +11,7 @@
 }
 
 .resumeContainer {
+  flex-grow: 1;
   width: 100%;
   padding: 0;
   margin-top: -1rem;
@@ -104,14 +108,18 @@
 
 .footer {
   position: relative;
-  margin-top: 20px;
+  margin-top: auto;
+  padding-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pagination {
   display: flex;
   gap: 5px;
   justify-content: center;
-  margin-bottom: 15px;
+  margin-bottom: 0;
 }
 
 .pageButton {
@@ -152,7 +160,6 @@
 }
 
 /* 테이블 칸 너비 고정 */
-/* 글번호 */
 .resumeTable th:nth-child(1),
 .resumeTable td:nth-child(1) {
   width: 80px;
@@ -160,7 +167,6 @@
   max-width: 80px;
 }
 
-/* 기업명 */
 .resumeTable th:nth-child(2),
 .resumeTable td:nth-child(2) {
   width: 120px;
@@ -168,7 +174,6 @@
   max-width: 120px;
 }
 
-/* 직무명 */
 .resumeTable th:nth-child(3),
 .resumeTable td:nth-child(3) {
   width: 120px;
@@ -176,14 +181,12 @@
   max-width: 120px;
 }
 
-/* 자소서 질문/내용 */
 .resumeTable th:nth-child(4),
 .resumeTable td:nth-child(4) {
   width: auto;
   min-width: 300px;
 }
 
-/* 조회수 */
 .resumeTable th:nth-child(5),
 .resumeTable td:nth-child(5) {
   width: 80px;
@@ -191,7 +194,6 @@
   max-width: 80px;
 }
 
-/* 관리 칸 너비 고정 */
 .resumeTable th:last-child,
 .resumeTable td:last-child {
   width: 80px;
@@ -199,7 +201,7 @@
   max-width: 80px;
 }
 
-/* 북마크 버튼 스타일 (CoverLetterRow와 동일) */
+/* 북마크 버튼 */
 .bookmarkCell {
   text-align: center;
   padding: 8px !important;
@@ -220,9 +222,6 @@
   justify-content: center;
   margin: 0 auto;
   outline: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
@@ -299,26 +298,28 @@
   .container {
     padding: 10px;
   }
-  
+
   .resumeTable {
     font-size: 14px;
   }
-  
+
   .resumeTable th,
   .resumeTable td {
     padding: 8px 4px;
   }
-  
+
   .titleCell {
     max-width: 200px;
   }
-  
+
   .footer {
     flex-direction: column;
     gap: 15px;
+    padding-bottom: 60px;
   }
-  
+
   .pagination {
     justify-content: center;
+    margin-bottom: 0;
   }
-} 
+}

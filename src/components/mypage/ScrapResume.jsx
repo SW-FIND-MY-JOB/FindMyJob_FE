@@ -120,7 +120,7 @@ const ScrapResume = () => {
                 <div className={styles.noResume}>
                     <p>스크랩한 자소서가 없습니다.</p>
                     {isLogin ? (
-                        <button onClick={() => navigate('/cover-letter')} className={styles.writeResumeBtn}>
+                        <button onClick={() => navigate('/cover-letter-search')} className={styles.writeResumeBtn}>
                             <RiAddLine size={20} />
                             자소서 둘러보기
                         </button>

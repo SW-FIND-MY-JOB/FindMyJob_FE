@@ -133,9 +133,13 @@ export const changePassword = async (passwordData) => {
 };
 
 // 회원 탈퇴
-export const deleteAccount = async () => {
+export const deleteAccount = async (password) => {
     try {
-        const response = await axiosInstanceForAuth.delete('/api/users');
+        const response = await axiosInstanceForAuth.delete('/auth-service/api/users/delete', {
+            data: {
+                password: password
+            }
+        });
         return response.data;
     } catch (error) {
         throw error;
