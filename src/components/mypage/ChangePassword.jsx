@@ -227,17 +227,6 @@ const ChangePassword = () => {
               </div>
             )}
 
-            {/* 보안 팁 */}
-            <div className={styles.securityTips}>
-              <h3><RiShieldLine /> 보안 권장사항</h3>
-              <ul>
-                <li>8자 이상의 영문, 숫자, 특수문자 조합</li>
-                <li>개인정보(이름, 생년월일 등) 사용 금지</li>
-                <li>다른 사이트와 다른 비밀번호 사용</li>
-                <li>정기적인 비밀번호 변경 (3-6개월)</li>
-              </ul>
-            </div>
-
             {/* 제출 버튼 */}
             <button type="submit" className={styles.submitBtn}>
               🔒 비밀번호 변경

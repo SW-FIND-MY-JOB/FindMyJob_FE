@@ -38,6 +38,8 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
+  height: 40px;
+  margin-top: 5px;
 }
 
 .titleIcon {
@@ -60,6 +62,7 @@
   text-align: left;
   line-height: 1.4;
   font-size: 14px;
+  height: 20px;
 }
 
 .warning svg {
