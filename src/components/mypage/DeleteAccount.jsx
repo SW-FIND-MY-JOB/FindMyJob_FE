@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { deleteAccount } from '../../api/myPage/myPageAPI';
 import { logoutRequest } from '../../api/authService/authAPI';
 import { useAuth } from '../../utils/AuthContext';
-import styles from './DeleteAccount.module.css';
 import { RiUserUnfollowLine, RiErrorWarningLine, RiCheckLine } from 'react-icons/ri';
+import styles from './DeleteAccount.module.css';
 
 const DeleteAccount = () => {
   const [password, setPassword] = useState('');
@@ -45,7 +45,6 @@ const DeleteAccount = () => {
       <div className={styles.deleteAccountInner}>
         <div className={styles.pageHeader}>
           <div className={styles.pageTitle}>
-            <RiUserUnfollowLine className={styles.titleIcon} />
             회원 탈퇴
           </div>
         </div>

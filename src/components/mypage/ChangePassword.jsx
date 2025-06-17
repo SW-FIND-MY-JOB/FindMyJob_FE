@@ -124,7 +124,10 @@ const ChangePassword = () => {
             {/* <span className={styles.titleIcon}>🔐</span> */}
             비밀번호 변경
           </h1>
-          <p className={styles.pageSubtitle}>보안을 위해 정기적으로 비밀번호를 변경해 주세요</p>
+          <p className={styles.pageSubtitle}>
+            <RiShieldLine size={20} />
+            보안을 위해 정기적으로 비밀번호를 변경해 주세요
+          </p>
         </div>
 
         {/* 폼 카드 */}
