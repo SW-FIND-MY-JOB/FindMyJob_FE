@@ -114,6 +114,9 @@ const ScrapResume = () => {
         <div className={styles.container}>
             <div className={styles.header}>
                 <h2>&emsp;스크랩한 자소서</h2>
+                <button className={styles.writeButton} onClick={handleWrite}>
+                    글쓰기
+                </button>
             </div>
             
             {resumes.length === 0 ? (
@@ -190,9 +193,6 @@ const ScrapResume = () => {
                             </button>
                             ))}
                         </div>
-                        <button className={styles.writeButton} onClick={handleWrite}>
-                            글쓰기
-                        </button>
                     </div>
                 </>
             )}

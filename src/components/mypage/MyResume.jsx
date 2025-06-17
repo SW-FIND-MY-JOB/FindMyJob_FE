@@ -86,6 +86,9 @@ const MyResume = () => {
     <div className={styles.container}>
       <div className={styles.header}>
         <h2>&emsp;내 자소서</h2>
+        <button className={styles.writeButton} onClick={handleWrite}>
+              글쓰기
+            </button>
       </div>
       
       {resumes.length === 0 ? (
@@ -157,9 +160,6 @@ const MyResume = () => {
                 </button>
               ))}
             </div>
-            <button className={styles.writeButton} onClick={handleWrite}>
-              글쓰기
-            </button>
           </div>
         </>
       )}

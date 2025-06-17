@@ -1,11 +1,12 @@
 .container {
-  padding: 40px 80px;
+  padding: 40px 0px;
   background-color: #ffffffee;
   border-radius: 30px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
   border: 1px solid #e5e7eb;
-  width: 1140px;
-  max-width: 1140px;
+  width: 90%;
+  max-width: 1500px;
+  min-width: 1150px;
   margin: 0 auto;
   backdrop-filter: blur(12px);
 }

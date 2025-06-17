@@ -9,18 +9,6 @@
   border-radius: 30px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   min-height: 400px;
-  animation: fadeIn 0.6s ease-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .resumeContainer {
@@ -28,18 +16,6 @@
   width: 100%;
   padding: 0;
   margin-top: -1rem;
-  animation: slideUp 0.8s ease-out;
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .myResume {
@@ -48,6 +24,9 @@
 
 .header {
   margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header h2 {
@@ -96,15 +75,11 @@
 
 .resumeRow {
   cursor: pointer;
-  transition: all 0.3s ease;
   position: relative;
-  overflow: hidden;
 }
 
 .resumeRow:hover {
   background-color: #f8f9fa;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .resumeRow::after {
@@ -114,7 +89,6 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #007bff, transparent);
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
@@ -187,9 +161,6 @@
 }
 
 .writeButton {
-  position: absolute;
-  right: 20px;
-  bottom: 0;
   padding: 10px 20px;
   background-color: #007bff;
   color: white;
@@ -197,7 +168,7 @@
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
-  transition: all 0.3s ease;
+  margin-right: 10px;
 }
 
 .writeButton:hover {
@@ -254,7 +225,6 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
-  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   gap: 4px;
@@ -262,25 +232,8 @@
   overflow: hidden;
 }
 
-.deleteBtn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s;
-}
-
-.deleteBtn:hover::before {
-  left: 100%;
-}
-
 .deleteBtn:hover {
   background-color: #c82333;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.2);
 }
 
 .loading {
@@ -319,7 +272,6 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.8rem 1.5rem;
   background-color: #1976d2;
   color: white;
   text-decoration: none;
