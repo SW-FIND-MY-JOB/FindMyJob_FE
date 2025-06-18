@@ -88,9 +88,15 @@ export default function Header(){
                     </p>
                     <p
                         onClick={() => navigate("/cover-letter-search")}
-                        className={location.pathname === "/assay" ? styles.active : ""}
+                        className={location.pathname === "/cover-letter-search" ? styles.active : ""}
                     >
                         자소서 둘러보기
+                    </p>
+                    <p
+                        onClick={() => navigate("/ranking")}
+                        className={location.pathname === "/ranking" ? styles.active : ""}
+                    >
+                        랭킹
                     </p>
                 </div>
                 {/* 로그인 영역 */}
