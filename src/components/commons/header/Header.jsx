@@ -16,6 +16,7 @@ export default function Header(){
     const [showLogin, setShowLogin] = useState(false);
     const [showMenu, setShowMenu] = useState(false)
     const menuRef = useRef(null);
+    const isRankingPage = location.pathname === "/ranking";
 
     //사용자 로그인 유무 확인
     useEffect(() => {
@@ -58,7 +59,7 @@ export default function Header(){
     }
 
     return(
-        <div className={styles.headerContainer}>
+        <div className={styles.headerContainer} style={{margin: isRankingPage ? '0' : '0 0 1% 0'}}>
             {/* 헤더 윗부분 */}
             <div className={styles.headerTop}>
                 {/* 로고 영역 */}
