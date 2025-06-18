@@ -9,6 +9,7 @@
   min-width: 1150px;
   margin: 0 auto;
   backdrop-filter: blur(12px);
+  position: relative;
 }
 
 .formSection {
@@ -22,7 +23,7 @@
 .pageTitle {
   width: 60%;
   text-align: center;
-  font-size: 32px;
+  font-size: 40px;
   font-weight: 700;
   color: #1a1a1a;
   margin: 20px 0 20px 0;
@@ -52,7 +53,7 @@
   width: 60%;
   text-align: left;
   font-weight: 600;
-  margin: 24px 0 10px;
+  margin: 10px 0;
   font-size: 16px;
   color: #444;
 }
@@ -71,7 +72,7 @@
 }
 
 .mainTextarea {
-  min-height: 700px;
+  min-height: 500px;
   font-size: 16px;
   resize: none;
   line-height: 1.6;
@@ -90,13 +91,13 @@
   text-align: right;
   font-size: 13px;
   color: #aaa;
-  margin: 6px auto 28px;
+  margin: 6px auto 10px;
   width: 60%;
 }
 
 .actionRow {
   width: 60%;
-  margin: 0 auto;
+  margin: 15px auto;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -153,4 +154,50 @@
   background-color: #0056b3;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
   transform: translateY(-1px);
+}
+
+/* === 스캐닝 로딩 오버레이 === */
+.loadingOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 30px;
+  z-index: 50;
+}
+
+/* 스캐닝 효과 */
+.loadingOverlay::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -150%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(120deg, rgba(0, 122, 255, 0.15) 0%, rgba(25, 127, 235, 0.35) 50%, rgba(0, 122, 255, 0.15) 100%);
+  transform: rotate(25deg);
+  animation: scanning 2.2s linear infinite;
+}
+
+@keyframes scanning {
+  0% {
+    left: -200%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+.loadingText {
+  position: relative;
+  font-size: 35px;
+  font-weight: 600;
+  color: #007aff;
+  z-index: 2;
 }
