@@ -10,7 +10,7 @@ import { User, CircleDollarSign } from 'lucide-react';
 
 
 export default function Header(){
-    const { name, point, isLogin, login, logout, setAuthCheckComplete } = useAuth();
+    const { name, point, isLogin, login, logout } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const [showLogin, setShowLogin] = useState(false);
@@ -119,10 +119,10 @@ export default function Header(){
                         <div className={styles.userContainer}>
                             {/* 클릭시 메뉴 함수 실행 */}
                             <p onClick={() => setShowMenu((prev) => !prev)}>
-                                <User size={15} strokeWidth={2.5}/>{name}님
+                                <User size={15} strokeWidth={2.5}/>&nbsp;{name}님
                             </p>
 
-                            <p><CircleDollarSign size={13} strokeWidth={2.5}/>{point}P</p>
+                            <p><CircleDollarSign size={13} strokeWidth={2.5}/>&nbsp;{point}P</p>
                         </div>
 
                         {showMenu && (
