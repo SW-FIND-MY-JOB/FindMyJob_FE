@@ -41,25 +41,31 @@ const Ranking = () => {
         <div className={styles.prizeCard}>
           <FaCrown className={styles.goldIcon} />
           <h3>🏆 1등</h3>
-          <p>1,000 포인트</p>
           {rankings.length > 0 && (
-            <p className={styles.winnerName}>{rankings[0].writer}님</p>
+            <>
+              <p>{rankings[0].point}점</p>
+              <p className={styles.winnerName}>{rankings[0].writer}님</p>
+            </>
           )}
         </div>
         <div className={styles.prizeCard}>
           <FaMedal className={styles.silverIcon} />
           <h3>🥈 2등</h3>
-          <p>500 포인트</p>
           {rankings.length > 1 && (
-            <p className={styles.winnerName}>{rankings[1].writer}님</p>
+            <>
+              <p>{rankings[1].point}점</p>
+              <p className={styles.winnerName}>{rankings[1].writer}님</p>
+            </>
           )}
         </div>
         <div className={styles.prizeCard}>
           <FaAward className={styles.bronzeIcon} />
           <h3>🥉 3등</h3>
-          <p>300 포인트</p>
           {rankings.length > 2 && (
-            <p className={styles.winnerName}>{rankings[2].writer}님</p>
+            <>
+              <p>{rankings[2].point}점</p>
+              <p className={styles.winnerName}>{rankings[2].writer}님</p>
+            </>
           )}
         </div>
       </div>

@@ -42,9 +42,6 @@ const RankingList = ({ rankings }) => {
           <div className={styles.userInfo}>
             <div className={styles.topThreeInfo}>
               <span className={styles.userName}>{item.writer}</span>
-              <span className={styles.rankBadge}>
-                {index === 0 ? '🥇 1st Place' : index === 1 ? '🥈 2nd Place' : '🥉 3rd Place'}
-              </span>
             </div>
             <span className={styles.resumeTitle}>{item.title}</span>
             <span className={styles.companyInfo}>{item.instNm} - {item.ncsCdNmLst}</span>

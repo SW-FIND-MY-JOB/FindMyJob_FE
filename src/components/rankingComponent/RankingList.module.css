@@ -50,8 +50,6 @@
   border: 2px solid #FFD700;
   box-shadow: 0 8px 30px rgba(255, 215, 0, 0.2);
   transform: scale(1.02);
-  position: relative;
-  overflow: hidden;
 }
 
 .firstPlace:hover {
@@ -60,30 +58,11 @@
   box-shadow: 0 15px 35px rgba(255, 215, 0, 0.3);
 }
 
-.firstPlace::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent,
-    rgba(255, 215, 0, 0.2),
-    transparent
-  );
-  transform: rotate(45deg);
-  animation: shine 3s infinite;
-}
-
 .secondPlace {
   background: linear-gradient(135deg, rgba(230, 232, 250, 0.2), rgba(192, 192, 192, 0.2));
   border: 2px solid #E6E8FA;
   box-shadow: 0 8px 30px rgba(192, 192, 192, 0.3);
   transform: scale(1.01);
-  position: relative;
-  overflow: hidden;
 }
 
 .secondPlace:hover {
@@ -92,52 +71,16 @@
   box-shadow: 0 15px 35px rgba(192, 192, 192, 0.4);
 }
 
-.secondPlace::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
-  );
-  transform: rotate(45deg);
-  animation: shine 3s infinite;
-}
-
 .thirdPlace {
   background: linear-gradient(135deg, rgba(205, 127, 50, 0.1), rgba(184, 115, 51, 0.1));
   border: 2px solid #CD7F32;
   box-shadow: 0 8px 30px rgba(205, 127, 50, 0.2);
-  position: relative;
-  overflow: hidden;
 }
 
 .thirdPlace:hover {
   background: linear-gradient(135deg, rgba(205, 127, 50, 0.15), rgba(184, 115, 51, 0.15));
   border: 2px solid #CD7F32;
   box-shadow: 0 15px 35px rgba(205, 127, 50, 0.3);
-}
-
-.thirdPlace::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent,
-    rgba(205, 127, 50, 0.2),
-    transparent
-  );
-  transform: rotate(45deg);
-  animation: shine 3s infinite;
 }
 
 .rankInfo {
