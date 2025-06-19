@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { getMyResumes, deleteCoverLetter } from '../../api/myPage/myPageAPI';
+import { getMyResumes } from '../../api/myPage/myPageAPI';
 import styles from './MyResume.module.css';
 import { RiAddLine, RiEyeLine, RiDeleteBinLine } from 'react-icons/ri';
 import { useAuth } from '../../utils/AuthContext';
@@ -16,9 +16,7 @@ const MyResume = () => {
     isFirst: true,
     isLast: true
   });
-  const [loading, setLoading] = useState(true);
   const [showLoginModal, setShowLoginModal] = useState(false);
-  const [updateResumes, setUpdateResumes] = useState(false);
   const navigate = useNavigate();
   const { isLogin } = useAuth();
 
@@ -30,9 +28,7 @@ const MyResume = () => {
       console.log('패치 리쥬메 호출 당함 성공!');
     } catch (error) {
       console.error('자소서를 불러오는데 실패했습니다:', error);
-    } finally {
-      setLoading(false);
-    }
+    } 
   };
 
   useEffect(() => {
@@ -40,34 +36,11 @@ const MyResume = () => {
   }, []);
 
   const handlePageChange = (page) => {
-    setLoading(true);
     fetchResumes(page);
   };
 
   const handleView = (resumeId) => {
     navigate(`/assay?id=${resumeId}`);
-  };
-
-  const handleDelete = async (id, event) => {
-    event.stopPropagation(); // 행 클릭 이벤트 방지
-    if (window.confirm('정말로 이 자소서를 삭제하시겠습니까?')) {
-      try {
-        const response = await deleteCoverLetter(id);
-        if (response.isSuccess) {
-          alert('자소서가 삭제되었습니다.');
-          console.log(`현재페이지 넘버: ${pagination.currentPage}`);
-          if (resumes.length === 1 && pagination.currentPage > 0) {
-            console.log('패치 리쥬메 호출-1');
-            fetchResumes(pagination.currentPage);
-          } else {
-            console.log('패치 리쥬메 호출-2');
-            fetchResumes(pagination.currentPage + 1);
-          }
-        }
-      } catch (error) {
-        console.error('자소서 삭제에 실패했습니다:', error);
-      }
-    }
   };
 
   const handleWrite = () => {
@@ -78,9 +51,6 @@ const MyResume = () => {
     }
   };
 
-  if (loading) {
-    return <div className={styles.loading}>로딩 중...</div>;
-  }
 
   return (
     <div className={styles.container}>

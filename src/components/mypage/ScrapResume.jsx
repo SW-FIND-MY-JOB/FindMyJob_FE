@@ -18,7 +18,6 @@ const ScrapResume = () => {
         isFirst: true,
         isLast: false
     });
-    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [scrapStates, setScrapStates] = useState({});
@@ -27,7 +26,6 @@ const ScrapResume = () => {
 
     const fetchResumes = async (page) => {
         try {
-            setLoading(true);
             const response = await getScrapResumes(page, 5);
             setResumes(response.resumes);
             setPagination(response.pagination);
@@ -43,8 +41,6 @@ const ScrapResume = () => {
         } catch (err) {
             setError('자소서를 불러오는데 실패했습니다.');
             console.error('자소서 조회 실패:', err);
-        } finally {
-            setLoading(false);
         }
     };
 
@@ -94,18 +90,6 @@ const ScrapResume = () => {
         }
     };
 
-    const handleWrite = () => {
-        if (isLogin) {
-            navigate('/cover-letter-question');
-        } else {
-            setShowLoginModal(true);
-        }
-    };
-
-    if (loading) {
-        return <div className={styles.loading}>로딩 중...</div>;
-    }
-
     if (error) {
         return <div className={styles.error}>{error}</div>;
     }
@@ -114,9 +98,6 @@ const ScrapResume = () => {
         <div className={styles.container}>
             <div className={styles.header}>
                 <h2>&emsp;스크랩한 자소서</h2>
-                <button className={styles.writeButton} onClick={handleWrite}>
-                    글쓰기
-                </button>
             </div>
             
             {resumes.length === 0 ? (
@@ -164,7 +145,6 @@ const ScrapResume = () => {
                                         <button
                                             className={`${styles.bookmarkButton} ${scrapStates[resume.id] ? styles.bookmarked : ''}`}
                                             onClick={(e) => handleBookmarkClick(resume.id, e)}
-                                            disabled={loading}
                                             title="스크랩 해제"
                                         >
                                             <Bookmark 
