@@ -59,8 +59,19 @@
   color: #333;
 }
 
+.title{
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
 .snippet {
   display: -webkit-box;
+  line-clamp: 2;
   -webkit-line-clamp: 2;         /* ✅ 2줄까지 보여줌 */
   -webkit-box-orient: vertical;
   overflow: hidden;

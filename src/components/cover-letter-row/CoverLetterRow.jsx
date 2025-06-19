@@ -63,7 +63,7 @@ export default function CoverLetterRow({ item, index, onScrapToggle }) {
         <td>{item.ncsCdNmLst}</td>
         <td>
           <div>
-            <strong>{item.title}</strong>
+            <div className={styles.title}><strong>{item.title}</strong></div>
             <div className={styles.snippet}>{item.content}</div>
           </div>
         </td>

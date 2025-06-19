@@ -51,11 +51,10 @@
     flex-direction: row;
     justify-content: start;
 
-    margin-left: 20px;
 
     & p{
         /* 레이아웃 */
-        margin: 20px;
+        margin: 20px 15px;
 
         /* 스타일 */
         font-size: 22px;

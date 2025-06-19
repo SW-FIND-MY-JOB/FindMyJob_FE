@@ -1,16 +1,15 @@
 /* src/pages/coverLetter/CoverLetterPage.module.css */
 .pageContainer {
-  display: flex;
-  justify-content: center;
-  padding: 0;
-  height:auto;
-  margin-bottom: 65px;
+  /* 레이아웃 */
+  width: 90%;
+  max-width: 1500px;
+  min-width: 1150px;
+  margin: 0 auto;
+  padding-top: 0;
 }
 
 .mainContent {
   display: flex;
-  width: 95%;
-  max-width: 1300px;
   gap: 32px;
   align-items: flex-start;
 }

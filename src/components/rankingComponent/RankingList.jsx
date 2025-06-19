@@ -1,8 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './RankingList.module.css';
-import { FaCrown, FaMedal, FaAward } from 'react-icons/fa';
+import { FaCrown, FaMedal, FaAward, FaStar, FaTrophy } from 'react-icons/fa';
 
 const RankingList = ({ rankings }) => {
+  const navigate = useNavigate();
+
   const getRankIcon = (rank) => {
     switch (rank) {
       case 1:
@@ -16,25 +19,72 @@ const RankingList = ({ rankings }) => {
     }
   };
 
-  return (
-    <div className={styles.rankingList}>
-      {rankings.map((item, index) => (
-        <div key={index} className={styles.rankingItem}>
-          <div className={styles.rankInfo}>
-            {getRankIcon(index + 1)}
-            <div className={styles.userInfo}>
-              <span className={styles.userName}>{item.userName}</span>
-              <span className={styles.resumeTitle}>{item.resumeTitle}</span>
+  const handleItemClick = (id) => {
+    navigate(`/assay?id=${id}`);
+  };
+
+  const renderTopThree = (item) => {
+    const rankStyles = {
+      1: styles.firstPlace,
+      2: styles.secondPlace,
+      3: styles.thirdPlace
+    };
+
+    return (
+      <div 
+        key={item.id} 
+        className={`${styles.rankingItem} ${rankStyles[item.ranking]}`}
+        onClick={() => handleItemClick(item.id)}
+        style={{ cursor: 'pointer' }}
+      >
+        <div className={styles.rankInfo}>
+          {getRankIcon(item.ranking)}
+          <div className={styles.userInfo}>
+            <div className={styles.topThreeInfo}>
+              <span className={styles.userName}>{item.writer}</span>
             </div>
-          </div>
-          <div className={styles.points}>
-            {index < 3 && (
-              <span className={styles.pointBadge}>
-                {index === 0 ? '+1000' : index === 1 ? '+500' : '+300'} P
-              </span>
-            )}
+            <span className={styles.resumeTitle}>{item.title}</span>
+            <span className={styles.companyInfo}>{item.instNm} - {item.ncsCdNmLst}</span>
           </div>
         </div>
+        <div className={styles.points}>
+          <div className={styles.pointContainer}>
+            <FaStar className={styles.starIcon} />
+            <span className={styles.pointBadge}>{item.score}점</span>
+          </div>
+          {item.ranking <= 3 && (
+            <span className={styles.rewardBadge}>
+              {item.ranking === 1 ? '+1000' : item.ranking === 2 ? '+500' : '+300'} P
+            </span>
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div className={styles.rankingList}>
+      {rankings.map((item) => (
+        item.ranking <= 3 ? renderTopThree(item) : (
+          <div 
+            key={item.id} 
+            className={styles.rankingItem}
+            onClick={() => handleItemClick(item.id)}
+            style={{ cursor: 'pointer' }}
+          >
+            <div className={styles.rankInfo}>
+              {getRankIcon(item.ranking)}
+              <div className={styles.userInfo}>
+                <span className={styles.userName}>{item.writer}</span>
+                <span className={styles.resumeTitle}>{item.title}</span>
+                <span className={styles.companyInfo}>{item.instNm} - {item.ncsCdNmLst}</span>
+              </div>
+            </div>
+            <div className={styles.points}>
+              <span className={styles.pointBadge}>{item.score}점</span>
+            </div>
+          </div>
+        )
       ))}
     </div>
   );
