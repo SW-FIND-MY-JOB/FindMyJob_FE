@@ -6,8 +6,9 @@ import { getUserInfo, logoutRequest } from '../../../api/authService/authAPI';
 
 import styles from "./Header.module.css";
 import logoImg from "../../../assets/images/logoImg.png";
-import { User, CircleDollarSign } from 'lucide-react';
+import { CircleDollarSign } from 'lucide-react';
 
+import { RiUserLine, RiCoinsLine  } from 'react-icons/ri';
 
 export default function Header(){
     const { name, point, isLogin, login, logout } = useAuth();
@@ -118,11 +119,25 @@ export default function Header(){
                     <div className={styles.userWrapper} ref={menuRef}>
                         <div className={styles.userContainer}>
                             {/* 클릭시 메뉴 함수 실행 */}
-                            <p onClick={() => setShowMenu((prev) => !prev)}>
-                                <User size={15} strokeWidth={2.5}/>&nbsp;{name}님
+                            <p>
+                                {/* 유저 아이콘 */}
+                                <div className={styles.userInfo}  onClick={() => setShowMenu((prev) => !prev)}>
+                                    <div className={styles.userIcon}>
+                                        <RiUserLine size={20} />
+                                    </div>
+                                    &nbsp;{name}님
+                                </div>
                             </p>
 
-                            <p><CircleDollarSign size={13} strokeWidth={2.5}/>&nbsp;{point}P</p>
+                            <p>
+                                {/* 포인트트 아이콘 */}
+                                <div className={styles.pointInfo}>
+                                    <div className={styles.pointIcon}>
+                                        <RiCoinsLine size={20} />
+                                    </div>
+                                    &nbsp;{point}P
+                                </div>
+                            </p>
                         </div>
 
                         {showMenu && (
