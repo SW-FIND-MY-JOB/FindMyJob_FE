@@ -1,16 +1,23 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // ✅ 페이지 이동용 훅
 import styles from './CoverLetterQuestion.module.css';
 import CompanySelector from '../company/CompanySelector';
 import JobSelector from '../job/JobSelector';
 import { postCoverLetter } from '../../api/coverletterSave/create'; // ✅ API 함수
+import AiScoreModal from './AiScoreModal';
 
 export default function CoverLetterQuestionForm() {
   const [question, setQuestion] = useState('');
   const [content, setContent] = useState('');
   const [selectedCompany, setSelectedCompany] = useState('');
   const [selectedJob, setSelectedJob] = useState('');
-  const navigate = useNavigate(); // ✅ 페이지 이동 훅 사용
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [newCoverLetterId, setNewCoverLetterId] = useState(null);
+  const [score, setScore] = useState(null);
+  const [point, setPoint] = useState(null);
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [getResponse, setGetResponse] = useState(false);
 
   const handleQuestionChange = (e) => {
     const value = e.target.value;
@@ -44,6 +51,9 @@ export default function CoverLetterQuestionForm() {
       return;
     }
 
+    setIsLoading(true);
+    setGetResponse(false);
+
     try {
       const response = await postCoverLetter({
         companyName: selectedCompany,  // 백엔드에서는 instNm
@@ -53,23 +63,39 @@ export default function CoverLetterQuestionForm() {
       });
       
       // API 응답에서 새로 생성된 자소서 ID 추출
-      const newCoverLetterId = response.result?.id || response.result;
-      
-      alert('자소서가 성공적으로 작성되었습니다!');
-      
-      if (newCoverLetterId) {
-        navigate(`/assay?id=${newCoverLetterId}`); // 새로 생성된 자소서 페이지로 이동
-      } else {
-        navigate('/assay'); // ID가 없으면 기본 페이지로 이동
-      }
+      const newCoverLetterId = response.result?.id;
+      // point 추출
+      const point = response.result?.point;
+
+      // score 추출
+      const score = response.result?.score;
+
+      setIsLoading(false);
+      setGetResponse(true);
+
+      setNewCoverLetterId(newCoverLetterId);
+      setScore(score);
+      setPoint(point);
+      setIsOpen(true);
     } catch (error) {
       console.error('작성 실패:', error);
-      alert('자소서 작성에 실패했습니다. 다시 시도해주세요.');
+      console.log(error.response.data.message);
+      alert(`${error.response.data.message} 다시 작성해주세요.`);
     }
   };
 
   return (
     <div className={styles.container}>
+
+      {/* 스캐닝 로딩 오버레이 */}
+      {isLoading && (
+        <div className={styles.loadingOverlay}>
+          <span className={styles.loadingText}>분석 중...</span>
+        </div>
+      )}
+      
+      {/* 분석이 끝나면 로딩창 닫고 모달창 띄움 */}
+      {getResponse && !isLoading && isOpen && <AiScoreModal setIsOpen={setIsOpen} id={newCoverLetterId} score={score} point={point} />}
       <div className={styles.formSection}>
         <h1 className={styles.pageTitle}>자기소개서 작성</h1>
         <div className={styles.guideMessage}>
