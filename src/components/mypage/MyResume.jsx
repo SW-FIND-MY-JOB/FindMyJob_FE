@@ -116,7 +116,7 @@ const MyResume = () => {
                 <th>직무명</th>
                 <th>자소서 질문/내용</th>
                 <th>조회수</th>
-                <th>관리</th>
+                <th>점수</th>
               </tr>
             </thead>
             <tbody>
@@ -132,15 +132,7 @@ const MyResume = () => {
                     </div>
                   </td>
                   <td>{resume.viewCnt}</td>
-                  <td>
-                    <button 
-                      onClick={(e) => handleDelete(resume.id, e)} 
-                      className={styles.deleteBtn}
-                    >
-                      <RiDeleteBinLine size={20} />
-                      삭제
-                    </button>
-                  </td>
+                  <td>{resume.score}점</td>
                 </tr>
               ))}
             </tbody>

@@ -144,7 +144,7 @@ const ScrapResume = () => {
                                 <th>직무명</th>
                                 <th>자소서 질문/내용</th>
                                 <th>조회수</th>
-                                <th>관리</th>
+                                <th>스크랩</th>
                             </tr>
                         </thead>
                         <tbody>

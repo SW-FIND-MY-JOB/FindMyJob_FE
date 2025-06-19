@@ -23,22 +23,22 @@ const RankingList = ({ rankings }) => {
     navigate(`/assay?id=${id}`);
   };
 
-  const renderTopThree = (item, index) => {
+  const renderTopThree = (item) => {
     const rankStyles = {
-      0: styles.firstPlace,
-      1: styles.secondPlace,
-      2: styles.thirdPlace
+      1: styles.firstPlace,
+      2: styles.secondPlace,
+      3: styles.thirdPlace
     };
 
     return (
       <div 
         key={item.id} 
-        className={`${styles.rankingItem} ${rankStyles[index]}`}
+        className={`${styles.rankingItem} ${rankStyles[item.ranking]}`}
         onClick={() => handleItemClick(item.id)}
         style={{ cursor: 'pointer' }}
       >
         <div className={styles.rankInfo}>
-          {getRankIcon(index + 1)}
+          {getRankIcon(item.ranking)}
           <div className={styles.userInfo}>
             <div className={styles.topThreeInfo}>
               <span className={styles.userName}>{item.writer}</span>
@@ -50,11 +50,11 @@ const RankingList = ({ rankings }) => {
         <div className={styles.points}>
           <div className={styles.pointContainer}>
             <FaStar className={styles.starIcon} />
-            <span className={styles.pointBadge}>{item.point}점</span>
+            <span className={styles.pointBadge}>{item.score}점</span>
           </div>
-          {index < 3 && (
+          {item.ranking <= 3 && (
             <span className={styles.rewardBadge}>
-              {index === 0 ? '+1000' : index === 1 ? '+500' : '+300'} P
+              {item.ranking === 1 ? '+1000' : item.ranking === 2 ? '+500' : '+300'} P
             </span>
           )}
         </div>
@@ -64,8 +64,8 @@ const RankingList = ({ rankings }) => {
 
   return (
     <div className={styles.rankingList}>
-      {rankings.map((item, index) => (
-        index < 3 ? renderTopThree(item, index) : (
+      {rankings.map((item) => (
+        item.ranking <= 3 ? renderTopThree(item) : (
           <div 
             key={item.id} 
             className={styles.rankingItem}
@@ -73,7 +73,7 @@ const RankingList = ({ rankings }) => {
             style={{ cursor: 'pointer' }}
           >
             <div className={styles.rankInfo}>
-              {getRankIcon(index + 1)}
+              {getRankIcon(item.ranking)}
               <div className={styles.userInfo}>
                 <span className={styles.userName}>{item.writer}</span>
                 <span className={styles.resumeTitle}>{item.title}</span>
@@ -81,7 +81,7 @@ const RankingList = ({ rankings }) => {
               </div>
             </div>
             <div className={styles.points}>
-              <span className={styles.pointBadge}>{item.point}점</span>
+              <span className={styles.pointBadge}>{item.score}점</span>
             </div>
           </div>
         )

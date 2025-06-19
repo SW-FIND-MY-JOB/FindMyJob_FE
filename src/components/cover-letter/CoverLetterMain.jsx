@@ -32,11 +32,9 @@ export default function CoverLetterMain({ coverLetterData }) {
       if (scrapped) {
         await removeCoverLetterScrap(coverLetterData.id);
         setScrapped(false);
-        alert('스크랩을 해제했습니다.');
       } else {
         await addCoverLetterScrap(coverLetterData.id);
         setScrapped(true);
-        alert('스크랩했습니다.');
       }
     } catch (error) {
       console.error('스크랩 처리 실패:', error);
@@ -101,6 +99,10 @@ export default function CoverLetterMain({ coverLetterData }) {
       <div className={styles.headerRow}>
         <p className={styles.subtitle}>{coverLetterData.instNm} / {coverLetterData.ncsCdNmLst}</p>
         <div className={styles.metaActions}>
+          <span className={styles.createDate}>
+        작성일: {new Date(coverLetterData.createAt).toLocaleDateString('ko-KR')}
+      </span>
+      <span className={styles.divider}>/</span>
           <span className={styles.views}>조회수: {coverLetterData.viewCnt || 0}</span>
           {coverLetterData.isAuthor && (
             <>
@@ -126,10 +128,6 @@ export default function CoverLetterMain({ coverLetterData }) {
         {coverLetterData.content.split('\n').map((line, index) => (
           <p key={index} className={styles.paragraph}>{line}</p>
         ))}
-      </div>
-
-      <div className={styles.createDate}>
-        작성일: {new Date(coverLetterData.createAt).toLocaleDateString('ko-KR')}
       </div>
     </div>
   );
