@@ -15,6 +15,9 @@ export default function CoverLetterQuestionForm() {
   const [newCoverLetterId, setNewCoverLetterId] = useState(null);
   const [score, setScore] = useState(null);
   const [point, setPoint] = useState(null);
+  const [percent, setPercent] = useState(null);
+  const [bins, setBins] = useState(null);
+  const [counts, setCounts] = useState(null);
 
   const [isLoading, setIsLoading] = useState(false);
   const [getResponse, setGetResponse] = useState(false);
@@ -66,9 +69,14 @@ export default function CoverLetterQuestionForm() {
       const newCoverLetterId = response.result?.id;
       // point 추출
       const point = response.result?.point;
-
       // score 추출
       const score = response.result?.score;
+      // percent 추출
+      const percent = response.result?.percent;
+      // bins 추출
+      const bins = response.result?.scores.bins;
+      // counts 추출
+      const counts = response.result?.scores.counts;
 
       setIsLoading(false);
       setGetResponse(true);
@@ -76,6 +84,9 @@ export default function CoverLetterQuestionForm() {
       setNewCoverLetterId(newCoverLetterId);
       setScore(score);
       setPoint(point);
+      setPercent(percent);
+      setBins(bins);
+      setCounts(counts);
       setIsOpen(true);
     } catch (error) {
       console.error('작성 실패:', error);
@@ -95,7 +106,10 @@ export default function CoverLetterQuestionForm() {
       )}
       
       {/* 분석이 끝나면 로딩창 닫고 모달창 띄움 */}
-      {getResponse && !isLoading && isOpen && <AiScoreModal setIsOpen={setIsOpen} id={newCoverLetterId} score={score} point={point} />}
+      {getResponse && !isLoading && isOpen && 
+        <AiScoreModal setIsOpen={setIsOpen} 
+          id={newCoverLetterId} score={score} point={point} percent={percent} bins={bins} counts={counts} />
+      }
       <div className={styles.formSection}>
         <h1 className={styles.pageTitle}>자기소개서 작성</h1>
         <div className={styles.guideMessage}>
