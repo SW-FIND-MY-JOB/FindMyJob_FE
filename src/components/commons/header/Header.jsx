@@ -6,8 +6,6 @@ import { getUserInfo, logoutRequest } from '../../../api/authService/authAPI';
 
 import styles from "./Header.module.css";
 import logoImg from "../../../assets/images/logoImg.png";
-import { CircleDollarSign } from 'lucide-react';
-
 import { RiUserLine, RiCoinsLine  } from 'react-icons/ri';
 
 export default function Header(){
@@ -90,7 +88,7 @@ export default function Header(){
                     </p>
                     <p
                         onClick={() => navigate("/cover-letter-search")}
-                        className={location.pathname === "/cover-letter-search" ? styles.active : ""}
+                        className={location.pathname === "/cover-letter-search" || location.pathname === "/assay" ? styles.active : ""}
                     >
                         자소서 둘러보기
                     </p>
