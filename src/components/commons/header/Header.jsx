@@ -53,6 +53,7 @@ export default function Header(){
         try{
             await logoutRequest();
             logout();
+            navigate("/");
         } catch (error) {
             console.log(`로그아웃 실패: ${error}`);
         }
