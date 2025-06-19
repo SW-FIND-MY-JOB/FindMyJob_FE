@@ -165,7 +165,7 @@ export default function HistogramToNormalChart({ score, percent, bins, counts })
     <div style={{ width: '100%', height: '250px' }}>
       <Line data={data} options={options} plugins={[percentLabelPlugin]} />
       <p style={{ textAlign: 'center', marginTop: 8, color: '#ff9500' }}>
-        🎯 내 점수 <strong>{score}</strong>점은 정규분포상 상위 <strong>{percent}%</strong>입니다.
+        내 점수 <strong>{score}</strong>점은 정규분포상 상위 <strong>{percent}%</strong>입니다.
       </p>
     </div>
   );
