@@ -21,11 +21,26 @@
     height: 300px;
     padding: 20px;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     /* 스타일 */
     background-color: #fff;
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transform: translate(-50%, -50%);
+}
+
+.contentContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+
+    width: 90%;
+    gap: 12px;
 }
 
 .modalHeader {
@@ -44,6 +59,7 @@
 .modalContent {
     display: flex;
     flex-direction: column;
+    align-items: start;
     gap: 12px;
     text-align: center;
     font-size: 1.25rem;
@@ -82,6 +98,7 @@
 .modalFooter {
     display: flex;
     justify-content: center;
+    width: 100%;
     margin-top: 40px;
 }
 
