@@ -6,15 +6,10 @@
   min-width: 1150px;
   margin: 0 auto;
   padding-top: 0;
-  margin-bottom: 65px;
 }
 
 .mainContent {
   display: flex;
-  background-color: white;
-  border-radius: 30px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
-  padding: 40px 80px;
   gap: 32px;
   align-items: flex-start;
 }

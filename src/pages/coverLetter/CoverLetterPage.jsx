@@ -34,13 +34,13 @@ export default function CoverLetterPage() {
     loadCoverLetterDetail();
   }, [coverLetterId, isLogin]);
 
-  if (loading) {
-    return (
-      <div className={styles.pageContainer}>
-        <div className={styles.loading}>로딩중...</div>
-      </div>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <div className={styles.pageContainer}>
+  //       <div className={styles.loading}>로딩중...</div>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className={styles.pageContainer}>

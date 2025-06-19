@@ -97,25 +97,24 @@ export default function CoverLetterMain({ coverLetterData }) {
       </div>
 
       <div className={styles.headerRow}>
-        <p className={styles.subtitle}>{coverLetterData.instNm} / {coverLetterData.ncsCdNmLst}</p>
         <div className={styles.metaActions}>
+          <p className={styles.subtitle}>{coverLetterData.instNm} / {coverLetterData.ncsCdNmLst}</p>
           <span className={styles.createDate}>
-        작성일: {new Date(coverLetterData.createAt).toLocaleDateString('ko-KR')}
-      </span>
-      <span className={styles.divider}>/</span>
+            {new Date(coverLetterData.createAt).toLocaleDateString('ko-KR')}
+          </span>
           <span className={styles.views}>조회수: {coverLetterData.viewCnt || 0}</span>
-          {coverLetterData.isAuthor && (
+          
+        </div>
+        {coverLetterData.isAuthor && (
             <>
-              <span className={styles.divider}>/</span>
               <span 
                 className={`${styles.action} ${loading ? styles.disabled : ''}`}
                 onClick={!loading ? handleDelete : undefined}
               >
-                {loading ? '처리중...' : '삭제'}
+                {loading ? '처리중...' : '글삭제'}
               </span>
             </>
           )}
-        </div>
       </div>
 
       <div className={styles.questionBlock}>
