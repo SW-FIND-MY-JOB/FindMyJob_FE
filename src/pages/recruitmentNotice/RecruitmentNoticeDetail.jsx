@@ -172,7 +172,7 @@ const RecruitmentNoticeDetail = () => {
                 <h4>자세한 정보</h4>
                 <li>
                   {noticeDetail.srcUrl && (noticeDetail.srcUrl.startsWith('www') || noticeDetail.srcUrl.startsWith('http')) ? (
-                    <a href={noticeDetail.srcUrl} target="_blank" rel="noreferrer">{noticeDetail.srcUrl}</a>
+                    <a href={noticeDetail.srcUrl} target="_blank" rel="noreferrer">사이트 바로가기</a>
                   ) : (
                     '정보 없음'
                   )}
