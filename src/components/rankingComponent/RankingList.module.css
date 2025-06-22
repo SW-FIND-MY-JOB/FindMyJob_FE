@@ -60,14 +60,14 @@
 
 .secondPlace {
   background: linear-gradient(135deg, rgba(230, 232, 250, 0.2), rgba(192, 192, 192, 0.2));
-  border: 2px solid #E6E8FA;
+  border: 2px solid #82b4fa;
   box-shadow: 0 8px 30px rgba(192, 192, 192, 0.3);
   transform: scale(1.01);
 }
 
 .secondPlace:hover {
   background: linear-gradient(135deg, rgba(230, 232, 250, 0.25), rgba(192, 192, 192, 0.25));
-  border: 2px solid #E6E8FA;
+  border: 2px solid #82b4fa;
   box-shadow: 0 15px 35px rgba(192, 192, 192, 0.4);
 }
 
