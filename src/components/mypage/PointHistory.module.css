@@ -1,0 +1,128 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: calc(100% - 40px);
+  margin: 0;
+  background-color: #ffffff;
+  border-radius: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-height: 460px;
+}
+
+.header {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.pointTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-left: none;
+  border-right: none;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.pointTable th {
+  padding: 12px 5px;
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+  border-bottom: 2px solid #ddd;
+  border-left: none;
+  border-right: none;
+}
+
+.pointTable td {
+  padding: 12px 5px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  border-left: none;
+  border-right: none;
+  vertical-align: middle;
+}
+
+.descriptionCell {
+  text-align: center !important;
+}
+
+.addPoint {
+  color: #2e7d32; /* green */
+  font-weight: bold;
+}
+
+.usePoint {
+  color: #c62828; /* red */
+  font-weight: bold;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  padding-bottom: 15px;
+}
+
+.pagination {
+  display: flex;
+  gap: 5px;
+}
+
+.pageButton {
+  padding: 8px 12px;
+  border: none;
+  background-color: transparent;
+  color: #333;
+  cursor: pointer;
+}
+
+.pageButton.active {
+  color: #007bff;
+}
+
+.noHistory {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+.pointTable tr {
+  cursor: default;
+}
+
+.row:hover {
+  background-color: #f8f9fa;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .pointTable {
+    font-size: 14px;
+  }
+
+  .pointTable th,
+  .pointTable td {
+    padding: 8px 4px;
+  }
+
+  .descriptionCell {
+    max-width: 200px;
+  }
+}
