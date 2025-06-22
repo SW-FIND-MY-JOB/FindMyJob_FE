@@ -54,7 +54,9 @@ const RankingList = ({ rankings }) => {
           </div>
           {item.ranking <= 3 && (
             <span className={styles.rewardBadge}>
-              {item.ranking === 1 ? '+1000' : item.ranking === 2 ? '+500' : '+300'} P
+              {item.ranking === 1 ? '+10000' : 
+              item.ranking === 2 ? '+5000' : 
+              '+3000'} P
             </span>
           )}
         </div>
@@ -82,7 +84,13 @@ const RankingList = ({ rankings }) => {
             </div>
             <div className={styles.points}>
               <span className={styles.pointBadge}>{item.score}점</span>
+              {item.ranking <= 10 && (
+                <span className={styles.rewardBadge}>
+                  +1000 P
+                </span>
+              )}
             </div>
+            
           </div>
         )
       ))}
