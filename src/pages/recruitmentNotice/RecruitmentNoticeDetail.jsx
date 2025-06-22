@@ -168,11 +168,11 @@ const RecruitmentNoticeDetail = () => {
             <section ref={applyRef} className={styles.section}>
               <h3 className={styles.sectionTitle}>지원방법</h3>
               <ul className={styles.infoList}>
-                <li>{noticeDetail.scrnprcdrMthdExpln || '정보 없음'}</li>
+                <li style={{ whiteSpace: 'pre-line' }}>{noticeDetail.scrnprcdrMthdExpln || '정보 없음'}</li>
                 <h4>자세한 정보</h4>
                 <li>
                   {noticeDetail.srcUrl && (noticeDetail.srcUrl.startsWith('www') || noticeDetail.srcUrl.startsWith('http')) ? (
-                    <a href={noticeDetail.srcUrl} target="_blank" rel="noreferrer">{noticeDetail.srcUrl}</a>
+                    <a href={noticeDetail.srcUrl} target="_blank" rel="noreferrer">사이트 바로가기</a>
                   ) : (
                     '정보 없음'
                   )}
@@ -192,11 +192,11 @@ const RecruitmentNoticeDetail = () => {
             <section ref={etcRef} className={styles.section}>
               <h3 className={styles.sectionTitle}>기타 안내사항</h3>
               <h4>지원 조건</h4>
-              <p>{noticeDetail.aplyQlfcCn || '지원 조건 없음'}</p>
+              <p style={{ whiteSpace: 'pre-line' }}>{noticeDetail.aplyQlfcCn || '지원 조건 없음'}</p>
               <h4>우대 조건</h4>
-              <p>{noticeDetail.prefCondCn || '우대 조건 없음'}</p>
+              <p style={{ whiteSpace: 'pre-line' }}>{noticeDetail.prefCondCn || '우대 조건 없음'}</p>
               <h4>제한 조건</h4>
-              <p>{noticeDetail.disqlfcRsn || '제한 조건 없음'}</p>
+              <p style={{ whiteSpace: 'pre-line' }}>{noticeDetail.disqlfcRsn || '제한 조건 없음'}</p>
             </section>
           </div>
 

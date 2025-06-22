@@ -30,10 +30,10 @@ export default function CoverLetterList({ recentInformList }) {
             className={styles.listItem}
             onClick={() => handleClick(item.id)}
           >
-            <div className={styles.company}>{item.instNm} / {item.ncsCdNmLst}</div>
             <div className={styles.question}>
               {item.title}
             </div>
+            <div className={styles.company}>{item.instNm} / {item.ncsCdNmLst}</div>
             <div className={styles.preview}>{item.content}</div>
           </div>
         ))}

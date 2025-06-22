@@ -1,0 +1,287 @@
+.rankingList {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.rankingItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 30px;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.rankingItem:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.rankingItem::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.rankingItem:hover::before {
+  opacity: 1;
+}
+
+.firstPlace {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 165, 0, 0.1));
+  border: 2px solid #FFD700;
+  box-shadow: 0 8px 30px rgba(255, 215, 0, 0.2);
+  transform: scale(1.02);
+}
+
+.firstPlace:hover {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 165, 0, 0.15));
+  border: 2px solid #FFD700;
+  box-shadow: 0 15px 35px rgba(255, 215, 0, 0.3);
+}
+
+.secondPlace {
+  background: linear-gradient(135deg, rgba(230, 232, 250, 0.2), rgba(192, 192, 192, 0.2));
+  border: 2px solid #82b4fa;
+  box-shadow: 0 8px 30px rgba(192, 192, 192, 0.3);
+  transform: scale(1.01);
+}
+
+.secondPlace:hover {
+  background: linear-gradient(135deg, rgba(230, 232, 250, 0.25), rgba(192, 192, 192, 0.25));
+  border: 2px solid #82b4fa;
+  box-shadow: 0 15px 35px rgba(192, 192, 192, 0.4);
+}
+
+.thirdPlace {
+  background: linear-gradient(135deg, rgba(205, 127, 50, 0.1), rgba(184, 115, 51, 0.1));
+  border: 2px solid #CD7F32;
+  box-shadow: 0 8px 30px rgba(205, 127, 50, 0.2);
+}
+
+.thirdPlace:hover {
+  background: linear-gradient(135deg, rgba(205, 127, 50, 0.15), rgba(184, 115, 51, 0.15));
+  border: 2px solid #CD7F32;
+  box-shadow: 0 15px 35px rgba(205, 127, 50, 0.3);
+}
+
+.rankInfo {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  flex: 1;
+  min-width: 0;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  flex: 1;
+}
+
+.topThreeInfo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.userName {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #2c3e50;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
+}
+
+.rankBadge {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(255, 165, 0, 0.2);
+  animation: pulse 2s infinite;
+}
+
+.resumeTitle {
+  font-size: 1rem;
+  color: #666;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
+}
+
+.companyInfo {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
+}
+
+.points {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  margin-left: 20px;
+  min-width: 120px;
+}
+
+.pointContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.starIcon {
+  color: #FFD700;
+  animation: spin 3s linear infinite;
+}
+
+.pointBadge {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(255, 165, 0, 0.2);
+  letter-spacing: 0.5px;
+  animation: pulse 2s infinite;
+}
+
+.rewardBadge {
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.2);
+  letter-spacing: 0.5px;
+}
+
+.goldCrown {
+  color: #FFD700;
+  font-size: 2.5rem;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.3));
+  animation: glow 2s ease-in-out infinite;
+}
+
+.silverMedal {
+  color: #C0C0C0;
+  font-size: 2.5rem;
+  filter: drop-shadow(0 0 8px rgba(192, 192, 192, 0.3));
+}
+
+.bronzeAward {
+  color: #CD7F32;
+  font-size: 2.5rem;
+  filter: drop-shadow(0 0 8px rgba(205, 127, 50, 0.3));
+}
+
+.rankNumber {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #4a90e2;
+  width: 40px;
+  text-align: center;
+  opacity: 0.8;
+}
+
+@keyframes glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5));
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(45deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .rankingItem {
+    padding: 20px;
+  }
+
+  .userName {
+    font-size: 1.1rem;
+  }
+
+  .resumeTitle {
+    font-size: 0.9rem;
+  }
+
+  .goldCrown,
+  .silverMedal,
+  .bronzeAward {
+    font-size: 2rem;
+  }
+
+  .rankNumber {
+    font-size: 1.5rem;
+  }
+
+  .pointBadge {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+} 

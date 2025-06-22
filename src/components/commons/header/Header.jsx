@@ -6,16 +6,16 @@ import { getUserInfo, logoutRequest } from '../../../api/authService/authAPI';
 
 import styles from "./Header.module.css";
 import logoImg from "../../../assets/images/logoImg.png";
-import { User, CircleDollarSign } from 'lucide-react';
-
+import { RiUserLine, RiCoinsLine  } from 'react-icons/ri';
 
 export default function Header(){
-    const { name, point, isLogin, login, logout, setAuthCheckComplete } = useAuth();
+    const { name, point, isLogin, login, logout } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const [showLogin, setShowLogin] = useState(false);
     const [showMenu, setShowMenu] = useState(false)
     const menuRef = useRef(null);
+    const isRankingPage = location.pathname === "/ranking";
 
     //사용자 로그인 유무 확인
     useEffect(() => {
@@ -52,13 +52,14 @@ export default function Header(){
         try{
             await logoutRequest();
             logout();
+            navigate("/");
         } catch (error) {
             console.log(`로그아웃 실패: ${error}`);
         }
     }
 
     return(
-        <div className={styles.headerContainer}>
+        <div className={styles.headerContainer} style={{margin: isRankingPage ? '0' : '0 0 1% 0'}}>
             {/* 헤더 윗부분 */}
             <div className={styles.headerTop}>
                 {/* 로고 영역 */}
@@ -87,9 +88,15 @@ export default function Header(){
                     </p>
                     <p
                         onClick={() => navigate("/cover-letter-search")}
-                        className={location.pathname === "/assay" ? styles.active : ""}
+                        className={location.pathname === "/cover-letter-search" || location.pathname === "/assay" ? styles.active : ""}
                     >
                         자소서 둘러보기
+                    </p>
+                    <p
+                        onClick={() => navigate("/ranking")}
+                        className={location.pathname === "/ranking" ? styles.active : ""}
+                    >
+                        랭킹
                     </p>
                 </div>
                 {/* 로그인 영역 */}
@@ -118,11 +125,25 @@ export default function Header(){
                     <div className={styles.userWrapper} ref={menuRef}>
                         <div className={styles.userContainer}>
                             {/* 클릭시 메뉴 함수 실행 */}
-                            <p onClick={() => setShowMenu((prev) => !prev)}>
-                                <User size={15} strokeWidth={2.5}/>{name}님
+                            <p>
+                                {/* 유저 아이콘 */}
+                                <div className={styles.userInfo}  onClick={() => setShowMenu((prev) => !prev)}>
+                                    <div className={styles.userIcon}>
+                                        <RiUserLine size={20} />
+                                    </div>
+                                    &nbsp;{name}님
+                                </div>
                             </p>
 
-                            <p><CircleDollarSign size={13} strokeWidth={2.5}/>{point}P</p>
+                            <p>
+                                {/* 포인트트 아이콘 */}
+                                <div className={styles.pointInfo}>
+                                    <div className={styles.pointIcon}>
+                                        <RiCoinsLine size={20} />
+                                    </div>
+                                    &nbsp;{point}P
+                                </div>
+                            </p>
                         </div>
 
                         {showMenu && (

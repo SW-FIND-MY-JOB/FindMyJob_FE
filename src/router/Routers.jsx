@@ -6,6 +6,7 @@ import MyPage from '../pages/myPage/MyPage';
 import Cafepage from '../pages/cafe/CafePage';
 import CorrectionPage from '../pages/correctionPage/CorrectionPage';
 import CoverLetterPage from '../pages/coverLetter/CoverLetterPage';
+import Ranking from '../pages/ranking/Ranking';
 
 import CoverLetterQuestionPage from '../pages/CoverLetterQuestionPage/CoverLetterQuestionPage';
 import CoverLetterSearchPage from '../pages/coverlettersearchpage/CoverLetterSearchPage'; 
@@ -30,6 +31,7 @@ export default function Routers() {
                 <Route path="/assay" element={<CoverLetterPage />} />
                 <Route path="/cover-letter-question" element={<CoverLetterQuestionPage />} />
                 <Route path="/cover-letter-search" element={<CoverLetterSearchPage />} /> 
+                <Route path="/ranking" element={<Ranking />} />
                 <Route path="*" element={<NotFoundPage />} />
                 <Route path="/recruitment-notice" element={<RecruitmentNoticePage />} />
                 <Route path="/recruitment-notice/:id" element={<RecruitmentNoticeDetail />} />

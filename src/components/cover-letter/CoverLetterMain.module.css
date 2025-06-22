@@ -1,16 +1,14 @@
 .mainSection {
-  flex: 2;
+  flex: 7;
   background-color: #fff;
   border-radius: 30px;
-  padding: 32px;
+  padding: 50px 100px;
 
   box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.12); /* 그림자 */
 
-  min-height: 100%; /* ✅ 높이 제한 없음 */
-  min-width: 400px;
-  max-width: 100%;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
+  width: 100%;
+  height: 100%;
+  min-height: 800px;
 }
 
 .content {
@@ -48,17 +46,15 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
+
+  margin-bottom: 10%;
 }
 
 .subtitle {
   font-size: 18px;
   color: #222;
   font-weight: 600;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  max-width: 100%;
-  flex: 1;
-  min-width: 0;
+  margin-bottom: 10px;
 }
 
 .metaActions {
@@ -68,14 +64,11 @@
   white-space: nowrap;
 }
 
-.divider {
-  margin: 0 4px;
-  color: #bbb;
-}
 
 .action {
   cursor: pointer;
-  color: #007aff;
+  color: #ff1509;
+  font-weight: 600;
 }
 
 .action.disabled {
@@ -90,7 +83,7 @@
 
 .label {
   font-weight: bold;
-  font-size: 15px;
+  font-size: 20px;
   margin-bottom: 4px;
 }
 
@@ -143,12 +136,22 @@
 }
 
 .createDate {
-  margin-top: 24px;
-  padding-top: 16px;
-  border-top: 1px solid #eee;
+  margin-right: 10px;
+
   font-size: 14px;
-  color: #999;
-  text-align: right;
+  color: #545454;
+  text-align: left;
+}
+
+.divider {
+  margin: 0 4px;
+  color: #000000;
+}
+
+.views {
+  font-size: 14px;
+  color: #545454;
+  text-align: left;
 }
 
 .loading {

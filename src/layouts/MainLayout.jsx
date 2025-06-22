@@ -12,11 +12,11 @@ export default function MainLayout(){
     const isUseFooter = location.pathname === "/cafe" || 
                         location.pathname === "/signup" || 
                         location.pathname === "/correction";
-
-
+    
+    const isRankingPage = location.pathname === "/ranking";
 
     return(
-        <div className={styles.layout}>
+        <div className={isRankingPage ? styles.rankingLayout : styles.layout}>
             <Header/>
             <Outlet/>
             {!isUseFooter && <Footer/>}

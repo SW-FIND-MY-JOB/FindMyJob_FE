@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MyResume from '../../components/mypage/MyResume';
 import ScrapResume from '../../components/mypage/ScrapResume';
+import PointHistory from '../../components/mypage/PointHistory';
 import ChangePassword from '../../components/mypage/ChangePassword';
 import DeleteAccount from '../../components/mypage/DeleteAccount';
 import { getUserInfo } from '../../api/authService/authAPI';
@@ -11,7 +12,8 @@ import {
   RiBookmarkLine, 
   RiLockPasswordLine, 
   RiUserUnfollowLine,
-  RiUserLine
+  RiUserLine,
+  RiMoneyDollarCircleLine
 } from 'react-icons/ri';
 
 const MyPage = () => {
@@ -49,6 +51,8 @@ const MyPage = () => {
         return <MyResume />;
       case 'scrapResume':
         return <ScrapResume />;
+      case 'pointHistory':
+        return <PointHistory />;
       case 'changePassword':
         return <ChangePassword />;
       case 'deleteAccount':
@@ -98,6 +102,13 @@ const MyPage = () => {
               계정
             </h3>
             <div className={styles.menuItems}>
+              <button
+                className={`${styles.menuItem} ${selectedComponent === 'pointHistory' ? styles.active : ''}`}
+                onClick={() => setSelectedComponent('pointHistory')}
+              >
+                <RiMoneyDollarCircleLine className={styles.itemIcon} />
+                포인트 내역
+              </button>
               <button
                 className={`${styles.menuItem} ${selectedComponent === 'changePassword' ? styles.active : ''}`}
                 onClick={() => setSelectedComponent('changePassword')}
