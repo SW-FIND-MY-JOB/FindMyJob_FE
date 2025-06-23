@@ -51,6 +51,35 @@ const MyResume = () => {
     }
   };
 
+  const MAX_VISIBLE_PAGES = 10;
+
+  // 현재 페이지(백엔드 0-based → 화면 1-based)
+  const currentPageDisplay = pagination.currentPage + 1;
+
+  const getPageNumbers = () => {
+    const pageNumbers = [];
+    const startPage = Math.floor((currentPageDisplay - 1) / MAX_VISIBLE_PAGES) * MAX_VISIBLE_PAGES + 1;
+    const endPage = Math.min(startPage + MAX_VISIBLE_PAGES - 1, pagination.totalPages);
+
+    for (let i = startPage; i <= endPage; i++) {
+      pageNumbers.push(i);
+    }
+    return pageNumbers;
+  };
+
+  const handleNextGroup = () => {
+    const currentGroup = Math.floor((currentPageDisplay - 1) / MAX_VISIBLE_PAGES);
+    const nextGroupStart = (currentGroup + 1) * MAX_VISIBLE_PAGES + 1;
+    if (nextGroupStart <= pagination.totalPages) {
+      handlePageChange(nextGroupStart);
+    }
+  };
+
+  const handlePrevGroup = () => {
+    const currentGroup = Math.floor((currentPageDisplay - 1) / MAX_VISIBLE_PAGES);
+    const prevGroupStart = Math.max((currentGroup - 1) * MAX_VISIBLE_PAGES + 1, 1);
+    handlePageChange(prevGroupStart);
+  };
 
   return (
     <div className={styles.container}>
@@ -109,19 +138,35 @@ const MyResume = () => {
           </table>
 
           <div className={styles.footer}>
-            <div className={styles.pagination}>
-              {[...Array(pagination.totalPages)].map((_, index) => (
-                <button
-                  key={index + 1}
-                  className={`${styles.pageButton} ${
-                    pagination.currentPage === index ? styles.active : ''
-                  }`}
-                  onClick={() => handlePageChange(index + 1)}
-                >
-                  {index + 1}
-                </button>
-              ))}
-            </div>
+            {pagination.totalPages > 0 && (
+              <div className={styles.pagination}>
+                {currentPageDisplay > 1 && (
+                  <button onClick={() => handlePageChange(1)}>{'<<'}</button>
+                )}
+                {currentPageDisplay > 1 && (
+                  <button onClick={handlePrevGroup}>{'<'}</button>
+                )}
+
+                {getPageNumbers().map((pageNum) => (
+                  <button
+                    key={pageNum}
+                    onClick={() => handlePageChange(pageNum)}
+                    className={`${styles.pageButton} ${
+                      currentPageDisplay === pageNum ? styles.active : ''
+                    }`}
+                  >
+                    {pageNum}
+                  </button>
+                ))}
+
+                {currentPageDisplay < pagination.totalPages && (
+                  <button onClick={handleNextGroup}>{'>'}</button>
+                )}
+                {currentPageDisplay < pagination.totalPages && (
+                  <button onClick={() => handlePageChange(pagination.totalPages)}>{'>>'}</button>
+                )}
+              </div>
+            )}
           </div>
         </>
       )}
