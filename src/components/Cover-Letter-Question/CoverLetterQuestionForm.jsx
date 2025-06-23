@@ -92,6 +92,7 @@ export default function CoverLetterQuestionForm() {
       console.error('작성 실패:', error);
       console.log(error.response.data.message);
       alert(`${error.response.data.message} 다시 작성해주세요.`);
+      setIsLoading(false);
     }
   };
 
