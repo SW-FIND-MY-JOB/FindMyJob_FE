@@ -52,6 +52,35 @@ const ScrapResume = () => {
         fetchResumes(newPage);
     };
 
+    /* ----------------------- Pagination (RecruitmentCard style) ----------------------- */
+    const MAX_VISIBLE_PAGES = 10;
+
+    // currentPage is already 1-based in pagination from API
+    const getPageNumbers = () => {
+        const pageNumbers = [];
+        const startPage = Math.floor((pagination.currentPage - 1) / MAX_VISIBLE_PAGES) * MAX_VISIBLE_PAGES + 1;
+        const endPage = Math.min(startPage + MAX_VISIBLE_PAGES - 1, pagination.totalPages);
+
+        for (let i = startPage; i <= endPage; i++) {
+            pageNumbers.push(i);
+        }
+        return pageNumbers;
+    };
+
+    const handleNextGroup = () => {
+        const currentGroup = Math.floor((pagination.currentPage - 1) / MAX_VISIBLE_PAGES);
+        const nextGroupStart = (currentGroup + 1) * MAX_VISIBLE_PAGES + 1;
+        if (nextGroupStart <= pagination.totalPages) {
+            handlePageChange(nextGroupStart);
+        }
+    };
+
+    const handlePrevGroup = () => {
+        const currentGroup = Math.floor((pagination.currentPage - 1) / MAX_VISIBLE_PAGES);
+        const prevGroupStart = Math.max((currentGroup - 1) * MAX_VISIBLE_PAGES + 1, 1);
+        handlePageChange(prevGroupStart);
+    };
+
     const handleView = (resumeId) => {
         navigate(`/assay?id=${resumeId}`);
     };
@@ -160,19 +189,35 @@ const ScrapResume = () => {
                     </table>
 
                     <div className={styles.footer}>
-                        <div className={styles.pagination}>
-                        {[...Array(pagination.totalPages)].map((_, index) => (
-                            <button
-                            key={index + 1}
-                            className={`${styles.pageButton} ${
-                                pagination.currentPage === index + 1 ? styles.active : ''
-                            }`}
-                            onClick={() => handlePageChange(index + 1)}
-                            >
-                            {index + 1}
-                            </button>
-                            ))}
-                        </div>
+                        {pagination.totalPages > 0 && (
+                            <div className={styles.pagination}>
+                                {pagination.totalPages > MAX_VISIBLE_PAGES && pagination.currentPage > 1 && (
+                                    <button onClick={() => handlePageChange(1)}>{'<<'}</button>
+                                )}
+                                {pagination.totalPages > MAX_VISIBLE_PAGES && pagination.currentPage > 1 && (
+                                    <button onClick={handlePrevGroup}>{'<'}</button>
+                                )}
+
+                                {getPageNumbers().map((pageNum) => (
+                                    <button
+                                        key={pageNum}
+                                        onClick={() => handlePageChange(pageNum)}
+                                        className={`${styles.pageButton} ${
+                                            pagination.currentPage === pageNum ? styles.active : ''
+                                        }`}
+                                    >
+                                        {pageNum}
+                                    </button>
+                                ))}
+
+                                {pagination.totalPages > MAX_VISIBLE_PAGES && pagination.currentPage < pagination.totalPages && (
+                                    <button onClick={handleNextGroup}>{'>'}</button>
+                                )}
+                                {pagination.totalPages > MAX_VISIBLE_PAGES && pagination.currentPage < pagination.totalPages && (
+                                    <button onClick={() => handlePageChange(pagination.totalPages)}>{'>>'}</button>
+                                )}
+                            </div>
+                        )}
                     </div>
                 </>
             )}

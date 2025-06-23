@@ -21,6 +21,7 @@ export default function CoverLetterSearchPage() {
   const { isLogin, isAuthChecked } = useAuth();
 
   const itemsPerPage = 8;
+  const MAX_VISIBLE_PAGES = 10;
 
   // 인증 확인이 완료된 후에 자소서 목록 불러오기
   useEffect(() => {
@@ -51,6 +52,31 @@ export default function CoverLetterSearchPage() {
 
   const handlePageChange = (page) => {
     handleSearch(page);
+  };
+
+  const getPageNumbers = () => {
+    const pageNumbers = [];
+    const startPage = Math.floor((currentPage - 1) / MAX_VISIBLE_PAGES) * MAX_VISIBLE_PAGES + 1;
+    const endPage = Math.min(startPage + MAX_VISIBLE_PAGES - 1, totalPages);
+
+    for (let i = startPage; i <= endPage; i++) {
+      pageNumbers.push(i);
+    }
+    return pageNumbers;
+  };
+
+  const handleNextGroup = () => {
+    const currentGroup = Math.floor((currentPage - 1) / MAX_VISIBLE_PAGES);
+    const nextGroupStart = (currentGroup + 1) * MAX_VISIBLE_PAGES + 1;
+    if (nextGroupStart <= totalPages) {
+      handlePageChange(nextGroupStart);
+    }
+  };
+
+  const handlePrevGroup = () => {
+    const currentGroup = Math.floor((currentPage - 1) / MAX_VISIBLE_PAGES);
+    const prevGroupStart = Math.max((currentGroup - 1) * MAX_VISIBLE_PAGES + 1, 1);
+    handlePageChange(prevGroupStart);
   };
 
   // 스크랩 상태가 변경될 때 해당 자소서의 상태 업데이트
@@ -138,15 +164,33 @@ export default function CoverLetterSearchPage() {
         </table>
 
         <div className={styles.pagination}>
-          {totalPages > 1 && Array.from({ length: totalPages }, (_, i) => (
-            <span
-              key={i + 1}
-              onClick={() => handlePageChange(i + 1)}
-              className={currentPage === i + 1 ? styles.active : ''}
-            >
-              {i + 1}
-            </span>
-          ))}
+          {totalPages > 0 && (
+            <>
+              {currentPage > 1 && (
+                <>
+                  <span onClick={() => handlePageChange(1)}>{'<<'}</span>
+                  <span onClick={handlePrevGroup}>{'<'}</span>
+                </>
+              )}
+
+              {getPageNumbers().map((pageNum) => (
+                <span
+                  key={pageNum}
+                  onClick={() => handlePageChange(pageNum)}
+                  className={currentPage === pageNum ? styles.active : ''}
+                >
+                  {pageNum}
+                </span>
+              ))}
+
+              {currentPage < totalPages && (
+                <>
+                  <span onClick={handleNextGroup}>{'>'}</span>
+                  <span onClick={() => handlePageChange(totalPages)}>{'>>'}</span>
+                </>
+              )}
+            </>
+          )}
         </div>
       </div>
       {showLoginModal && <LoginModal onClose={() => setShowLoginModal(false)} />}
