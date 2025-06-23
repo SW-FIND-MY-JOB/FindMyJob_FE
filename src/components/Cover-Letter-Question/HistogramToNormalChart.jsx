@@ -8,10 +8,11 @@ import {
   Tooltip,
   Legend,
   Filler,
+  ScatterController,
 } from 'chart.js';
 import PropTypes from 'prop-types';
 
-ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale, Tooltip, Legend, Filler);
+ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale, Tooltip, Legend, Filler, ScatterController,);
 
 // 정규분포 PDF 함수
 function normalPdf(x, mean, sd) {
