@@ -78,19 +78,42 @@
 
 .pagination {
   display: flex;
-  gap: 5px;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 2rem;
+}
+
+.pagination button {
+  color: #6b7280;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: none;
+  border: none;
+  padding: 0;
+  outline: none;
+}
+
+.pagination button:focus {
+  outline: none;
+}
+
+.pagination button:hover {
+  color: #3b82f6;
+}
+
+.pagination button.active,
+.pageButton.active {
+  color: #1f2937;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .pageButton {
-  padding: 8px 12px;
+  background: none;
   border: none;
-  background-color: transparent;
-  color: #333;
-  cursor: pointer;
-}
-
-.pageButton.active {
-  color: #007bff;
+  padding: 0;
 }
 
 .noHistory {
