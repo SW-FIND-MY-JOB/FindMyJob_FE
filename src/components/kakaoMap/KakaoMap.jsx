@@ -118,7 +118,7 @@ export default function KakaoMap() {
           const overlay = new window.kakao.maps.CustomOverlay({
             content: content,
             position: coords,
-            yAnchor: 1,
+            yAnchor: 0,
           });
 
           const closeBtn = content.querySelector('.close-overlay-btn');
@@ -168,26 +168,33 @@ export default function KakaoMap() {
   };
 
   const moveToMarker = (index) => {
-    const marker = markersRef.current[index];
-    const overlay = overlaysRef.current[index];
-    if (marker && map) {
-      overlaysRef.current.forEach(o => o && o.setMap(null));
-      markersRef.current.forEach(m => m && m.setImage(
-        new window.kakao.maps.MarkerImage(
-          'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-          new window.kakao.maps.Size(32, 32)
-        )
-      ));
-      marker.setImage(
-        new window.kakao.maps.MarkerImage(
-          'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
-          new window.kakao.maps.Size(32, 32)
-        )
-      );
-      map.panTo(marker.getPosition());
-      overlay.setMap(map);
-    }
-  };
+  const marker = markersRef.current[index];
+  const overlay = overlaysRef.current[index];
+  if (marker && map) {
+    overlaysRef.current.forEach(o => o && o.setMap(null));
+    markersRef.current.forEach(m => m && m.setImage(
+      new window.kakao.maps.MarkerImage(
+        'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+        new window.kakao.maps.Size(32, 32)
+      )
+    ));
+    marker.setImage(
+      new window.kakao.maps.MarkerImage(
+        'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+        new window.kakao.maps.Size(32, 32)
+      )
+    );
+
+    // 기존 panTo 제거하고 setCenter + panBy를 사용
+    const markerPosition = marker.getPosition();
+    map.setCenter(markerPosition);
+    
+    // 위로 올리는 픽셀 값 (음수일수록 위로 올라감, 값은 상황에 따라 조정 가능)
+    map.panBy(0, -150);
+
+    overlay.setMap(map);
+  }
+};
 
   const moveToCurrentLocation = () => {
     if (currentLocation && map) {
