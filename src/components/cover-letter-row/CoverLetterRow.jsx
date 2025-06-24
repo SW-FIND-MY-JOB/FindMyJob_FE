@@ -58,7 +58,7 @@ export default function CoverLetterRow({ item, index, onScrapToggle }) {
   return (
     <>
       <tr className={`${styles.row} ${styles.clickableRow}`} onClick={handleRowClick}>
-        <td>{index + 1}</td>
+        <td>{item.id}</td>
         <td>{item.instNm}</td>
         <td>{item.ncsCdNmLst}</td>
         <td>

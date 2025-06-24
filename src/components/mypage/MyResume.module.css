@@ -1,7 +1,6 @@
 .container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   padding: 20px;
   width: calc(100% - 40px);
   margin: 0;
@@ -23,7 +22,7 @@
 }
 
 .header {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -259,6 +258,9 @@
 .writeResumeBtn {
   display: inline-flex;
   align-items: center;
+  width: 136px;
+  height: 24px;
+  padding: 10px 19px;
   gap: 0.5rem;
   background-color: #1976d2;
   color: white;
