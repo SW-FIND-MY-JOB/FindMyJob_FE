@@ -94,7 +94,7 @@ export default function KakaoMap() {
 
 
 
-              <img src="${cafe.image}" alt="${cafe.name}" style="
+              <img src="/images/${cafe.name}.${cafe.name === '도봉구 청년취업지원센터' || cafe.name === '성동 청년일다방' ? 'png' : 'jpg'}" alt="${cafe.name}" style="
                 width: 100%;
                 height: 140px;
                 object-fit: cover;
@@ -235,7 +235,7 @@ export default function KakaoMap() {
               key={idx}
               onClick={() => moveToMarker(jobCafes.indexOf(cafe))}
             >
-              <img src={cafe.image} alt={cafe.name} />
+              <img src={`/images/${cafe.name}.${cafe.name === '도봉구 청년취업지원센터' || cafe.name === '성동 청년일다방' ? 'png' : 'jpg'}`} alt={cafe.name} />
               <ul>
                 <li><strong>카페명:</strong> {cafe.name}</li>
                 <li><strong>주소:</strong> {cafe.address}</li>
